@@ -1,0 +1,521 @@
+
+/*  
+	-----------------------------
+	GENERAL STYLES
+	-----------------------------
+ */
+.pointer {
+	cursor: pointer;
+}
+
+div.thumb{
+	height: 150px;
+	background-color: #F4F4F4;
+	width: 150px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+	overflow: hidden;
+}
+
+div.thumb > img{
+	width: 100%;
+}
+
+div.thumb > div.loading{
+	height: 150px;
+	width: 150px;
+	position: absolute;
+	text-align: center;
+	color: #FF5722;
+}
+
+div.thumb > div.loading > div.chart{
+	height: 150px;
+	width: 150px;
+}
+
+div.thumb > div.loading g#n3-pie-legend{
+	-webkit-transform: translate(0px,20px);
+}
+
+div.thumb > div.loading > md-icon {
+	height: 48px;
+	width: 48px;
+	margin-top: -127px;
+}
+
+md-toast.md-exception-theme{
+  background: #F44336;
+  color: #FFF;
+}
+
+md-backdrop {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+/* 
+	GLOBAL COMPONENTS 
+*/
+
+finder {
+	position: fixed;
+	top: 20%;
+	left: 20%;
+	right: 20%;
+	border: none;
+	background-color: rgb(247, 247, 247);
+	border-radius: 5px;
+	padding: 4px 8px;
+	box-shadow: 0px 0px 25px rgb(48, 48, 48);
+	color: rgb(73, 73, 73);
+	opacity: 0.9;
+	display: none;
+}
+
+finder.show {
+	display: inline;
+}
+
+finder div.finder .close {
+	position: fixed;
+	top: 18%;
+	right: 19%;
+	border: none;
+	padding: 4px;
+	background-color: rgb(33, 150, 243);
+	border-radius: 50%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	cursor: pointer;
+}
+
+finder div.finder .close md-icon {
+	color: #FFF;
+}
+
+finder div.finder table {
+	width: 100%;
+}
+
+finder div.finder table td.icon {
+	width: 25px;
+}
+
+finder div.finder table td.icon md-icon {
+	height: 36px;
+	width: 36px;
+}
+
+finder div.finder table td.box {
+
+}
+
+finder div.finder table td.box > input {
+	background: rgba(0, 0, 0, 0);
+	border: none;
+	width: 98%;
+	padding: 4px;
+	color: rgb(74, 74, 74);
+	outline-color: rgb(255, 255, 255);
+	font-size: 1.5em;
+	line-height: 1.2em;
+}
+
+finder div.finder table td.box{
+
+}
+
+finder div.finder div.results{
+	border-top: 1px solid rgb(232, 232, 232);
+	max-height: 400px;
+	overflow: auto;
+}
+
+finder div.finder div.footer {
+	color: rgb(139, 139, 139);
+	font-style: italic;
+	float: right;
+	font-size: 0.8em;
+}
+
+finder div.finder div.results > div{
+	padding: 4px 8px;
+	color: rgb(112, 109, 108);
+	min-height: 45px;
+	border-radius: 4px;
+}
+
+finder div.finder div.results > div div.thumb {
+	height: 30px;
+	width: 30px;
+	margin: 0px;
+}
+
+finder div.finder div.results > div div.name {
+	padding-left: 16px;
+}
+
+finder div.finder div.results > div div.type {
+	font-style: italic;
+	color: rgb(148, 148, 148);
+  	font-size: 0.8em;
+}
+
+finder div.finder div.results > div.active,
+finder div.finder div.results > div:hover {
+	background-color: rgb(215, 215, 215);
+	cursor: pointer;
+}
+
+/*  
+	-----------------------------
+	LOGIN
+	-----------------------------
+ */
+
+.login {
+	background-color: #027BC5;
+}
+
+.login .title {
+	color: #fff;
+}
+
+.login .box {
+	width: 350px;
+	background-color: #FFF;
+	border-top-right-radius: 3px;
+  	border-top-left-radius: 3px;
+}
+
+.login .box md-input-container{
+	padding-bottom: 10px;
+}
+
+.login .box .logo {
+	background: transparent url(images/logo.png) no-repeat center center;
+	width: 100%;
+	height: 120px;
+	background-size: auto 70px;
+	
+}
+
+.login .box .version {
+	color: #027BC5;
+	float: right;
+	font-size: 0.8em;
+}
+
+.login .box button {
+	width: 100%;
+	height: 3.3em;
+	border-radius: 0px;
+	box-shadow: none !important;
+	margin: 0px;
+}
+
+.login .box a {
+	text-decoration: blink;
+	font-size: 0.8em;
+	color: #1187CF;
+}
+
+.login .box button span{
+	font-size: 22px
+}
+
+.login .box button md-icon{
+	vertical-align: top;
+	margin-top: 6px;
+}
+
+.login .box md-progress-linear{
+	margin-top: -5px;
+}	
+
+
+/*  
+	-----------------------------
+	MASTER LAYOUT
+	-----------------------------
+ */
+karma-page karma-content {
+	margin-top: 5px;
+	padding: 20px 0px 8px 0px;
+}
+
+.bubble-counter {
+	padding: 0px 0px;
+	float: right;
+	width: 33px;
+	text-align: center;
+	border-radius: 12px;
+	color: #FFF;
+	line-height: 2;
+}
+
+
+md-toolbar.header div.profile {
+	vertical-align: middle;
+	height: 2.25em;
+	width: auto;
+	position: fixed;
+	right: 10px;
+	top: 8px;
+	cursor: pointer;
+}
+
+md-toolbar.header div.profile div.name {
+	font-size: 0.8em;
+}
+
+md-toolbar.header div.profile div.title {
+	font-size: 0.6em;
+  	text-align: right;
+}
+
+md-toolbar.header div.profile div.photo {
+	height: 2em;
+	width: 2em;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-left: 16px;
+}
+
+md-toolbar.header div.profile div.photo > img{
+	width: 100%
+}
+
+md-toolbar md-icon {
+	color: #fff !important;
+}
+
+md-toolbar md-select {
+  min-width: 200px;
+}
+md-toolbar md-select .md-select-label {
+	color: #fff !important;
+	border-bottom: 1px solid transparent !important;
+}
+
+md-toolbar .logo {
+	background: rgba(0, 0, 0, 0) url(images/logo-white.png) no-repeat center right;
+	width: 100%;
+	height: 58px;
+	background-size: auto 70px;
+}
+
+md-sidenav md-list div.menu-toggle-list {
+	max-height: 500px;
+	-webkit-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+	-webkit-transition-property: max-height;
+	-moz-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+	-moz-transition-property: max-height;
+	transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+	transition-property: max-height;
+}
+
+
+md-sidenav md-list md-item md-divider[md-inset] {
+  margin-left: 0px;
+}
+
+
+md-sidenav md-list div.menu-toggle-list.ng-hide {
+	max-height: 0px;
+}
+
+md-sidenav md-list {
+  padding: 0px;
+}
+
+md-sidenav md-list button {
+	width: 100% !important;
+	text-align: left !important;
+	height: 45px;
+	margin: 0px !important;
+	background-color: #fff !important;
+	border-radius:0px !important;
+}
+
+md-sidenav .divider {
+	min-height: 42px;
+	height: 42px;
+	border: none;
+	box-shadow: none;
+}
+
+md-sidenav .divider table{
+	width: 100%;
+}
+
+md-sidenav .divider td:first-child{
+	text-align: left;
+}
+
+md-sidenav .divider td:last-child{
+	text-align: right;
+}
+
+md-sidenav .divider md-icon {
+	transition: transform 0.45s ease-in-out;
+  	-webkit-transition: -webkit-transform 0.45s ease-in-out;
+}
+
+md-sidenav .divider md-icon.toggled {
+	transform: rotate(180deg);
+	-webkit-transform: rotate(180deg);
+}
+
+md-sidenav md-list button .chevron {
+	float:right !important;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+/* RIGHT SIDENAV */
+md-sidenav.md-sidenav-right {
+	width: 370px;
+	max-width: 370px;
+}
+
+md-sidenav.md-sidenav-right md-toolbar.md-tall {
+	background-color: #272727;
+	height: 270px;
+	max-height: 270px;
+	min-height: 270px;
+}
+
+md-sidenav.md-sidenav-right div.main-fab {
+	position: fixed;
+	z-index: 99999999;
+	right: 13px;
+	top: 233px;
+}
+
+md-sidenav.md-sidenav-right .profile-details div.photo {
+	padding-top: 50px;
+}
+
+md-sidenav.md-sidenav-right .profile-details div.title {
+	text-align: center;
+	padding-top: 16px;
+}
+
+md-sidenav.md-sidenav-right .profile-details div.charge {
+	font-size: 0.7em;
+}
+
+md-sidenav.md-sidenav-right .profile-details div.photo center > div.marker{
+	width: 120px;
+	height: 120px;
+	overflow: hidden;
+	border-radius: 50%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+md-sidenav.md-sidenav-right .profile-details div.photo center > div.marker > img {
+	width: 100%;
+}
+
+md-sidenav.md-sidenav-right .profile-details div.photo div.name{
+	font-size: 0.6em;
+}
+
+md-sidenav.md-sidenav-right .profile-details div.photo div.value{
+	color: #1D84D6;
+}
+
+md-sidenav.md-sidenav-right md-item-content .md-button {
+	padding: 0px 6px 40px 6px;
+	border-bottom: 1px solid #F2F2F2;
+}
+
+md-sidenav.md-sidenav-right md-item-content .md-button md-icon {
+	margin-top: -2px;
+	color: #2196F3;
+	margin-right: 8px;
+	margin-left: 8px;
+}
+
+md-sidenav.md-sidenav-right .md-button .bubble-counter {
+	position: fixed;
+	right: 30px;
+	margin-top: 2px;
+	box-shadow: none;
+	background-color: #E0E0E0;
+	color: #525252;
+}
+
+/*
+	-----------------------------
+	UI-VIEW: Page content layout
+	-----------------------------
+ */
+div.page-content {
+	height: 0px;
+}
+
+div.page-content md-toolbar.md-tall {
+  height: 70px;
+  min-height: 70px;
+  max-height: 70px;
+  box-shadow: 0px 2px 2px 0 rgba(0, 0, 0, 0.26);
+}
+
+div.page-content md-progress-linear {
+	margin-top: -5px;
+}
+
+div.page-content .md-title {
+	padding-left: 88px;  
+	font-size: 1.5em;
+}
+
+div.page-content .main-fab {
+	position:absolute;
+	z-index:20;
+	font-size:30px;
+	top:35px;
+	left:16px;
+	transform:scale(.88,.88);
+}
+
+div.page-content .main-fab md-icon {
+	height: 42px;
+	width: 32px;	
+}
+
+/*
+	-----------------------------
+	ADMINISTRATION 
+	-----------------------------
+*/
+
+karma-page.administration h3 {
+	color: #A9A9A9;
+}
+
+/*
+	-----------------------------
+	ADMINISTRATION - USER
+	-----------------------------
+ */
+
+karma-page.administration.administration-user md-switch {
+	margin:0px;
+}
+
+karma-page.administration.administration-user.create karma-table,
+karma-page.administration.administration-user.update karma-table {
+	width: 80%;
+}
+
+karma-page.administration.administration-user.create karma-row,
+karma-page.administration.administration-user.update karma-row {
+	border-bottom: 0px !important;
+}
+

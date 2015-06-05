@@ -1,0 +1,113 @@
+<karma-page class="administration administration-user update">
+    <md-toolbar layout="column" class="md-tall">
+        <span flex></span>
+
+        <div class="main-fab wizard">
+            <md-tooltip md-direction="right">
+                {{ 'Navigation.Back' | localize }}
+            </md-tooltip>
+            <md-button class="md-fab md-accent" aria-label="al" ng-click="back()">
+                <md-icon md-svg-src="{{ 'navigation' | icon:'ic_arrow_back_24px' }}"></md-icon>
+            </md-button>
+        </div>
+        
+        <div class="md-toolbar-tools">
+            <div layout="row" flex class="fill-height">
+                <div class="md-toolbar-item md-title">
+                    <span>Usuarios del Sistema > Editar Usuario</span>
+                </div>
+            </div>
+        </div>      
+    </md-toolbar>
+
+    <karma-content layout-margin>
+        <form name="form">
+            <div layout="row">
+                <div flex="20" layout-align="start center" layout="column">
+
+                    <div class="thumb"> 
+                        <!-- -->
+                        <div class="loading" ng-if="uploadData" layout="column" layout-align="center center">
+                                
+                            <pie-chart data='uploadData.progress' options='uploadData.options'>
+                            </pie-chart> 
+
+                            <md-icon md-svg-src="{{ 'file' | icon:'ic_cloud_upload_48px' }}"></md-icon>
+                        </div>
+                        <!-- -->
+
+                        <img ng-src="{{ data.photo | restricted }}" />
+                    </div>
+
+                    <div class="md-primary md-button md-default-theme" ng-file-change="upload($files)" type="file" ng-file-select>    
+                        {{ 'GLOBAL_CHANGEPICTURE_LABEL' | localize}}
+                    </div>
+   
+                   
+                </div>
+
+                <div flex="70">
+                    <!-- -->
+                    <md-input-container>
+                        <label>Nombre</label>
+                        <input ng-model="data.name" required>
+                    </md-input-container>
+                    <!-- -->
+                    <md-input-container>
+                        <label>Email</label>
+                        <input ng-model="data.email" required>
+                    </md-input-container>
+                    <!-- -->
+                    <h3>
+                        Perfiles Disponibles
+                    </h3>
+                    <karma-table show-header="false">
+                        <karma-column title="Nombre">
+                            <karma-item>
+                                <template>
+                                    {{item.name}}
+                                    <span class="warning-message" ng-if="item.token == '84289566-ca3c-476f-964d-6f588ca042cb'">
+                                        &nbsp;&nbsp;(* No combinar este rol)
+                                    </span>
+                                </template>
+                            <karma-item>
+                        </karma-column>
+                        <karma-column width="10">
+                            <karma-item>
+                                <script>
+                                    <md-switch ng-model="item.selected" aria-label="al">
+                                    </md-switch>
+                                </script>
+                            </karma-item>
+                        </karma-column>
+                    </karma-table>
+                    <!-- -->
+                </div>
+            </div>
+
+            
+
+            <karma-pad>
+                <md-button  ng-click="recovery()" style="float:left" class="md-accent" aria-label="al">
+                    {{ 'GLOBAL_RECOVERPASSWORD_LABEL' | localize}}
+                </md-button>
+
+
+                <md-button  ng-click="back()" aria-label="al">
+                    {{ 'GLOBAL_CANCEL_LABEL' | localize}}
+                </md-button>
+
+                <md-button  ng-click="delete()" class="md-warn" aria-label="al">
+                    {{ 'GLOBAL_DELETE_LABEL' | localize}}
+                </md-button>
+
+                <md-button ng-disabled="form.$invalid" aria-label="al" ng-click="save(data)" class="md-raised md-primary">
+                    Actualizar Usuario
+                </md-button>
+            </karma-pad>
+        </form>
+    </karma-content>
+
+</karma-page>
+
+<karma-loading default-message="{{ 'PROCESSING_INFORMATION' | localize }}" />

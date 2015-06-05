@@ -1,0 +1,179 @@
+<karma-page class="monitor" on-keydown="UIKeyDown">
+	
+	<!-- LEFT SIDE NAV -->
+	<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left-side-panel">
+		<!-- -->
+		<div class="main-fab wizard">
+            <md-button class="md-fab md-accent" aria-label="al" ng-click="togleLeftMenu()">
+                <md-icon md-svg-src="{{ 'navigation' | icon:'ic_close_24px' }}"></md-icon>
+            </md-button>
+        </div>
+        <!-- -->
+		<md-toolbar>
+			<h1 class="md-toolbar-tools">{{data.details.label}}</h1>
+		</md-toolbar>
+		<!-- -->
+
+		<md-content layout-padding class="side-content" ng-if="data.toolbars.items">
+        
+	      	<!-- -->
+	      	<monitor-details-point 
+	      		ng-show="data.details.type == 'POINT'"
+	      		point="data.details.data">
+	      	</monitor-details-point>
+			<!-- -->
+
+			<!-- -->
+	      	<monitor-details-driver 
+	      		ng-show="data.details.type == 'DRIVER'"
+	      		driver="data.details.data">
+	      	</monitor-details-driver>
+			<!-- -->
+
+			<!-- -->
+	      	<monitor-details-polygon 
+	      		ng-show="data.details.type == 'POLYGON'"
+	      		polygon="data.details.data">
+	      	</monitor-details-polygon>
+			<!-- -->
+
+		</md-content>
+
+	</md-sidenav>
+
+	<!-- RIGHT SIDE NAV -->
+	<md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right-side-panel">
+		<!-- -->
+		<div class="main-fab wizard">
+            <md-button class="md-fab md-accent" aria-label="al" ng-click="togleRightMenu(data.toolbars.selected)">
+                <md-icon md-svg-src="{{ 'navigation' | icon:'ic_close_24px' }}"></md-icon>
+            </md-button>
+        </div>
+        <!-- -->
+		<md-toolbar>
+			<h1 class="md-toolbar-tools">{{data.toolbars.selected.label}}</h1>
+		</md-toolbar>
+		<!-- -->
+      	<md-content layout-padding class="side-content" ng-if="data.toolbars.items">
+        
+	      	<!-- -->
+	      	<monitor-panel-drivers 
+	      		ng-show="data.toolbars.items['drivers'] == data.toolbars.selected"
+	      		layers="data.toolbars.items">
+	      	</monitor-panel-drivers>
+			<!-- -->
+			
+			<!-- -->
+	      	<monitor-panel-programming 
+	      		ng-show="data.toolbars.items['programming'] == data.toolbars.selected"
+	      		layers="data.toolbars.items">
+	      	</monitor-panel-programming>
+			<!-- -->
+
+			<!-- -->
+	      	<monitor-panel-points 
+	      		ng-show="data.toolbars.items['points'] == data.toolbars.selected"
+	      		map="gmap"
+	      		layers="data.toolbars.items">
+	      	</monitor-panel-points>
+			<!-- -->
+
+      	</md-content>
+
+    </md-sidenav>
+
+	<!-- GOOGLE MAP -->
+	<ui-gmap-google-map ng-if="gmap.viewport"
+		ng-if="gmap != null"  
+		control="gmap" 
+		center="gmap.viewport" 
+		zoom="gmap.viewport.zoom" 
+		options='data.map.options'>
+	</ui-gmap-google-map>
+
+	<!-- PANELS: KPIS -->
+	<div class="kpis" ng-if="data.chart">
+
+		<!-- -->
+		<div class="kpi compliance-rate">
+			<div class="title">
+				Tasa de Cumplimiento
+			</div>
+			<div class="value">
+				<pie-chart
+                    data='data.chart.data' 
+                    options='data.chart.options'>
+                </pie-chart>
+			</div>
+		</div>
+		<!-- -->
+		<div class="kpi pendings-services">
+			<div class="title">
+				Servicios Pendientes
+			</div>
+			<div class="value">
+				{{data.chart.pendings}}
+			</div>
+		</div>
+		<!-- -->
+	</div>
+
+	<!-- PANELS: TOOLBARS -->
+	<div class="toolbar">
+
+		<!-- -->
+		<div ng-repeat="toolbar in data.toolbars.ordered" ng-click="togleRightMenu(toolbar)" ng-class="{'active': data.toolbars.selected == toolbar}" >
+			<md-icon md-svg-src="{{ toolbar.icon.category | icon: toolbar.icon.name }}"></md-icon>
+			<md-tooltip md-direction="left">
+				{{ toolbar.label }} <i>({{ toolbar.key }})</i>
+			</md-tooltip>
+		</div>
+		<!-- -->
+
+		<!-- FINDER -->
+		<div ng-click="finder.show()" >
+			<md-icon md-svg-src="{{ 'action' | icon: 'ic_search_24px' }}"></md-icon>
+			<md-tooltip md-direction="left">
+				Abrir Buscador Global (B)
+			</md-tooltip>
+		</div>
+		<!-- -->
+
+	</div>
+
+	<!-- PANELS: LAYERS -->
+	<div class="layers" layout="row">
+
+		<!-- -->
+		<div 
+			ng-if="layer.isLayer" 
+			ng-model="layer.enabled" 
+			ng-click="toggleLayer(layer)" 
+			ng-class="{'active': layer.enabled == true}" 
+			flex 
+			layout="row" 
+			layout-align="start center" 
+			ng-repeat="layer in data.toolbars.ordered">
+			
+			<div flex="20">
+				<div class="thumb"> 
+				    <md-icon md-svg-src="{{ layer.icon.category | icon: layer.icon.name }}"></md-icon>
+				</div>	
+			</div>
+
+			<div flex>
+				{{layer.label}}
+			</div>
+		</div>
+		<!-- -->
+
+	</div>
+
+	<!-- GLOBAL FINDER -->
+	<finder
+		placeholder="Búsqueda Global"
+		on-search="finder.search"
+		on-select="finder.select"
+	>
+	</finder>
+</karma-page>

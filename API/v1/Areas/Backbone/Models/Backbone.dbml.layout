@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Backbone">
+  <DataContextMoniker Name="/BackboneDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3b4f8ea7-49d4-4480-a03b-74e9d5e7b178" absoluteBounds="5.25, 0.5, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/BackboneDataContext/Authenticate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e51c5653-c805-494b-92cc-20e9ce083039" absoluteBounds="5.265, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="089b4e7f-93da-4e62-9424-2b47d064e930" absoluteBounds="0.5, 2.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/BackboneDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8ab2a924-478b-4c0d-ad28-c1ae435c0ebf" absoluteBounds="0.51499999999999968, 3.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="86bffd7b-0d27-427f-8041-41a1cb3b3996" absoluteBounds="2.875, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/BackboneDataContext/File" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c143fa73-f650-4d2b-b9a8-03496ae7c7c2" absoluteBounds="2.8899999999999997, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="843a6935-4551-4de2-85ee-e4024c5265c6" absoluteBounds="2.875, 2.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/BackboneDataContext/FileData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="810b5980-8e69-4575-83b7-76ce3c0e57a8" absoluteBounds="2.8899999999999997, 2.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="df684fdf-e4a0-4a47-aa28-3a03ae6fef25" absoluteBounds="5.25, 1.875, 2, 1.3862939453124996">
+      <DataClassMoniker Name="/BackboneDataContext/UserProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="25a12538-6178-476c-968f-694b5f6c0121" absoluteBounds="5.2650000000000006, 2.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c3c37328-fc91-4874-a21b-6406708ddea2" absoluteBounds="0.5, 0.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/BackboneDataContext/Profile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8f390cd4-afc9-49ed-9128-cdb24accc90b" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

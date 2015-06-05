@@ -1,0 +1,20 @@
+{
+	"folders":
+	[
+		{
+			"path": "."
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/NET/Resiter/MonitoreoDigital/Web"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/NET/Resiter/MonitoreoDigital/Movil"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/NET/Resiter/MonitoreoDigital/Web/app"
+		}
+	]
+}

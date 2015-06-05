@@ -1,0 +1,39 @@
+<div class="panel drivers">
+	<md-subheader>
+		Desde este panel podrá visualizar la información de los conductores 
+		asociados a la unidad de negocio e información de actividad
+	</md-subheader>
+
+	<karma-content>
+		<div layout="row" layout-align="start center" ng-repeat="item in data.drivers"> 
+
+			<div flex="20">
+				<div class="thumb">
+				    <img ng-src="{{ item.imagen | restricted }}" />
+				</div>
+			</div>
+
+			<div flex class="label">
+				{{item.nombre}}
+
+				<div class="date" title="{{item.ultimaActualizacion}}">
+					<strong>activo:</strong>&nbsp;
+
+					<span ng-if="item.ultimaActualizacion" am-time-ago="item.ultimaActualizacion"></span>
+					<span ng-if="!item.ultimaActualizacion">Sin Información</span>
+				</div>
+			</div>
+
+			<div flex="20" class="status" layout="row" layout-align="center center">
+				<div>{{item.counters.realized}}</div>
+				<div class="sign">/</div> 
+				<div>{{item.counters.programmed}}</div>
+			</div>
+
+		</div>
+	</karma-content>
+
+	<div class="counter-panel">
+		{{data.drivers.length}} Conductores
+	</div>
+</div>

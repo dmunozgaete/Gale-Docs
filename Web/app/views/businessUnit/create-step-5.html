@@ -1,0 +1,99 @@
+<karma-page class="businessunit-create step-5" on-keydown="UIKeyDown">
+    
+    <!-- FAB -->
+    <div class="main-fab wizard">
+        <md-tooltip md-direction="right">
+            {{ 'Navigation.Back' | localize }}
+        </md-tooltip>
+        <md-button class="md-fab md-accent" aria-label="al" ng-click="back()">
+            <md-icon md-svg-src="{{ 'navigation' | icon:'ic_arrow_back_24px' }}"></md-icon>
+        </md-button>
+    </div>
+
+    <!-- LINEAR PROGRESS -->
+    <md-progress-linear 
+        ng-show="!loadCompleted" 
+        md-mode="indeterminate" 
+        class="md-primary">
+    </md-progress-linear>
+
+    <!-- GOOGLE MAP -->
+    <ui-gmap-google-map 
+        control="gmap" 
+        ng-if="gmap != null" 
+        center="data.viewport" 
+        zoom="data.viewport.zoom" 
+        options="gmap.options" 
+        events="gmap.events" 
+        zoom="14">
+        <ui-gmap-drawing-manager 
+            control="gmap" 
+            options="gmap.drawingManager.options">
+        </ui-gmap-drawing-manager>
+    </ui-gmap-google-map>
+
+    <!-- PANELS: KPIS -->
+    <div class="kpis">
+        <div class="kpi pendings-services" ng-click="details('LIST', data.polygons)">
+            <div class="title">
+                Polígonos
+            </div>
+            <div class="value" ng-if="!data.polygons">
+                -
+            </div>
+            <div class="value" ng-if="data.polygons"> 
+                {{data.polygons.length}}
+            </div>
+        </div>
+    </div>
+
+    <!-- LEFT SIDE NAV -->
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left-side-panel">
+        <!-- -->
+        <div class="main-fab wizard">
+            <md-button 
+                class="md-fab md-accent" 
+                aria-label="al" 
+                ng-click="toggleMenu()">
+                <md-icon md-svg-src="{{ 'navigation' | icon:'ic_close_24px' }}"></md-icon>
+            </md-button>
+        </div>
+        <!-- -->
+        <md-toolbar>
+            <h1 class="md-toolbar-tools">
+                {{data.details.label}}
+            </h1>
+        </md-toolbar>
+        <!-- -->
+
+        <karma-content layout-padding class="side-content">
+            
+            <!-- -->
+            <polygon-details
+                ng-show="data.details.type == 'POLYGON'"
+                collections="data"
+                details="data.details">
+            </polygon-details>
+            <!-- -->
+
+            <!-- -->
+            <polygon-list
+                ng-show="data.details.type == 'LIST'"
+                details="data.details">
+            </polygon-list>
+            <!-- -->
+
+        </karma-content>
+
+    </md-sidenav>
+
+    <!-- GLOBAL FINDER -->
+    <finder
+        placeholder="Búsqueda Global"
+        on-search="finder.search"
+        on-select="finder.select"
+        min-length="1"
+    >
+    </finder>
+    
+</karma-page>

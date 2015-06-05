@@ -1,0 +1,113 @@
+<div class="panel point">
+	<karma-content>
+		
+		<!-- -->
+		<h4>
+			Realizado por:
+		</h4>
+		<div>
+			<div layout="row" layout-align="start center"> 
+
+				<div flex="20">
+					<div class="thumb">
+					    <img ng-src="{{ point.conductor.imagen | restricted }}" />
+					</div>
+				</div>
+
+				<div flex class="label">
+					{{point.conductor.nombre}} / {{point.vehiculo.patente}}
+
+					<div class="date" title="{{point.fecha | amDateFormat:'YYYY-MM-DD HH:mm:ss' | capitalize }}">
+						<span am-time-ago="point.fecha"></span>
+					</div>
+
+				</div>
+
+			</div>
+			<div layout="row" layout-align="start center"> 
+
+				<div flex="20">
+					<div class="thumb">
+					    <img ng-src="{{ point.image }}" />
+					</div>
+				</div>
+
+				<div flex class="label">
+					<span>{{point.nombre}}</span>
+				</div>
+
+			</div>
+		</div>
+		<!-- -->
+
+		<!-- -->
+		<h4>
+			Polígono:
+		</h4>
+		<div layout="row" layout-align="start center"> 
+
+			<div flex="20">
+				<div class="thumb">
+				    <img ng-src="{{ point.poligono.imagen | restricted }}" />
+				</div>
+			</div>
+
+			<div flex class="label">
+				<span ng-if="point.poligono">{{point.poligono.nombre}}</span>
+				<strong style="color:#E13F44" ng-if="!point.poligono">SIN POLÍGONO</strong>
+
+				<div class="date" style="font-size:12px" title="{{point.fecha | amDateFormat:'YYYY-MM-DD HH:mm:ss' | capitalize }}">
+					<span>{{point.latitud}}</span>&nbsp;<span>{{point.longitud}}</span>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- -->
+
+		<!-- -->
+		<h4>
+			Información:
+		</h4>
+		<div> 
+
+			<div layout="row" layout-align="start center" ng-if="point.codigoActivo"> 
+				<div flex="50" class="label title">
+					<span>Código Activo:</span>
+				</div>
+
+				<div flex class="label">
+					<span>{{point.codigoActivo}}</span>
+				</div>
+			</div>
+
+			<div layout="row" layout-align="start center" ng-if="point.numeroVisible"> 
+				<div flex="50" class="label title">
+					<span>Número Visible:</span>
+				</div>
+
+				<div flex class="label">
+					<span>{{point.numeroVisible}}</span>
+				</div>
+			</div>
+
+			<div layout="row" layout-align="start center" ng-if="point.volumen"> 
+				<div flex="50" class="label title">
+					<span>Volumen:</span>
+				</div>
+
+				<div flex class="label">
+					<span>{{point.volumen}}</span>
+				</div>
+			</div>
+
+			<center>
+				<div class="picture pointer" ng-click="showImage(point.imagen)">
+					<img ng-src="{{point.imagen | restricted }}" />
+				</div>
+			</center>
+		</div>
+		<!-- -->
+
+	</karma-content>
+</div>

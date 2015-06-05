@@ -1,0 +1,33 @@
+{
+	"login.username.label": "Nombre del Usuario"
+	,"login.password.label": "Contraseña"
+	,"login.forgotpassword": "¿ha olvidado su contraseña?"
+	,"login.state.invalid.button": "complete los datos"
+	,"login.state.valid.button": "autenticar"
+	,"login.state.validating.button": "validando..."
+
+	,"Navigation.Back" : "Volver"
+
+	,"ERR.API.UNAVAILABLE": "Servicio no Disponible"
+
+
+	,"DELETE_CONFIRM_TITLE" 		: "Confirmar Acción"
+	,"DELETE_CONFIRM_CONTENT" 		: "Está acción eliminará el registro de forma permanente. ¿Está seguro de continuar?"
+	,"DELETE_CONFIRM_OK_LABEL" 		: "Eliminar"
+	,"DELETE_CONFIRM_CANCEL_LABEL" 	: "Cancelar"
+
+
+	,"UPLOADHELPER_UPLOADING_LABEL"	: "Subiendo..."
+
+	,"GLOBAL_LOADING_LABEL"			: "Cargando..."
+	,"GLOBAL_CANCEL_LABEL"			: "Cancelar"
+	,"GLOBAL_CLOSE_LABEL"			: "Cerrar"
+	,"GLOBAL_SAVE_LABEL"			: "Guardar"
+	,"GLOBAL_DELETE_LABEL"			: "Eliminar"
+	,"GLOBAL_CHANGEPICTURE_LABEL"	: "Cambiar Imagen"
+	,"GLOBAL_RECOVERPASSWORD_LABEL"	: "Recuperar Contraseña"
+	
+
+
+	,"PROCESSING_INFORMATION"	: "Procesando Información"
+}

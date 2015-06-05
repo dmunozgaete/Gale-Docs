@@ -1,0 +1,97 @@
+<karma-page class="programming update">
+    <md-toolbar layout="column" class="md-tall">
+        <span flex></span>
+
+        <div class="main-fab wizard">
+            <md-tooltip md-direction="right">
+                {{ 'Navigation.Back' | localize }}
+            </md-tooltip>
+            <md-button class="md-fab md-accent" aria-label="al" ng-click="back()">
+                <md-icon md-svg-src="{{ 'navigation' | icon:'ic_arrow_back_24px' }}"></md-icon>
+            </md-button>
+        </div>
+        
+        <div class="md-toolbar-tools">
+            <div layout="row" flex class="fill-height">
+                <div class="md-toolbar-item md-title">
+                    <span>Programación Mensual > {{data.service.nombre}}</span>
+                </div>
+            </div>
+        </div>      
+    </md-toolbar>
+
+    <karma-content layout-margin >
+        <form name="form" >
+                
+            <!-- POLYGON ITEMS -->
+
+<div layout="row">
+                <div class="box polygons"  flex="20">
+                    <!-- HEADER -->
+                    <div class="header" layout="row" layout-align="start center">
+                        <div layout="row" layout-align="start center" class="search">
+                            <div flex="15">
+                                <md-icon md-svg-src="{{ 'action' | icon:'ic_search_24px' }}"></md-icon>
+                            </div>
+                            <div flex="85">
+                                <input type="search" ng-change="filter(searchQuery)" ng-model="searchQuery" />
+                            </div>
+                        </div>
+                    </div>
+
+                        <!-- ITEMS -->
+                        <div class="row" title="{{item.nombre}}" ng-repeat="item in data.filteredPolygons" ng-class="{'hover': item.token == data.activePolygon}" layout="row" layout-align="start center">
+                            {{item.nombre}}
+                        </div>
+
+                </div>
+                <div class="box calendar" flex>
+                    <!-- HEADER -->
+                    <div class="header">
+                        <table>
+                            <tr>
+                                <td ng-repeat="day in data.calendar" class="day">
+                                     {{day.ordinal}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                        <!-- ITEMS -->
+                        <div class="row" ng-repeat="item in data.filteredPolygons" >
+                            <table >
+                                <tr>
+                                    <td ng-repeat="day in item.calendar" 
+                                        ng-mouseenter="data.activeDay= day.ordinal; data.activePolygon= item.token" 
+                                        ng-mouseleave="data.activeDay= null; data.activePolygon= null" 
+                                        ng-click="(!data.isClient)?day.programmed = !day.programmed:day.programmed = day.programmed" 
+                                        class="day pointer" 
+                                        ng-class="{'active': day.programmed, 'hover': day.ordinal == data.activeDay || item.token == data.activePolygon}">
+                                         &nbsp;
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                </div>
+
+            <!-- PAD -->
+            <karma-pad>
+                <div class="programming-pad-info" layout="row" layout-align="center center">
+                    {{data.date | amDateFormat:'MMMM' | capitalize }} de
+                    {{data.date | amDateFormat:'YYYY'}}
+                </div>
+
+                <md-button  ng-click="back()" aria-label="al">
+                    {{ 'GLOBAL_CANCEL_LABEL' | localize}}
+                </md-button>
+
+                <md-button ng-show="!data.isClient"ng-disabled="form.$invalid" ng-click="save(data)" aria-label="al" class="md-raised md-primary">
+                    Actualizar Programación
+                </md-button>
+            </karma-pad>
+</div>
+        </form>
+    </karma-content>
+
+</karma-page>

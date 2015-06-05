@@ -1,0 +1,285 @@
+<karma-page class="administration administration-route update">
+    <md-toolbar layout="column" class="md-tall">
+        <span flex></span>
+
+        <div class="main-fab">
+            <md-tooltip md-direction="right">
+                Agregar Tareas
+            </md-tooltip>
+            <md-button class="md-fab md-warn" aria-label="al" ng-click="add()">
+                <md-icon md-svg-src="{{ 'content' | icon:'ic_add_24px' }}"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="md-toolbar-tools">
+            <div layout="row" flex class="fill-height">
+                <div class="md-toolbar-item md-title">
+                    <span>Hojas de Ruta > {{data.driver.nombre}}</span>
+                </div>
+            </div>
+        </div>      
+    </md-toolbar>
+
+    <karma-content layout-margin>
+        <form name="form">
+            <div layout="row">
+                <div flex="20" layout-align="start center" layout="column">
+
+                    <div class="thumb"> 
+                        <!-- -->
+                        <div class="loading" ng-if="uploadData" layout="column" layout-align="center center">
+                                
+                            <pie-chart data='uploadData.progress' options='uploadData.options'>
+                            </pie-chart> 
+
+                            <md-icon md-svg-src="{{ 'file' | icon:'ic_cloud_upload_48px' }}"></md-icon>
+                        </div>
+                        <!-- -->
+
+                        <img ng-src="{{ data.driver.imagen | restricted }}" />
+                    </div>
+
+                    <div style="min-height:55px">
+                        <div ng-show="data.resume" class="md-primary md-button md-default-theme" ng-file-change="upload($files)" type="file" ng-file-select>    
+                            {{ 'GLOBAL_CHANGEPICTURE_LABEL' | localize}}
+                        </div>
+                    </div>
+                    
+                    <br/>
+                    <div class="picker">
+                        <div>
+                            {{ data.date | amDateFormat:'dddd' }}
+                        </div> 
+                        <div layout="column" layout-align="center center">
+                            <div class="month">
+                                {{ data.date | amDateFormat:'MMM' }}
+                            </div>
+                            <div class="day">
+                                {{ data.date | amDateFormat:'DD' }}
+                            </div>
+                            <div class="year">
+                                {{ data.date | amDateFormat:'YYYY' }}
+                            </div>
+                        </div> 
+                    </div>
+                   
+                </div>
+
+                <div flex="80">
+                    <h2>
+                        Resumen de Servicios Programados
+                    </h2>
+                    <br />
+                    <karma-table items="data.resume" row-click="edit">
+
+                        <karma-column flex="35" title="Vehículo">
+                            <karma-item>
+                                <template>
+                                    <div layout="row" layout-align="start center">
+                                        <div flex="30">
+                                            <div class="thumb">
+                                                <img ng-src="{{ item.vehicle.imagen | restricted }}" />
+                                            </div>
+                                        </div>
+                                        <div>   
+                                            {{item.vehicle.patente}}
+                                        </div>
+                                    </div>
+                                </template>
+                            </karma-item>
+                        </karma-column>
+
+                        <karma-column flex="35" title="Servicio">
+                            <karma-item>
+                                <template>
+                                    <div layout="row" layout-align="start center">
+                                        <div flex="30">
+                                            <div class="thumb">
+                                                <img ng-src="{{ item.type.imagen | restricted }}" />
+                                            </div>
+                                        </div>
+                                        <div>   
+                                            {{item.type.nombre}}
+                                        </div>
+                                    </div>
+                                </template>
+                            </karma-item>
+                        </karma-column>
+
+                        <karma-column title="Retiros">
+                            <karma-item>
+                                <template>
+                                    {{item.points.length}} 
+
+                                    <span ng-if="item.points.length !== 1">
+                                        Retiros
+                                    </span>
+                                    <span ng-if="item.points.length == 1">
+                                        Retiro
+                                    </span>
+                                </template>
+                            </karma-item>
+                        </karma-column>
+
+                        <!-- 
+                        <karma-column width="10" align="left">
+                            <karma-item>
+                                <md-icon class="remove" md-svg-src="{{ 'action' | icon:'ic_highlight_remove_24px' }}"></md-icon>
+                            </karma-item>
+                        </karma-column>
+                        -->
+
+                    </karma-table>
+                </div>
+            </div>
+
+            <karma-pad>
+                <div class="panel" layout="row" layout-align="center center">
+                    <div>
+                        {{ data.driver.puntos.length }}
+                    </div>
+                    <div>
+                        Retiros Programados
+                    </div>
+                </div>
+
+                <md-button  ng-click="cancel()" aria-label="al">
+                    {{ 'GLOBAL_CANCEL_LABEL' | localize}}
+                </md-button>
+
+                <md-button ng-disabled="form.$invalid" ng-click="save(data)" aria-label="al" class="md-raised md-primary">
+                    Actualizar Hoja de Ruta
+                </md-button>
+            </karma-pad>
+        </form>
+    </karma-content>
+
+    <!-- MODAL TEMPLATE -->
+    <script type="text/ng-template" id="modal.tmpl">
+        <md-dialog aria-label="al" class="administration administration-route dialog">
+
+            <form name="form" name="form" >
+                <!-- -->
+                <karma-content class="sticky-container">
+
+                    <h2 class="md-title ng-binding">
+                        Agregar Puntos de Servicio a Realizar
+                    </h2>
+
+                    <!-- -->
+                    <div layout>
+                        <md-input-container flex="20" ng-class="{'md-input-has-value': data.task.vehicle }">
+                            <label>Vehiculo</label>
+                            <md-select placeholder="" ng-change="updatePolygons()" ng-model="data.task.vehicle" required>
+                                <md-option ng-value="item" ng-repeat="item in data.collections.vehicles">
+                                    {{item.patente}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                        <div flex="5">
+                        </div>
+
+                        <md-input-container flex="50" ng-class="{'md-input-has-value': data.task.type }">
+                            <label>Servicio</label>
+                            <md-select placeholder="" ng-change="updatePolygons()" ng-model="data.task.type" required>
+                                <md-option ng-value="item" ng-repeat="item in data.collections.types">
+                                    {{item.nombre}}
+                                </md-option>
+                            </md-select>
+                        </md-input-container>
+
+                    </div>
+                    <!-- -->
+                    <br/>
+                    <karma-table items="data.filteredPolygons" show-header="false">
+
+                        <karma-column width="5">
+                            <karma-item>
+                                <template>
+
+                                    <md-checkbox aria-label="al" ng-checked="item.cantidad > 0">
+                                    </md-checkbox>
+                                    <div class="brick"></div>
+                                </template>
+                            </karma-item>
+                        </karma-column>
+
+                        <karma-column>
+                            <karma-item>
+                                <template>
+                                    <div class="polygon-name" ng-class="{'selected': item.cantidad > 0}">
+                                        {{item.nombre}}
+                                    </div>
+                                </template>
+                            </karma-item>
+                        </karma-column>
+
+                        <karma-column width="20" align="left">  
+                            <karma-item>
+                                <label class="quantity">
+                                    <input 
+                                        ng-model="item.cantidad"  
+                                        maxlength="2" 
+                                        class="quantity" 
+                                        ng-range
+                                        min="0"
+                                        max="99"
+                                        type="number"> 
+                                    Retiros
+                                </label>
+                            </karma-item>
+                        </karma-column>
+
+                    </karma-table>
+                    <!-- -->
+                    <empty-items ng-if="data.filteredPolygons.length == 0">
+                        <center>
+                            <md-icon 
+                                md-svg-src="{{ 'notification' | icon:'ic_do_not_disturb_24px' }}">
+                            </md-icon>
+                            <br />
+                            No existen polígonos asignados para el tipo de servicio 
+                            en la programación mensual , o ya se encuentran asignados a otro conductor
+                        </center>
+                    </empty-items>
+                
+                </karma-content>
+                <!-- -->
+                <div class="md-actions" layout="row">
+
+                    <md-autocomplete  
+                        flex="50"    
+                        ng-show="data.task.vehicle && data.task.type"
+                        md-autoselect="false"     
+                        md-search-text="data.finder.filter"
+                        md-min-length="3"
+                        md-menu-class="auto-complete-list"
+                        md-selected-item="data.finder.item"
+                        md-search-text-change="data.finder.change()"
+                        md-selected-item-change="data.finder.add(data.finder.item)"
+                        md-items="item in data.finder.search(data.finder.filter)"
+                        placeholder="Nombre del Polígono a Agregar">
+
+                        <span md-highlight-text="data.finder.filter" md-highlight-flags="^i">{{item.nombre}}</span>
+                    </md-autocomplete>
+
+                    <div flex></div>
+
+                    <md-button ng-click="back()" aria-label="al" flex="15">
+                        {{'GLOBAL_CANCEL_LABEL' | localize }}
+                    </md-button>
+
+                    <md-button flex="15" ng-disabled="form.$invalid" aria-label="al" ng-click="save()" class="md-primary md-raised">
+                        Agregar
+                    </md-button>
+
+                </div>
+                <!-- -->
+            </form>
+
+        </md-dialog>
+    </script>
+    <!-- /MODAL TEMPLATE -->
+
+</karma-page>

@@ -1,0 +1,211 @@
+<karma-page class="reports services">
+    <md-toolbar>
+        
+        <div class="main-fab">
+            <md-tooltip md-direction="right">
+                Exportar a EXCEL
+            </md-tooltip>
+            <md-button ng-disabled="!reportData || reportData.items.length == 0" class="md-fab md-accent" aria-label="al" ng-click="export()">
+                <md-icon md-svg-src="{{ 'file' | icon:'ic_cloud_download_24px' }}"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="md-toolbar-tools">
+
+            <div class="md-toolbar-item md-title">
+                <span>Informe de Servicios</span>
+            </div>
+
+        </div>      
+    </md-toolbar>
+
+    <!-- LINEAR PROGRESS -->
+    <md-progress-linear ng-show="!loadCompleted" md-mode="indeterminate" class="md-primary"></md-progress-linear>
+
+    <karma-content>
+
+        <!-- FILTER'S -->
+        <div layout class="filters">
+            <!-- -->
+            <md-input-container flex="30">
+                <label>Desde</label>
+                <input ng-model="data.formattedFromDate" readonly="readonly"></input>
+            </md-input-container>
+
+            <div flex="5" class="button-form">
+                <md-icon ng-click="changeDate('from')" md-svg-src="{{ 'action' | icon:'ic_today_24px' }}"></md-icon>
+            </div>
+            <!-- -->
+            <md-input-container flex="30">
+                <label>Hasta</label>
+                <input ng-model="data.formattedToDate" readonly="readonly"></input>
+            </md-input-container>
+
+            <div flex="5" class="button-form">
+                <md-icon ng-click="changeDate('to')" md-svg-src="{{ 'action' | icon:'ic_today_24px' }}"></md-icon>
+            </div>
+            <!-- -->
+            <md-input-container flex="25" ng-class="{'md-input-has-value': data.type }">
+                <label>Servicio</label>
+                <md-select placeholder="" ng-change="changeType(data.type)" ng-model="data.type" required aria-label="al">
+                    <md-option ng-value="item" ng-repeat="item in data.collections.types">
+                        {{item.nombre}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+            <!-- -->
+        </div>
+
+        <!-- FILTER INITIAL MESSAGE -->
+        <filter-message ng-if="!reportData">
+            <center>
+                
+                <md-icon md-svg-src="{{ 'action' | icon:'ic_search_24px' }}"></md-icon>
+                <br />
+                Ingrese los filtros de busqueda para iniciar la consulta
+
+            </center>
+        </filter-message>
+
+        <!-- REPORT EMPTY ROWS -->
+        <empty-items ng-if="reportData.items.length == 0">
+            <center>
+                
+                <md-icon md-svg-src="{{ 'notification' | icon:'ic_do_not_disturb_24px' }}"></md-icon>
+                <br />
+                No existen registros asociados a los filtros seleccionados
+
+            </center>
+        </empty-items>
+
+        <!-- REPORT DATA -->
+        <div ng-show="reportData.items.length > 0">
+            <!-- REPORT SUPER HEADER-->
+            <div layout="row" class="karma-table-footer">
+                 <div flex="35"  class="alignCenter">
+                    <strong>
+                    </strong>
+                </div>
+                <div flex="30"  class="alignCenter">
+                    <strong>
+                        PROGRAMADOS
+                    </strong>
+                </div>
+                <div flex="10" class="alignCenter">
+                    <strong>
+                        PENDIENTES
+                    </strong>
+                </div>
+                <div flex class="alignCenter">
+                    <strong>
+                     
+                    </strong>
+                </div>
+            </div>
+
+            <!-- TABLE ITEMS -->
+            <karma-table>
+
+                <karma-column title="Polígono" property="poligono"  width="25"></karma-column>
+                <karma-column title="Servicios Programados" property="programados" align="center" width="10"></karma-column>
+                <karma-column title="Programados Realizados" property="programadosrealizados" align="center"></karma-column>
+                <karma-column title="Programados Fallidos" property="programadosfallidos" align="center"></karma-column>
+                <karma-column title="Pendientes" property="pendientes" align="center"></karma-column>
+                <karma-column title="Adicionales Realizados" property="adicionalesrealizados" align="center" width="10"></karma-column>
+                <karma-column title="Adicionales Fallidos" property="adicionalesfallidos" align="center" width="10"></karma-column>
+                <karma-column title="% Realizado" align="center" width="10">
+                    <karma-item>
+                        
+                        {{ 
+                            
+                            (((1 * item.programadosrealizados) + (1 * item.programadosfallidos) + (1 * item.adicionalesrealizados) + (1 * item.adicionalesfallidos)) * 100 ) 
+                            / 
+                            ((1 * item.programados) + (1 * item.adicionalesrealizados) + (1 * item.adicionalesfallidos))
+
+                            | number:1
+                        }} %
+                    </karma-item>
+                </karma-column>
+                <karma-column title="Cumplimiento" align="center" width="10">
+                    <karma-item>
+                        
+                        {{ 
+                            
+                            (((1 * item.programadosrealizados)+(1 * item.programadosfallidos)) * 100 ) 
+                            / 
+                            (item.programados) 
+
+                            | number:1
+                        }} %
+
+                    </karma-item>
+                </karma-column>
+
+            </karma-table>
+
+            <!-- TABLE FOOTER -->
+            <div layout="row" class="karma-table-footer">
+                <div flex="25" class="alignRight">
+                    <strong>
+                        Totales
+                    </strong>
+                </div>
+                <div flex="10" class="alignCenter">
+                    <strong>
+                        {{reportData.totals.programados}}
+                    </strong>
+                </div>
+                <div flex class="alignCenter">
+                    <strong>
+                        {{reportData.totals.programadosrealizados}}
+                    </strong>
+                </div>
+                <div flex class="alignCenter">
+                    <strong>
+                        {{reportData.totals.programadosfallidos}}
+                    </strong>
+                </div>
+                <div flex class="alignCenter">
+                    <strong>
+                        {{reportData.totals.pendientes}}
+                    </strong>
+                </div>
+                <div flex="10" class="alignCenter">
+                    <strong>
+                        {{reportData.totals.adicionalesrealizados}}
+                    </strong>
+                </div>
+                <div flex="10" class="alignCenter">
+                    <strong>
+                        {{reportData.totals.adicionalesfallidos}}
+                    </strong>
+                </div>
+                <div flex="10" class="alignCenter">
+                    <strong>
+                        {{ 
+                            
+                            ( ((1 * reportData.totals.programadosrealizados)+(1 * reportData.totals.programadosfallidos) + (1 * reportData.totals.adicionales)) * 100 ) 
+                            / 
+                            ((1 * reportData.totals.programados) + (1 * reportData.totals.adicionales)) 
+
+                            | number:1
+                        }} %
+                    </strong>
+                </div>
+                <div flex="10" class="alignCenter">
+                    <strong>
+                        {{ 
+                            
+                            ( ((1 * reportData.totals.programadosrealizados)+(1 * reportData.totals.programadosfallidos)) * 100 ) 
+                            / 
+                            (reportData.totals.programados) 
+
+                            | number:1
+                        }} %
+                    </strong>
+                </div>
+            </div>
+        </div>
+    </karma-content>
+
+</karma-page>

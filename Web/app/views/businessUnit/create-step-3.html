@@ -1,0 +1,168 @@
+<karma-page class="businessunit-create step-3">
+    <md-toolbar layout="column" class="md-tall">
+        <span flex></span>
+
+        <div class="main-fab wizard">
+            <md-tooltip md-direction="right">
+                {{ 'Navigation.Back' | localize }}
+            </md-tooltip>
+            <md-button class="md-fab md-accent" aria-label="al" ng-click="back()">
+                <md-icon md-svg-src="{{ 'navigation' | icon:'ic_arrow_back_24px' }}"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="md-toolbar-tools">
+            <div layout="row" flex class="fill-height">
+                <div class="md-toolbar-item md-title">
+                    <span>Unidad de Negocio > Choferes y Vehículos</span>
+                </div>
+            </div>
+        </div>      
+    </md-toolbar>
+
+    <!-- LINEAR PROGRESS -->
+    <md-progress-linear ng-show="!loadCompleted" md-mode="indeterminate" class="md-primary"></md-progress-linear>
+
+    <karma-content layout="row">
+
+        <md-whiteframe class="md-whiteframe-z1" flex layout-margin>
+            <!-- -->
+            <div class="sub-header">
+                
+                <md-icon class="search" md-svg-src="{{ 'action' | icon:'ic_search_24px' }}"></md-icon>
+           
+                <md-autocomplete      
+                    md-autoselect="false"     
+                    md-search-text="data.drivers.filter"
+                    md-min-length="3"
+                    md-menu-class="auto-complete-list"
+                    md-selected-item="data.drivers.item"
+                    md-search-text-change="data.drivers.change()"
+                    md-selected-item-change="data.drivers.add(data.drivers.item)"
+                    md-items="item in data.drivers.search(data.drivers.filter)"
+                    placeholder="Ingrese el conductor a asociar">
+
+                    <span md-highlight-text="data.drivers.filter" md-highlight-flags="^i">{{item.identificador}}</span>
+                </md-autocomplete>
+                
+            </div>
+            <!-- -->
+            <karma-table name="TDrivers" items="data.drivers.items" show-header="false">
+
+                <karma-column width="15">
+                    <karma-item>
+                        <div class="thumb">
+                            <img ng-src="{{item.imagen | restricted}}" />
+                        </div>
+                    </karma-item>
+                </karma-column>
+
+                <karma-column>
+                    <karma-item>
+                        {{item.nombre}}
+                    </karma-item>
+                </karma-column>
+
+                <karma-column width="30" align="right">
+                    <karma-item>
+                        <i>{{item.run | number}}-{{item.dv}}</i>
+                    </karma-item>
+                </karma-column>
+
+                <karma-column width="10" align="right">
+                    <karma-item>
+                        <md-icon class="remove" md-svg-src="{{ 'action' | icon:'ic_highlight_remove_24px' }}"></md-icon>
+                    </karma-item>
+                </karma-column>
+
+
+            </karma-table>
+            <!-- -->
+            <div class="counter">
+                {{data.drivers.items.length}} 
+                <span ng-if="data.drivers.items.length == 1">
+                    conductor seleccionado
+                </span>
+                <span ng-if="data.drivers.items.length == 0 || data.drivers.items.length > 1 ">
+                    conductores seleccionados
+                </span>
+            </div>
+            <!-- -->
+        </md-whiteframe>
+
+      
+
+        <md-whiteframe class="md-whiteframe-z1" flex layout-margin>
+            <!-- -->
+            <div class="sub-header">
+                
+                <md-icon class="search" md-svg-src="{{ 'action' | icon:'ic_search_24px' }}"></md-icon>
+           
+                <md-autocomplete           
+                    md-autoselect="false"         
+                    md-search-text="data.vehicles.filter"
+                    md-menu-class="auto-complete-list"
+                    md-min-length="2"
+                    md-selected-item="data.vehicles.item"
+                    md-search-text-change="data.vehicles.change()"
+                    md-selected-item-change="data.vehicles.add(data.vehicles.item)"
+                    md-items="item in data.vehicles.search(data.vehicles.filter)"
+                    placeholder="Ingrese el vehículo a asociar">
+
+                    <span md-highlight-text="data.vehicles.filter" md-highlight-flags="^i">{{item.identificador}}</span>
+                </md-autocomplete>
+                
+            </div>
+            <!-- -->
+            <karma-table name="TVehicles" items="data.vehicles.items" show-header="false">
+
+                <karma-column width="15">
+                    <karma-item>
+                        <div class="thumb">
+                            <img ng-src="{{item.imagen | restricted}}" />
+                        </div>
+                    </karma-item>
+                </karma-column>
+
+                <karma-column>
+                    <karma-item>
+                        {{item.patente}}
+                    </karma-item>
+                </karma-column>
+
+                <karma-column width="30" align="right">
+                    <karma-item>
+                        <i>{{item.tipo}}</i>
+                    </karma-item>
+                </karma-column>
+
+                <karma-column width="10" align="right">
+                    <karma-item>
+                        <md-icon class="remove" md-svg-src="{{ 'action' | icon:'ic_highlight_remove_24px' }}"></md-icon>
+                    </karma-item>
+                </karma-column>
+
+            </karma-table>
+            <!-- -->
+            <div class="counter">
+                {{data.vehicles.items.length}} 
+                <span ng-if="data.vehicles.items.length == 1">
+                    vehículo seleccionado
+                </span>
+                <span ng-if="data.vehicles.items.length == 0 || data.vehicles.items.length > 1 ">
+                    vehículos seleccionados
+                </span>
+            </div>
+            <!-- -->
+        </md-whiteframe>
+
+    </karma-content>
+
+    <karma-pad>
+        <md-button aria-label="al" ng-disabled="data.vehicles.items.length == 0 || data.drivers.items.length == 0" class="md-raised md-primary next" ng-click="next()">
+            Continuar con la configuración de los servicios
+            <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_24px' }}"></md-icon>
+        </md-button>
+    </karma-pad>
+
+</karma-page>

@@ -1,0 +1,316 @@
+/*
+	KARMA COMPONENTS
+ */
+
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   /*
+     Introduced in IE 10.
+     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
+   */
+   -ms-user-select: none;
+   user-select: none;
+}
+
+/*--------------------------------------------------*/
+/*  KARMA PAGE
+/*--------------------------------------------------*/
+karma-page {
+	display: block;
+	margin: 0;
+	min-height: 100%;
+	width: 100%;
+}
+
+/*--------------------------------------------------*/
+/*  KARMA PAD
+/*--------------------------------------------------*/
+karma-pad {
+	display: inline-block;
+	margin: 0;
+	width: 100%;
+	position: fixed;
+	right: 0px;
+	left: 0px;
+	padding: 4px;
+	border-top: 1px solid #ECECEC;
+	background-color: #F4F4F4;
+}
+
+karma-pad.alignRight > button {
+	margin-right: 15px !important;
+}
+
+karma-pad.alignLeft > button {
+	margin-left: 15px !important;
+}
+
+karma-pad.top {
+	top:0px;
+}
+
+karma-pad.bottom {
+	bottom:0px;
+}
+
+div.alignRight,
+.karma-column > div.alignRight,
+.karma-cell.alignRight,
+karma-pad.alignRight {
+	text-align: right;
+}
+
+div.alignLeft,
+.karma-column > div.alignLeft,
+.karma-cell.alignLeft,
+karma-pad.alignLeft {
+	text-align: left;
+}
+
+div.alignCenter,
+.karma-column > div.alignCenter,
+.karma-cell.alignCenter,
+karma-pad.alignCenter {
+	text-align: center;
+}
+
+
+/*--------------------------------------------------*/
+/*  KARMA CONTENT
+/*--------------------------------------------------*/
+karma-content {
+	display: block;
+	position: relative;
+	overflow: auto;
+}
+
+/*--------------------------------------------------*/
+/*  KARMA TABLE
+/*--------------------------------------------------*/
+.karma-table {
+	display: inline-block;
+	margin: 0;
+	min-height: 100%;
+	width: 100%;
+}
+
+.karma-table > .karma-body,
+.karma-table > .karma-header {
+	margin: 0;
+	min-height: 100%;
+	width: 100%;
+}
+
+.karma-table > .karma-body {
+	display: inline-block;
+}
+
+.karma-table > .karma-header {
+	border-bottom: 1px solid rgb(230,230,230);
+}
+
+.karma-table > .karma-header > .karma-column {
+	color: rgb(130,130,130);
+	display: inline-block;
+	text-align: left;
+	font-size: 1.3em;
+	font-weight: 700;
+	padding: 8px 16px;
+	overflow: hidden;
+}
+
+.karma-table > .karma-body > .karma-row {
+	border-bottom: 1px solid rgb(230,230,230);
+	color: rgb(130,130,130);
+	text-align: left;
+	font-size: 1.15em;
+}
+
+.karma-table.row-click > .karma-body > .karma-row {
+	cursor: pointer;
+}
+
+.karma-table > .karma-body > .karma-row:hover{
+	background-color: #EFF8FF;
+}
+
+.karma-table > .karma-body > .karma-row > .karma-cell{
+	padding:8px 16px;
+	overflow: hidden;
+}
+
+.karma-table > .karma-body > .karma-row .thumb {
+	height: 2.2em;
+	width: 2.2em;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-left: 16px;
+	margin-bottom: 0px;
+}
+
+.karma-table > .karma-body > .karma-row .thumb > img{
+	width: 100%
+}
+
+/*--------------------------------------------------*/
+/*  KARMA LOADING
+/*--------------------------------------------------*/
+
+karma-finder {
+	position: fixed;
+	top: 20%;
+	left: 20%;
+	right: 20%;
+	border: none;
+	background-color: rgb(247, 247, 247);
+	border-radius: 5px;
+	padding: 4px 8px;
+	box-shadow: 0px 0px 25px rgb(48, 48, 48);
+	color: rgb(73, 73, 73);
+	opacity: 0.9;
+	display: none;
+}
+
+karma-finder.show {
+	display: inline;
+}
+
+karma-finder div.finder .close {
+	position: fixed;
+	top: 18%;
+	right: 19%;
+	border: none;
+	padding: 4px;
+	background-color: rgb(33, 150, 243);
+	border-radius: 50%;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	cursor: pointer;
+}
+
+karma-finder div.finder .close md-icon {
+	color: #FFF;
+}
+
+karma-finder div.finder table {
+	width: 100%;
+}
+
+karma-finder div.finder table td.icon {
+	width: 25px;
+}
+
+karma-finder div.finder table td.icon md-icon {
+	height: 36px;
+	width: 36px;
+}
+
+karma-finder div.finder table td.box {
+
+}
+
+karma-finder div.finder table td.box > input {
+	background: rgba(0, 0, 0, 0);
+	border: none;
+	width: 98%;
+	padding: 4px;
+	color: rgb(74, 74, 74);
+	outline-color: rgb(255, 255, 255);
+	font-size: 1.5em;
+	line-height: 1.2em;
+}
+
+karma-finder div.finder table td.box{
+
+}
+
+karma-finder div.finder div.results{
+	border-top: 1px solid rgb(232, 232, 232);
+	max-height: 400px;
+	overflow: auto;
+}
+
+karma-finder div.finder div.footer {
+	color: rgb(139, 139, 139);
+	font-style: italic;
+	float: right;
+	font-size: 0.8em;
+}
+
+karma-finder div.finder div.results > div{
+	padding: 4px 8px;
+	color: rgb(112, 109, 108);
+	min-height: 45px;
+	border-radius: 4px;
+}
+
+finder div.finder div.results > div div.thumb {
+	height: 30px;
+	width: 30px;
+	margin: 0px;
+}
+
+karma-finder div.finder div.results > div div.name {
+	padding-left: 16px;
+}
+
+karma-finder div.finder div.results > div div.type {
+	font-style: italic;
+	color: rgb(148, 148, 148);
+  	font-size: 0.8em;
+}
+
+karma-finder div.finder div.results > div.active,
+karma-finder div.finder div.results > div:hover {
+	background-color: rgb(215, 215, 215);
+	cursor: pointer;
+}
+
+/*--------------------------------------------------*/
+/*  KARMA LOADING
+/*--------------------------------------------------*/
+karma-loading {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 9999999;
+	background-color: rgba(0, 0, 0, 0.12);
+	display: none !important;
+}
+
+karma-loading.show {
+	display: flex !important
+}
+
+karma-loading > karma-center {
+	background-color: rgb(255, 255, 255);
+	padding: 16px;
+	border-radius: 3px;
+	box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2),0 2px 2px 0 rgba(0, 0, 0, 0.14),0 1px 5px 0 rgba(0, 0, 0, 0.12);
+	color: rgb(29, 131, 213);
+
+	/* layout */
+	box-sizing: border-box;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flexbox;
+	display: flex;
+
+	/* layout=row */
+	-webkit-flex-direction: row;
+	-ms-flex-direction: row;
+	flex-direction: row;
+
+	/* layout-align="start center" */
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+karma-loading > karma-center > md-progress-circular {
+  margin: 0px 16px;
+}

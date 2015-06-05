@@ -1,0 +1,77 @@
+<div class="panel programming">
+	<md-subheader>
+		Visualize los puntos de servicios realizados que 
+		estan siendo ejecutados en la unidad de negocio
+	</md-subheader>
+
+	<karma-content>
+		<div ng-repeat="item in data.types" ng-show="item.points.length > 0"> 
+			<div layout="row" layout-align="start center" ng-class="{'pointer': item.points.length > 0}" ng-click="item.toggle = !item.toggle">
+				<div flex="20">
+					<div class="thumb">
+					    <img ng-src="{{ item.imagen | restricted }}" />
+					</div>
+				</div>
+
+				<div flex class="label">
+					<strong>{{item.nombre}}</strong>)
+
+					<div class="date">
+						<strong>{{item.counters.polygons}}</strong>&nbsp;
+						<span ng-if="item.counters.polygons == 1">retiro programado</span>
+						<span ng-if="item.counters.polygons !== 1">retiros programados</span>
+					</div>
+				</div>
+
+				<div flex="20" class="status" layout="row" layout-align="center center">
+					<div>{{item.counters.realized + item.counters.additional}}</div>
+					<div class="sign">/</div> 
+					<div>{{item.counters.programmed}}</div>
+				</div>
+			</div>
+
+			<div ng-if="item.toggle" class="point">
+
+				<div layout="row" layout-align="start center" ng-if="item.points.length == 0">
+					<div class="empty">
+						<center>
+							No existen servicios realizados aún
+						</center>
+					</div>
+				</div>
+
+				<div layout="row" layout-align="start center" ng-repeat="point in item.points">
+					<div flex="20">
+						<div class="thumb pin">
+						    <img ng-src="{{ point.image }}" />
+						</div>
+
+						<div class="thumb driver" title="{{point.conductor.nombre}}">
+						    <img ng-src="{{ point.conductor.imagen | restricted }}" />
+						</div>
+					</div>
+					<div flex class="label">
+						<strong ng-if="point.poligono">{{point.poligono.nombre}}</strong>
+						<strong style="color:#E13F44" ng-if="!point.poligono">SIN POLÍGONO</strong>
+
+						<div class="date">
+							{{point.nombre}}
+						</div>
+
+						<div class="date right" title="{{point.fecha}}">
+							<span am-time-ago="point.fecha"></span>
+						</div>
+					</div>
+
+					<div flex="10">
+						<md-icon class="pointer" ng-click="point.navigate()" title="Ir al Retiro" md-svg-src="{{ 'action' | icon:'ic_visibility_24px' }}"></md-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+	</karma-content>
+
+	<div class="counter-panel">
+		{{data.counters.total}} Retiros Realizados
+	</div>
+</div>

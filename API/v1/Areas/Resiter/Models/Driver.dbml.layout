@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Driver">
+  <DataContextMoniker Name="/DriverDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3390394f-fb56-41ee-bdce-aa4d5b1b8f36" absoluteBounds="0.5, 0.5, 2.5, 4.4631168619791666">
+      <DataClassMoniker Name="/DriverDataContext/InformacionServicio" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2b065f3-e1cf-4583-ade6-35f4d7c28f06" absoluteBounds="0.515, 0.96, 2.4699999999999998, 3.9031168619791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

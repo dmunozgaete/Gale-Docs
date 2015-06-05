@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="RS_MDS_v2" Class="DriverDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=.\MSSQLSERVER_2012;Initial Catalog=RS_MDS_v2;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="RS_MDS_v2ConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.TB_GPS_ServicioConductor" Member="InformacionServicios">
+    <Type Name="InformacionServicio">
+      <Column Name="SERC_CORD_Latitud" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SERC_CORD_Longitud" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="SERC_Fecha" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SERC_ARCH_Codigo" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SERC_Motivo" Type="System.String" DbType="VarChar(300)" CanBeNull="true" />
+      <Column Name="SERC_CodigoActivo" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SERC_NumeroVisible" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SERC_Volumen" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="SERC_Token" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ENTI_Nombre" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CLIE_Nombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="SUCU_Nombre" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="VEHI_Patente" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="TISE_Nombre" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="COND_Run" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="COND_Dv" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ESTA_Nombre" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="POLI_Nombre" Type="System.String" CanBeNull="false" />
+      <Column Name="SERC_Codigo" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

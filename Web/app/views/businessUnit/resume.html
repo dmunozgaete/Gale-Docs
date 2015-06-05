@@ -1,0 +1,125 @@
+<karma-page class="businessUnit resume">
+    <md-toolbar>
+    	
+    	<div class="main-fab">
+            <md-tooltip md-direction="right">
+                Ir al Monitor en Tiempo Real
+            </md-tooltip>
+            <md-button class="md-fab md-accent" aria-label="al" ui-sref="app.monitor">
+            	<md-icon md-svg-src="{{ 'maps' | icon:'ic_map_48px' }}"></md-icon>
+            </md-button>
+        </div>
+        
+        <div class="md-toolbar-tools">
+
+            <div class="md-toolbar-item md-title">
+                <span>Información > {{data.businessUnit.nombre}}</span>
+            </div>
+
+        </div>   
+
+    </md-toolbar>
+
+    <!-- LINEAR PROGRESS -->
+    <md-progress-linear ng-show="!loadCompleted" md-mode="indeterminate" class="md-primary"></md-progress-linear>
+
+    <karma-content layout-padding>
+    	
+    	<div layout="row">
+    		<div flex="40" layout="column">
+
+    			<div layout="row">
+	    			<!-- -->
+			    	<div class="box" flex ui-sref="app.businessUnit-create-4">
+			    		<div class="value" layout="row" layout-align="center center">
+			    			<div>
+			    				{{data.businessUnit.servicios}}
+			    			</div>
+			    			<div>
+			    				<md-icon md-svg-src="{{ 'maps' | icon:'ic_my_location_24px' }}"></md-icon> 
+			    			</div>
+			    		</div>
+			    		<div class="title">
+			    			Servicios
+			    		</div>
+			    	</div>
+			    	<!-- -->
+			        <div class="box" flex ui-sref="app.businessUnit-create-5">
+						<div class="value" layout="row" layout-align="center center">
+							<div>
+			    				{{data.businessUnit.poligonos}}
+			    			</div>
+			    			<div>
+			    				<md-icon md-svg-src="{{ 'image' | icon:'ic_filter_center_focus_24px' }}"></md-icon> 
+			    			</div>
+			    		</div>
+			    		<div class="title">
+			    			Polígonos
+			    		</div>
+			    	</div>
+			    	<!-- -->
+		    	</div>
+
+		    	<div layout="row">
+			    	<!-- -->
+			        <div class="box" flex ui-sref="app.businessUnit-create-3">
+						<div class="value" layout="row" layout-align="center center">
+							<div>
+			    				{{data.businessUnit.conductores}}
+			    			</div>
+			    			<div>
+			    				<md-icon md-svg-src="{{ 'action' | icon:'ic_account_circle_24px' }}"></md-icon> 
+			    			</div>
+			    		</div>
+			    		<div class="title">
+			    			Conductores
+			    		</div>
+			    	</div>
+			    	<!-- -->
+			        <div class="box" flex ui-sref="app.businessUnit-create-3">
+						<div class="value" layout="row" layout-align="center center">
+							<div>
+			    				{{data.businessUnit.vehiculos}}
+			    			</div>
+			    			<div>
+			    				<md-icon md-svg-src="{{ 'maps' | icon:'ic_local_shipping_48px' }}"></md-icon> 
+			    			</div>
+			    		</div>
+			    		<div class="title">
+			    			Vehículos
+			    		</div>
+			    	</div>
+			    	<!-- -->
+		    	</div>
+
+		    	<div layout="row">
+		    		<!-- -->
+			        <div class="box" flex ui-sref="app.businessUnit-create-6">
+						<div class="value" layout="row" layout-align="center center">
+							<div>
+			    				{{data.businessUnit.usuarios}}
+			    			</div>
+			    			<div>
+			    				<md-icon md-svg-src="{{ 'image' | icon:'ic_timer_auto_24px' }}"></md-icon> 
+			    			</div>
+			    		</div>
+			    		<div class="title">
+			    			Usuarios
+			    		</div>
+			    	</div>
+			    	<!-- -->
+			    	<div flex>
+			    	</div>
+		    	</div>
+
+    		</div>
+
+    		<div flex="60" class="map">	
+				<ui-gmap-google-map control="gmap" ng-if="gmap != null" center="viewport" zoom="viewport.zoom" options="gmap.options" events="gmap.events" zoom="14">
+				</ui-gmap-google-map>
+    		</div>
+    	</div>
+
+
+    </karma-content>
+</karma-page>

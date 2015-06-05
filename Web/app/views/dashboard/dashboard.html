@@ -1,0 +1,208 @@
+<karma-page class="dashboard">
+
+    <md-toolbar layout="column" class="md-tall">
+        <span flex></span>
+
+        <div class="main-fab">
+            <md-tooltip md-direction="right">
+                Ir al Monitor en Tiempo Real
+            </md-tooltip>
+            <md-button class="md-fab md-accent" aria-label="al" ui-sref="app.monitor">
+            	<md-icon md-svg-src="{{ 'maps' | icon:'ic_map_48px' }}"></md-icon>
+            </md-button>
+        </div>
+
+        <div class="md-toolbar-tools">
+            <div layout="row" flex class="fill-height">
+                <div class="md-toolbar-item md-title">
+                    <span>Indicadores Actuales</span>
+                </div>
+            </div>
+        </div>      
+    </md-toolbar>
+
+    <!-- LINEAR PROGRESS -->
+    <md-progress-linear ng-show="data == null" md-mode="indeterminate" class="md-primary">
+    </md-progress-linear>
+    
+    <br />
+    <br />
+    <br />
+
+    <div ng-if="data">
+        <!-- -->
+        <div layout="row" layout-align="center start" class="graph" >
+
+            <md-whiteframe class="md-whiteframe-z2 big" flex="30" ng-click="details();">
+                <!-- -->            
+                <div class="title" >
+                    % Servicios Realizados
+                </div>
+                <!-- -->
+                <center>
+                    <div class="box">
+                        <pie-chart
+                            data='charts.general' 
+                            options='charts.options'>
+                        </pie-chart>
+                    </div>
+                </center>
+                <!-- -->
+            </md-whiteframe>
+
+            <div flex="30" layout="column" class="medium">
+
+                <md-whiteframe class="md-whiteframe-z2" flex="30">
+                    <!-- -->            
+                    <div class="title">
+                        Programados
+                    </div>
+                    <!-- -->
+                    <div layout="row" layout-align="center center">
+                        <!-- -->
+                        <div flex>
+                            <div class="counter">
+                                {{data.programmed.realized + data.programmed.failed}}
+                            </div>
+                            <div class="name">
+                                Servicios
+                            </div>
+                        </div>
+                        <!-- -->
+                        <div flex>
+                            <center>
+                                <div class="box">
+                                    <pie-chart
+                                        data='charts.programmed.realized'
+                                        options='charts.options'>
+                                    </pie-chart>
+                                </div>
+                                <div class="name-graph">
+                                    Realizados
+                                </div>
+                            </center>
+                        </div>
+                        <!-- -->
+                        <div flex>
+                            <center>
+                                <div class="box">
+                                    <pie-chart
+                                        data='charts.programmed.failed'
+                                        options='charts.options'>
+                                    </pie-chart>
+                                </div>
+                                <div class="name-graph">
+                                    Fallidos
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                    <!-- -->
+                </md-whiteframe>
+                
+                <md-whiteframe class="md-whiteframe-z2" flex="30">
+                    <!-- -->            
+                    <div class="title">
+                        Adicionales
+                    </div>
+                    <!-- -->
+                    <div layout="row" layout-align="center center">
+                        <!-- -->
+                        <div flex>
+                            <div class="counter">
+                                {{data.additional.total}}
+                            </div>
+                            <div class="name">
+                                Servicios
+                            </div>
+                        </div>
+                        <!-- -->
+                        <div flex>
+                            <center>
+                                <div class="box">
+                                    <pie-chart
+                                        data='charts.realized.realized' 
+                                        options='charts.options'>
+                                    </pie-chart>
+                                </div>
+                                <div class="name-graph">
+                                    Realizados
+                                </div>
+                            </center>
+                        </div>
+                        <!-- -->
+                        <div flex>
+                            <center>
+                                <div class="box">
+                                    <pie-chart
+                                        data='charts.realized.failed' 
+                                        options='charts.options'>
+                                    </pie-chart>
+                                </div>
+                                <div class="name-graph">
+                                    Fallidos
+                                </div>
+                            </center>
+                        </div>
+                    </div>
+                    <!-- -->
+                </md-whiteframe>
+            
+            </div>
+            
+
+            <md-whiteframe class="md-whiteframe-z2" flex="30">
+                
+                <!-- -->            
+                <div class="title">
+                    Choferes
+                </div>
+                <!-- -->
+                <karma-content>
+                    <karma-table items="data.drivers" show-header="false" row-click="test">
+                        <!-- -->
+                        <karma-column width="25">
+                            <karma-item>
+                                
+                                <script>
+                                    <div class="graph-thumb">
+                                        <pie-chart
+                                            data='item.chart.data'
+                                            options='item.chart.options' >
+                                        </pie-chart>
+
+                                        <div class="thumb-counter">
+                                            {{item.chart.data[0].value}}&nbsp;%
+                                        </div>
+                                    </div>
+
+                                    <div class="thumb">
+                                        <img ng-src="{{item.photo | restricted}}" />
+                                    </div>
+                                </script>
+                            </karma-item>
+                        </karma-column>
+                        <!-- -->
+                        <karma-column>
+                            <karma-item>
+
+                                <div class="name">
+                                    {{item.name}}
+                                </div>
+                                <div class="counter" style="font-size: 16px">
+                                    Ver Programación
+                                </div>
+
+                            </karma-item>
+                        </karma-column>
+                        <!-- -->
+                    </karma-table>
+                </karma-content>
+                <!-- -->            
+            </md-whiteframe>
+
+        </div>
+    </div>
+
+
+</karma-page>

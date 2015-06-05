@@ -1,0 +1,164 @@
+angular.module('core.components.karma')
+
+.directive('karmaTable', function() {
+    return {
+        restrict: 'E',
+        scope: {
+            paginate:   '@',    // Paginate the items or not??
+            items:      '=',    // Object with contains and Array ob Object to render
+            endpoint:   '@',    // OData Endpoint
+            showHeader: '@',    // Show Header in Table or Not
+            rowClick:   '&',    // Row Click Handler
+            cellClick:  '&',    // Cell Click Handler
+            name:       '@'     // Karma Table Unique ID
+        },
+        transclude: true,
+        template:   '<karma-header class="karma-header" layout="row" layout-align="start center" ng-transclude>'
+                    + '</karma-header>'
+                    + '<karma-body class="karma-body">'
+                        + '<karma-row layout="row" class="karma-row" ng-click="onRowClick(item)" layout-align="start center" ng-repeat="item in source" x="{{$index}}" formatters="$$formatters" item="item">'
+                        + '</karma-row>'
+                    + '</karma-body>',
+        controller: function($scope, $element, $interpolate, $compile, $Api, $karmaTable, ODataBuilder){
+            this.$$formatters   = $scope.$$formatters = [];                 //Lazy Load Instantation
+            var self            = this;                                     //Auto reference
+            var unique_id       = ($scope.name||(new Date()).getTime());    //Component Unique ID
+            var configuration   = {};                                       //Configuration if 'setup'
+
+            //------------------------------------------------------------------------------
+            // EVENT IMPLEMENTATION
+            var $$listeners     =   {};   
+            self.$on = function(name, listener){
+
+                //----------------------------------------
+                //If hook, via $on change the pointer to hand
+                if(name == "rowClick"){
+                    $element.addClass("row-click");
+                }
+                //----------------------------------------
+                
+                var namedListeners = $$listeners[name];
+                if (!namedListeners) {
+                  $$listeners[name] = namedListeners = [];
+                }
+                namedListeners.push(listener);
+
+                //de-register Function
+                return function() {
+                  namedListeners[indexOf(namedListeners, listener)] = null;
+                };
+            };
+
+            self.hasEventHandlersFor = function(name){
+                return $$listeners[name] != null;
+            }
+
+            self.$fire = function(name, args){
+                var listeners = $$listeners[name];
+                if(!listeners){
+                    return;
+                }
+                
+                angular.forEach(listeners, function(listener){
+                    listener.apply(listener, args);
+                });
+            }
+            //------------------------------------------------------------------------------
+            
+            //------------------------------------------------------------------------------
+            //Register for Service Interaction
+            $karmaTable.$$register(self, unique_id);   
+            
+            //Retrieve the Unique Id for the Karma Table
+            self.getUniqueId = function(){
+                return unique_id;
+            }
+
+            //Manual Bootstrap
+            self.setup = function(endpoint, cfg){
+                var url = endpoint;
+                if(cfg){
+                    url = ODataBuilder.build(url, cfg);
+                }
+
+                configuration = cfg||{};    //Save current configuration
+
+                $scope.endpoint = url;
+            };
+
+            //Bind to Endpoint
+            self.bind = function(endpoint){
+                $Api.invoke('GET', endpoint, null, configuration.headers)
+                .success(function(data){
+
+                    self.render(data.items);
+                    self.$fire("loadComplete", [data, unique_id]);
+                });
+            };
+            
+            //Render table
+            self.render = function(data){
+                self.$fire("beforeRender", [data, unique_id]);
+                $scope.source = data;
+            }
+            //------------------------------------------------------------------------------
+
+            //Cell Click
+            var cellClickHandler = $scope.cellClick();
+            self.$$cellClick = function(ev, item , cellIndex, rowIndex){
+                
+                //Scale to Row Click
+                self.$fire("cellClick", [ev, item , {x: rowIndex, y: cellIndex}, self.getUniqueId()]);                
+            };            
+
+            //Garbage Collector Destroy
+            $scope.$on('$destroy', function() {
+                $karmaTable.$$unregister(self, unique_id);      //UnRegister for Service Interaction
+            });
+
+        },
+
+        link: function (scope, element, attrs,ctrl) {
+
+            var rowClickHandler = scope.rowClick();
+
+            if(scope.showHeader && !scope.$eval(scope.showHeader)) {
+                element.find("karma-header").css("display", "none");
+            }
+
+            //General Clases on Karma Table
+            element.attr("layout-fill","");
+            element.addClass("karma-table");
+
+            //Watch for Changes
+            scope.$watch('endpoint', function(value) {
+                if (value) {
+                    ctrl.bind(value);
+                }
+            });
+
+            //Watch for Changes
+            scope.$watch('items', function(value) {
+                if (value) {
+                    ctrl.render(value);
+                }
+            });
+
+            //Add cursor if handler exists
+            if(rowClickHandler || ctrl.hasEventHandlersFor("rowClick")){
+                element.addClass("row-click");
+            }
+
+            scope.onRowClick = function(item){
+                
+                //Row Click
+                ctrl.$fire("rowClick", [event, item , ctrl.getUniqueId()]);
+                if(rowClickHandler){
+                   rowClickHandler(item);
+                }
+
+            }
+           
+        }
+    };
+});

@@ -1,0 +1,51 @@
+<md-dialog aria-label="" class="businessunit-create step-5 dialog">
+
+    <form name="form" name="form" >
+        <!-- -->
+        <karma-content class="sticky-container">
+
+            <md-subheader class="md-sticky-no-effect">Configuración del Polígono</md-subheader>
+
+            <div class="dialog-content">
+                <!-- -->
+                <div layout="row">
+                    <div flex="60">
+                        <md-input-container  flex>
+                            <label>Identificador del Polígono</label>
+                            <input ng-model="polygon.information.name" required />
+                        </md-input-container>
+                    </div>    
+                    <div flex="40">
+                        <md-select ng-model="item" required ng-change="setType(item)" style="min-width: 250px;">
+                            <md-select-label>{{ item ? item.nombre : 'Tipo de Polígono' }}</md-select-label>
+                            <md-option ng-value="item" class="businessunit-create step-5" ng-selected="{{polygon.information.type == item.identificador}}" ng-repeat="item in types">
+                                <!-- -->
+                                <div class="thumb">
+                                    <img ng-src="{{item.imagen | restricted }}" />
+                                </div>
+                                {{item.nombre}}
+
+                                <!-- -->
+                            </md-option>
+                        </md-select>
+                    </div>    
+                </div>  
+            </div>
+
+        </karma-content>
+        <!-- -->
+        <div class="md-actions" layout="row">
+
+            <md-button ng-click="cancel()" aria-label="al">
+                {{'GLOBAL_CANCEL_LABEL' | localize}}
+            </md-button>
+
+            <md-button ng-disabled="form.$invalid" aria-label="al" ng-click="save(polygon)" class="md-primary md-raised">
+                {{'GLOBAL_SAVE_LABEL' | localize}}
+            </md-button>
+
+        </div>
+        <!-- -->
+    </form>
+
+</md-dialog>
