@@ -135,42 +135,60 @@
     $stateProvider
 
     // ---------------------------------------------
-    // ACCOUNT
+    // GALE: ACCOUNT
     // ---------------------------------------------
-
-        .state('login', {
-        url: '/login',
+    .state('account-authenticate', {
+        url: '/account/authenticate',
         templateUrl: 'views/security/login.html',
-        controller: 'LoginController'
+        controller: 'Gale_AccountLogInController'
     })
 
-    .state('logout', {
-        url: '/logout',
-        controller: 'LogOutController'
+    .state('account-logout', {
+        url: '/account/logOut',
+        controller: 'Gale_AccountLogOutController'
     })
 
     .state('account-password-create', {
         url: '/account/password/create/:token',
         templateUrl: 'views/account/password-create.html',
-        controller: 'AccountPasswordCreateController'
+        controller: 'Gale_AccountCreateController'
     })
 
     .state('account-password-recovery', {
         url: '/account/password/recovery/:token',
         templateUrl: 'views/account/password-recovery.html',
-        controller: 'AccountPasswordCreateController'
+        controller: 'Gale_AccountCreateController'
     })
 
-    // ---------------------------------------------    
-    // ABSTRACT
-    // ---------------------------------------------
-    .state('app', {
-        url: "/app",
-        abstract: true,
-        templateUrl: "views/shared/layout.html",
-        controller: "LayoutController"
+    .state('app.account', {
+        url: '/account/',
+        views: {
+            content: {
+                templateUrl: 'views/administration/user/list.html',
+                controller: 'Gale_AccountListController'
+            }
+        }
     })
 
+    .state('app.account-create', {
+        url: '/account/create',
+        views: {
+            content: {
+                templateUrl: 'views/administration/user/create.html',
+                controller: 'Gale_AccountCreateController'
+            }
+        }
+    })
+
+    .state('app.account-update', {
+        url: '/account/update/:token',
+        views: {
+            content: {
+                templateUrl: 'views/administration/user/update.html',
+                controller: 'Gale_AccountUpdateController'
+            }
+        }
+    })
 
     // ---------------------------------------------
     // ERRORES
@@ -222,60 +240,6 @@
 
     .state('app.home', {
         url: '/home'
-    })
-
-    .state('app.dashboard', {
-        url: '/dashboard',
-        views: {
-            content: {
-                templateUrl: 'views/dashboard/dashboard.html',
-                controller: 'DashboardController'
-            }
-        }
-    })
-
-    .state('app.dashboard-details', {
-        url: '/dashboard/details/:date',
-        views: {
-            content: {
-                templateUrl: 'views/dashboard/dashboard-details.html',
-                controller: 'DashboardDetailsController'
-            }
-        }
-    })
-
-    // ---------------------------------------------
-    // ADMINISTRATION - USER
-    // ---------------------------------------------
-
-    .state('app.administration-user', {
-        url: '/administration/user',
-        views: {
-            content: {
-                templateUrl: 'views/administration/user/list.html',
-                controller: 'Administration_UserListController'
-            }
-        }
-    })
-
-    .state('app.administration-user-create', {
-        url: '/administration/user/create',
-        views: {
-            content: {
-                templateUrl: 'views/administration/user/create.html',
-                controller: 'Administration_UserCreateController'
-            }
-        }
-    })
-
-    .state('app.administration-user-update', {
-        url: '/administration/user/update/:token',
-        views: {
-            content: {
-                templateUrl: 'views/administration/user/update.html',
-                controller: 'Administration_UserUpdateController'
-            }
-        }
     })
 
     // if none of the above states are matched, use this as the fallback

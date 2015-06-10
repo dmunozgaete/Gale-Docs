@@ -1,14 +1,14 @@
 angular.module('app.controllers')
 
-.controller('Administration_UserListController', function (
+.controller('Gale_AccountListController', function (
 	$scope, 
 	$state, 
 	$Api, 
-	$karmaTable
+	$galeTable
 ) {
 
 
-	$karmaTable.then(function(component){
+	$galeTable.then(function(component){
 		
 		//------------------------------------------------------------------
 		// Setup

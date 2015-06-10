@@ -1,15 +1,15 @@
 angular.module('app.controllers')
 
-.controller('Administration_UserCreateController', function (  
+.controller('Gale_AccountCreateController', function (  
     $scope, 
     $state, 
     $window,
     $Api,
     $log,
     $Configuration,
-    $karmaTable,
+    $galeTable,
     UploadHelper,
-    $karmaLoading
+    $galeLoading
 ) {
 
 	
@@ -19,8 +19,8 @@ angular.module('app.controllers')
     };
    
     //----------------------------------------------
-    // Karma Table
-    $karmaTable.then(function(component){
+    // gale Table
+    $galeTable.then(function(component){
 
         component.setup('/Role');
 
@@ -107,15 +107,15 @@ angular.module('app.controllers')
         data.profiles = userProfiles;
         data.host = window.location.href;
 
-        $karmaLoading.show();
+        $galeLoading.show();
 
         $Api.Create('/User', data)
         .success(function(data){
 
-            $karmaLoading.hide();
+            $galeLoading.hide();
             $scope.back();
             
-        }).error($karmaLoading.hide);
+        }).error($galeLoading.hide);
 
     }
     //------------------------------------------

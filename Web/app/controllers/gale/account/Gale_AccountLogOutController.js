@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('LogOutController', function (	$scope, 
+.controller('Gale_AccountLogOutController', function (	$scope, 
 											$state,
 											Identity) {
 

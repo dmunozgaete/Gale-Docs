@@ -1,17 +1,17 @@
 angular.module('app.controllers')
 
-.controller('Administration_UserUpdateController', function (  
+.controller('Gale_AccountUpdateController', function (  
     $scope, 
     $state, 
     $window,
     $Api,
     $log,
     $stateParams,
-    $karmaTable,
+    $galeTable,
     $mdDialog,
     $Localization,
     UploadHelper,
-    $karmaLoading
+    $galeLoading
 ) {
 
     var userProfiles = [];
@@ -35,8 +35,8 @@ angular.module('app.controllers')
     
 
     //----------------------------------------------
-    // Karma Table
-    $karmaTable.then(function(component){
+    // gale Table
+    $galeTable.then(function(component){
 
         var endpoint = '/User/Roles/?user={0}'.format([token]);
         component.setup(endpoint);
@@ -134,14 +134,14 @@ angular.module('app.controllers')
     $scope.save = function(data){
         data.profiles = userProfiles;
 
-        $karmaLoading.show();
+        $galeLoading.show();
         $Api.Update('/User', token, data)
         .success(function(data){
 
-            $karmaLoading.hide();
+            $galeLoading.hide();
             $scope.back();
 
-        }).error(karmaLoading.hide);
+        }).error(galeLoading.hide);
 
     }
 
@@ -157,13 +157,13 @@ angular.module('app.controllers')
             .cancel($Localization.get('DELETE_CONFIRM_CANCEL_LABEL'))
         ).then(function() {
             
-            $karmaLoading.show();
+            $galeLoading.show();
             $Api.Delete('/User', token)
             .success(function(data){
                 $scope.back();
-                $karmaLoading.hide();
+                $galeLoading.hide();
             })
-            .error($karmaLoading.hide);
+            .error($galeLoading.hide);
 
         });
 
@@ -181,18 +181,18 @@ angular.module('app.controllers')
             .cancel($Localization.get('GLOBAL_CANCEL_LABEL'))
         ).then(function() {
           
-            $karmaLoading.show();
+            $galeLoading.show();
             $Api.invoke('GET', '/Account/PasswordRecovery', {
                 token: token,
                 host: window.location.href
             })
             .success(function(data){
 
-                $karmaLoading.hide();
+                $galeLoading.hide();
                 $scope.back();
 
             })
-            .error($karmaLoading.hide);
+            .error($galeLoading.hide);
 
         });
 

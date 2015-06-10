@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('LoginController', function (	$scope, 
+.controller('Gale_AccountLogInController', function (	$scope, 
 											$log,
 											$Configuration, 
 											$Localization, 

@@ -1,9 +1,9 @@
 angular.module('app.controllers')
 
-.controller('AccountPasswordCreateController', function ($scope, 
+.controller('Gale_AccountPasswordRecovery', function ($scope, 
 	$state, 
 	$Api,
-	$karmaLoading,
+	$galeLoading,
 	$mdToast,
 	$stateParams,
 	$log,
@@ -34,7 +34,7 @@ angular.module('app.controllers')
 			return;
 		}
 
-		$karmaLoading.show();
+		$galeLoading.show();
 		$Api.Create("/Account/PasswordCreate", {
 			password: user.password
 		}, 
@@ -43,7 +43,7 @@ angular.module('app.controllers')
 		})
         .success(function(data){
 
-        	$karmaLoading.hide();
+        	$galeLoading.hide();
 
         	var _alert = $mdDialog.alert()
 			.title('Actualización de Contraseña')
@@ -75,7 +75,7 @@ angular.module('app.controllers')
 				.hideDelay(4500)
 			);
 
-			$karmaLoading.hide();
+			$galeLoading.hide();
 
         });
 

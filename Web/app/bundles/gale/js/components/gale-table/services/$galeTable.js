@@ -1,4 +1,4 @@
-angular.module('core.components')
+angular.module('gale.components')
 
 .factory('$galeTable', function($q, $rootScope) {
     var self        = this;
@@ -25,7 +25,7 @@ angular.module('core.components')
             }
 
             if(count > 1){
-                throw { message: 'when you have more than 1 karmatable in view, you must send the uniqueID' }
+                throw { message: 'when you have more than 1 galetable in view, you must send the uniqueID' }
             }else{
                 identifier = (function() { for (var id in components) return id })();
             }
@@ -62,7 +62,7 @@ angular.module('core.components')
     deferred.promise["$$register"] = $$register;
     deferred.promise["$$unregister"] = $$unregister;
 
-    // Resolve when the view has Completely Loaded ,and all karma-table's are registered
+    // Resolve when the view has Completely Loaded ,and all gale-table's are registered
     $rootScope.$on('$viewContentLoaded', function(event) {
         deferred.resolve(self);
     });
