@@ -1,14 +1,14 @@
 
 //Package Bundle
-angular.$manifiest('core', [
-    'core.directives',
-    'core.components.karma',
-    'core.filters',
-    'core.services',
-    'core.services.security',
-    'core.services.configuration',
-    'core.services.rest',
-    'core.services.storage'
+angular.$manifiest('gale', [
+    'gale.directives',
+    'gale.components.karma',
+    'gale.filters',
+    'gale.services',
+    'gale.services.security',
+    'gale.services.configuration',
+    'gale.services.rest',
+    'gale.services.storage'
 ])
 
 .run(function ($Configuration, $LocalStorage, $log, GLOBAL_CONFIGURATION){
@@ -45,7 +45,7 @@ angular.$manifiest('core', [
 })
 
 .config(['$logProvider', function($logProvider){
-    var $injector = angular.injector(['ng', 'core.services.configuration']);
+    var $injector = angular.injector(['ng', 'gale.services.configuration']);
     var ENVIRONMENT_CONFIGURATION = $injector.get('ENVIRONMENT_CONFIGURATION');
     $logProvider.debugEnabled(ENVIRONMENT_CONFIGURATION.debugging||false);
 }]);
@@ -55,7 +55,7 @@ angular.$manifiest('core', [
 angular.element(document).ready(function() {
 
     //Namespace Searching
-    var nmspc_confg = 'core.services.configuration';
+    var nmspc_confg = 'gale.services.configuration';
     var $injector = angular.injector(['ng', nmspc_confg]);
     var GLOBAL_CONFIGURATION = $injector.get('GLOBAL_CONFIGURATION');
     var $http = $injector.get('$http');

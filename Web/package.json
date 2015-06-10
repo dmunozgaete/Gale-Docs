@@ -1,9 +1,9 @@
 {
-  "name": "web",
+  "name": "Gale Starter Project",
   "private": true,
   "version": "0.0.0",
   "description": "AngularJS BoilerPlate",
-  "repository": "https://github.com/angular/material-start",
+  "repository": "https://github.com/dmunozgaete/Gale.git",
   "license": "MIT",
   "devDependencies": {
     "bower": "^1.3.1",

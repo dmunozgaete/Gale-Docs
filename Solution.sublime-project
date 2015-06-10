@@ -2,19 +2,18 @@
 	"folders":
 	[
 		{
+			"file_exclude_patterns":
+			[
+				"Web/app/bundles/app/css/default.css.map"
+			],
 			"path": "."
 		},
 		{
-			"follow_symlinks": true,
-			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/NET/Resiter/MonitoreoDigital/Web"
+			"path": "API"
 		},
 		{
 			"follow_symlinks": true,
-			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/NET/Resiter/MonitoreoDigital/Movil"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/NET/Resiter/MonitoreoDigital/Web/app"
+			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/Arquitectura/NET/Gale/Web/app"
 		}
 	]
 }

@@ -1,5 +1,5 @@
 /*
-	KARMA COMPONENTS
+	GALE COMPONENTS
  */
 
 .unselectable {
@@ -16,9 +16,9 @@
 }
 
 /*--------------------------------------------------*/
-/*  KARMA PAGE
+/*  GALE PAGE
 /*--------------------------------------------------*/
-karma-page {
+gale-page {
 	display: block;
 	margin: 0;
 	min-height: 100%;
@@ -26,9 +26,9 @@ karma-page {
 }
 
 /*--------------------------------------------------*/
-/*  KARMA PAD
+/*  gale PAD
 /*--------------------------------------------------*/
-karma-pad {
+gale-pad {
 	display: inline-block;
 	margin: 0;
 	width: 100%;
@@ -40,79 +40,79 @@ karma-pad {
 	background-color: #F4F4F4;
 }
 
-karma-pad.alignRight > button {
+gale-pad.alignRight > button {
 	margin-right: 15px !important;
 }
 
-karma-pad.alignLeft > button {
+gale-pad.alignLeft > button {
 	margin-left: 15px !important;
 }
 
-karma-pad.top {
+gale-pad.top {
 	top:0px;
 }
 
-karma-pad.bottom {
+gale-pad.bottom {
 	bottom:0px;
 }
 
 div.alignRight,
-.karma-column > div.alignRight,
-.karma-cell.alignRight,
-karma-pad.alignRight {
+.gale-column > div.alignRight,
+.gale-cell.alignRight,
+gale-pad.alignRight {
 	text-align: right;
 }
 
 div.alignLeft,
-.karma-column > div.alignLeft,
-.karma-cell.alignLeft,
-karma-pad.alignLeft {
+.gale-column > div.alignLeft,
+.gale-cell.alignLeft,
+gale-pad.alignLeft {
 	text-align: left;
 }
 
 div.alignCenter,
-.karma-column > div.alignCenter,
-.karma-cell.alignCenter,
-karma-pad.alignCenter {
+.gale-column > div.alignCenter,
+.gale-cell.alignCenter,
+gale-pad.alignCenter {
 	text-align: center;
 }
 
 
 /*--------------------------------------------------*/
-/*  KARMA CONTENT
+/*  GALE CONTENT
 /*--------------------------------------------------*/
-karma-content {
+gale-content {
 	display: block;
 	position: relative;
 	overflow: auto;
 }
 
 /*--------------------------------------------------*/
-/*  KARMA TABLE
+/*  GALE TABLE
 /*--------------------------------------------------*/
-.karma-table {
+.gale-table {
 	display: inline-block;
 	margin: 0;
 	min-height: 100%;
 	width: 100%;
 }
 
-.karma-table > .karma-body,
-.karma-table > .karma-header {
+.gale-table > .gale-body,
+.gale-table > .gale-header {
 	margin: 0;
 	min-height: 100%;
 	width: 100%;
 }
 
-.karma-table > .karma-body {
+.gale-table > .gale-body {
 	display: inline-block;
 }
 
-.karma-table > .karma-header {
+.gale-table > .gale-header {
 	border-bottom: 1px solid rgb(230,230,230);
 }
 
-.karma-table > .karma-header > .karma-column {
+.gale-table > .gale-header > .gale-column {
 	color: rgb(130,130,130);
 	display: inline-block;
 	text-align: left;
@@ -122,27 +122,27 @@ karma-content {
 	overflow: hidden;
 }
 
-.karma-table > .karma-body > .karma-row {
+.gale-table > .gale-body > .gale-row {
 	border-bottom: 1px solid rgb(230,230,230);
 	color: rgb(130,130,130);
 	text-align: left;
 	font-size: 1.15em;
 }
 
-.karma-table.row-click > .karma-body > .karma-row {
+.gale-table.row-click > .gale-body > .gale-row {
 	cursor: pointer;
 }
 
-.karma-table > .karma-body > .karma-row:hover{
+.gale-table > .gale-body > .gale-row:hover{
 	background-color: #EFF8FF;
 }
 
-.karma-table > .karma-body > .karma-row > .karma-cell{
+.gale-table > .gale-body > .gale-row > .gale-cell{
 	padding:8px 16px;
 	overflow: hidden;
 }
 
-.karma-table > .karma-body > .karma-row .thumb {
+.gale-table > .gale-body > .gale-row .thumb {
 	height: 2.2em;
 	width: 2.2em;
 	overflow: hidden;
@@ -151,15 +151,15 @@ karma-content {
 	margin-bottom: 0px;
 }
 
-.karma-table > .karma-body > .karma-row .thumb > img{
+.gale-table > .gale-body > .gale-row .thumb > img{
 	width: 100%
 }
 
 /*--------------------------------------------------*/
-/*  KARMA LOADING
+/*  GALE FINDER
 /*--------------------------------------------------*/
 
-karma-finder {
+gale-finder {
 	position: fixed;
 	top: 20%;
 	left: 20%;
@@ -174,11 +174,11 @@ karma-finder {
 	display: none;
 }
 
-karma-finder.show {
+gale-finder.show {
 	display: inline;
 }
 
-karma-finder div.finder .close {
+gale-finder div.finder .close {
 	position: fixed;
 	top: 18%;
 	right: 19%;
@@ -190,28 +190,28 @@ karma-finder div.finder .close {
 	cursor: pointer;
 }
 
-karma-finder div.finder .close md-icon {
+gale-finder div.finder .close md-icon {
 	color: #FFF;
 }
 
-karma-finder div.finder table {
+gale-finder div.finder table {
 	width: 100%;
 }
 
-karma-finder div.finder table td.icon {
+gale-finder div.finder table td.icon {
 	width: 25px;
 }
 
-karma-finder div.finder table td.icon md-icon {
+gale-finder div.finder table td.icon md-icon {
 	height: 36px;
 	width: 36px;
 }
 
-karma-finder div.finder table td.box {
+gale-finder div.finder table td.box {
 
 }
 
-karma-finder div.finder table td.box > input {
+gale-finder div.finder table td.box > input {
 	background: rgba(0, 0, 0, 0);
 	border: none;
 	width: 98%;
@@ -222,56 +222,56 @@ karma-finder div.finder table td.box > input {
 	line-height: 1.2em;
 }
 
-karma-finder div.finder table td.box{
+gale-finder div.finder table td.box{
 
 }
 
-karma-finder div.finder div.results{
+gale-finder div.finder div.results{
 	border-top: 1px solid rgb(232, 232, 232);
 	max-height: 400px;
 	overflow: auto;
 }
 
-karma-finder div.finder div.footer {
+gale-finder div.finder div.footer {
 	color: rgb(139, 139, 139);
 	font-style: italic;
 	float: right;
 	font-size: 0.8em;
 }
 
-karma-finder div.finder div.results > div{
+gale-finder div.finder div.results > div{
 	padding: 4px 8px;
 	color: rgb(112, 109, 108);
 	min-height: 45px;
 	border-radius: 4px;
 }
 
-finder div.finder div.results > div div.thumb {
+gale-finder div.finder div.results > div div.thumb {
 	height: 30px;
 	width: 30px;
 	margin: 0px;
 }
 
-karma-finder div.finder div.results > div div.name {
+gale-finder div.finder div.results > div div.name {
 	padding-left: 16px;
 }
 
-karma-finder div.finder div.results > div div.type {
+gale-finder div.finder div.results > div div.type {
 	font-style: italic;
 	color: rgb(148, 148, 148);
   	font-size: 0.8em;
 }
 
-karma-finder div.finder div.results > div.active,
-karma-finder div.finder div.results > div:hover {
+gale-finder div.finder div.results > div.active,
+gale-finder div.finder div.results > div:hover {
 	background-color: rgb(215, 215, 215);
 	cursor: pointer;
 }
 
 /*--------------------------------------------------*/
-/*  KARMA LOADING
+/*  GALE LOADING
 /*--------------------------------------------------*/
-karma-loading {
+gale-loading {
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -282,11 +282,11 @@ karma-loading {
 	display: none !important;
 }
 
-karma-loading.show {
+gale-loading.show {
 	display: flex !important
 }
 
-karma-loading > karma-center {
+gale-loading > gale-center {
 	background-color: rgb(255, 255, 255);
 	padding: 16px;
 	border-radius: 3px;
@@ -311,6 +311,6 @@ karma-loading > karma-center {
 	align-items: center;
 }
 
-karma-loading > karma-center > md-progress-circular {
+gale-loading > gale-center > md-progress-circular {
   margin: 0px 16px;
 }
