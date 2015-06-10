@@ -1,6 +1,6 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaFinder', function() {
+.directive('galeFinder', function() {
     return {
         restrict: 'E',
         scope: {
@@ -9,7 +9,7 @@ angular.module('core.components.karma')
             placeholder:    '@',    // Placeholder
             minLength:      '@'     // Search Minimun Length
         },
-        templateUrl: 'views/shared/finder.html',
+        templateUrl: 'bundles/core/js/components/gale-finder/templates/template.html',
         controller: function($scope, $element, $log , Finder){
             var self        = {};
             var minLength   = $scope.minLength||3;

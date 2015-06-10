@@ -1,4 +1,4 @@
-angular.module('core.services')
+angular.module('gale.services')
 
 .factory("$Timer", function( $timeout ) {
 

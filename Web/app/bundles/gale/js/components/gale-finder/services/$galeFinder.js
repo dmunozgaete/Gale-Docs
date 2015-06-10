@@ -1,6 +1,6 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.factory('$karmaFinder', function($q, $rootScope) {
+.factory('$galeFinder', function($q, $rootScope) {
     var self        = this;
     var _component  = {};
 

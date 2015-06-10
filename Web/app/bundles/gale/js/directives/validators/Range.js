@@ -1,7 +1,7 @@
 /**
  * Created by Administrador on 26/08/14.
  */
-angular.module('core.directives', [])
+angular.module('gale.directives', [])
 
 .directive('ngRange', function($log) {
     return {

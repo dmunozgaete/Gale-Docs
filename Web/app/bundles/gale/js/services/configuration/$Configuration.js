@@ -1,4 +1,4 @@
-angular.module('core.services.configuration')
+angular.module('gale.services.configuration')
 
 .service('$Configuration', function ($rootScope, $LocalStorage, GLOBAL_CONFIGURATION, ENVIRONMENT_CONFIGURATION) {
     var _values             = {};

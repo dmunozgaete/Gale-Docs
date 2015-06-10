@@ -1,16 +1,16 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaRow', function($compile, $interpolate) {
+.directive('galeRow', function($compile, $interpolate) {
     return {
         restrict: 'E',
-        require: '^karmaTable',
+        require: '^galeTable',
         controller: function($scope, $element, $attrs, $interpolate, $compile) {
               
         },
 		link: function (scope, element, attrs , ctrl) {
             angular.forEach(scope.$$formatters, function(formatter, $index){
 
-                var template = "<karma-cell class='karma-cell'>" + formatter.template + "</karma-cell>";
+                var template = "<gale-cell class='karma-cell'>" + formatter.template + "</gale-cell>";
                 var cell = $compile(template)(scope);
 
                 //PROPERTY: WIDTH

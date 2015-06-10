@@ -1,12 +1,12 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.factory('$karmaLoading', function($q, $rootScope) {
+.factory('$galeLoading', function($q, $rootScope) {
     var self        = this;
     var _component  = {};
 
     var _get = function(){
         if(!_component){
-            throw { message: 'no karma-loading has found' }
+            throw { message: 'no gale-loading has found' }
         }
         return _component;
     }

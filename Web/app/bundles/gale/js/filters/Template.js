@@ -1,4 +1,4 @@
-angular.module('core.filters')	
+angular.module('gale.filters')	
 
 .filter('template', function ($log,$interpolate) {
 	return function (template, parameters) {

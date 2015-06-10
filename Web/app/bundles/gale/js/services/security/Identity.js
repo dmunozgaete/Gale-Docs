@@ -1,4 +1,4 @@
-angular.module('core.services.security')
+angular.module('gale.services.security')
 
 .service('Identity', function ($rootScope, $Api, $LocalStorage, $Configuration) {
 

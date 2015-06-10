@@ -1,6 +1,6 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaCenter', function() {
+.directive('galeCenter', function() {
     return {
         restrict: 'E',
         require: '^karmaLoading',

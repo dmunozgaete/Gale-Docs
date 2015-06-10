@@ -1,12 +1,12 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaLoading', function() {
+.directive('galeLoading', function() {
     return {
         restrict: 'E',
         scope: {
             defaultMessage:     '@'     //Default Message
         },
-        templateUrl: 'bundles/core/js/components/karma-loading/templates/template.html',
+        templateUrl: 'bundles/core/js/components/gale-loading/templates/template.html',
         controller: function($scope, $element, $log , $karmaLoading){
             var self        = {};
 
@@ -18,7 +18,7 @@ angular.module('core.components.karma')
 
             self.show = function(message){
                 $element.addClass("show");
-                var elm = $element.find("karma-text");
+                var elm = $element.find("gale-text");
                 if(message){
                     elm.html(message);
                 }else{

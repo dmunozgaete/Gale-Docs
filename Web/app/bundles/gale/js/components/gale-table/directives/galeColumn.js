@@ -1,9 +1,9 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaColumn', function() {
+.directive('galeColumn', function() {
     return {
         restrict: 'E',
-        require: '^karmaTable',
+        require: '^galeTable',
         scope: {
     		title         : '@',    // Column Title
             property      : '@',    // Property to Bind
@@ -16,15 +16,15 @@ angular.module('core.components.karma')
            
         },
 
-        link: function (scope, element, attrs, karmaTable, $transclude) {
+        link: function (scope, element, attrs, galeTable, $transclude) {
             element.attr("flex", (scope.width ? scope.width :""));
-            element.addClass("karma-column");
+            element.addClass("gale-column");
             
             $transclude( scope, function( fragments ) {
                 //--------------------------------------------------------
                 //Try to get header element (CUSTOM)
                 var header = _.find(fragments,function(elm){
-                    return elm.nodeName.toLowerCase() == "karma-header"
+                    return elm.nodeName.toLowerCase() == "gale-header"
                 });
 
                 if(!header){
@@ -68,7 +68,7 @@ angular.module('core.components.karma')
                 //--------------------------------------------------------
                 //Try to get item element (CUSTOM)
                 var item = _.find(fragments,function(elm){
-                    return elm.nodeName.toLowerCase() == "karma-item"
+                    return elm.nodeName.toLowerCase() == "gale-item"
                 });
 
                 if(!item){
@@ -94,7 +94,7 @@ angular.module('core.components.karma')
                 }
 
                 //Append the item 
-                karmaTable.$$formatters.push({
+                galeTable.$$formatters.push({
                     property: scope.property,
                     width: scope.width,
                     align: scope.align,

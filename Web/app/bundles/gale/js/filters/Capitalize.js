@@ -1,4 +1,4 @@
-angular.module('core.filters')	
+angular.module('gale.filters')	
 
 .filter('capitalize', function() {
     return function(input, all) {

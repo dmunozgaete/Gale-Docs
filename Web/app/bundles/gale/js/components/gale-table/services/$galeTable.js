@@ -1,6 +1,6 @@
-angular.module('core.components.karma')
+angular.module('core.components')
 
-.factory('$karmaTable', function($q, $rootScope) {
+.factory('$galeTable', function($q, $rootScope) {
     var self        = this;
     var deferred    = $q.defer();
     var components  = {};
@@ -21,7 +21,7 @@ angular.module('core.components.karma')
         if(!identifier){
             var count = Object.keys(components).length;
             if(count == 0){
-                throw { message: 'no karmaTable has instantied in the view' }
+                throw { message: 'no galeTable has instantied in the view' }
             }
 
             if(count > 1){
@@ -33,7 +33,7 @@ angular.module('core.components.karma')
 
         var component = components[identifier];
         if(!component){
-            throw { message: 'no karmaTable has found with id {0}'.format([identifier]) }
+            throw { message: 'no galeTable has found with id {0}'.format([identifier]) }
         }
         return component;
     }

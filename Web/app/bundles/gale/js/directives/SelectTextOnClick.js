@@ -1,4 +1,4 @@
-angular.module('core.directives')
+angular.module('gale.directives')
 
 .directive('selectTextOnClick', function () {
     return {

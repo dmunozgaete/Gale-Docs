@@ -1,4 +1,4 @@
-angular.module('core.filters')	
+angular.module('gale.filters')	
 
 .filter('localize', function ($Localization, $log, $interpolate) {
 	return function (text, parameters) {

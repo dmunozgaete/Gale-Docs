@@ -1,4 +1,4 @@
-﻿angular.module('core.services')
+﻿angular.module('gale.services')
 
 .provider('$Api', function() {
 

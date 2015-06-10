@@ -1,10 +1,9 @@
 ﻿angular.module('App', [
     'ui.router' //NG ROUTE
     , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
-    , 'core' //VALENTYS SDK LIBRARY
+    , 'gale' //VALENTYS SDK LIBRARY
     , 'app' //CUSTOM PROJECT LIBRARY,
     , 'angularMoment' //ANGULAR MOMENT
-    , 'n3-pie-chart' //N3 PIE CHARTS
     , 'angularFileUpload' //Angular File Upload
 ])
 

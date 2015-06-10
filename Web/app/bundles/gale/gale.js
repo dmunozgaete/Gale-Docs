@@ -2,7 +2,7 @@
 //Package Bundle
 angular.$manifiest('gale', [
     'gale.directives',
-    'gale.components.karma',
+    'gale.components',
     'gale.filters',
     'gale.services',
     'gale.services.security',

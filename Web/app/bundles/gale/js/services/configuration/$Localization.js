@@ -1,4 +1,4 @@
-angular.module('core.services.configuration')
+angular.module('gale.services.configuration')
 
 .service('$Localization', function (RESOURCES) {
 

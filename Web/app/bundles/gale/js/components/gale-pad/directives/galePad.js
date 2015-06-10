@@ -1,6 +1,6 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaPad', function() {
+.directive('galePad', function() {
     return {
         restrict: 'E',
         scope: {

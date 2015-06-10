@@ -1,9 +1,9 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaItem', function() {
+.directive('galeItem', function() {
     return {
         restrict: 'E',
-        require: '^karmaTable',
+        require: '^galeTable',
         compile: function (element, attrs, $transclude) {
         },
         controller: function($scope, $element, $attrs, $interpolate, $compile) {

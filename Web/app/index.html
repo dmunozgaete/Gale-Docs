@@ -15,9 +15,7 @@
     <!-- injector:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="bundles/app/css/default.css">
-    <link rel="stylesheet" href="bundles/app/css/resiter.css">
-    <link rel="stylesheet" href="bundles/core/css/core.css">
-    <link rel="stylesheet" href="bundles/md-date-time/md-date-time.css">
+    <link rel="stylesheet" href="bundles/gale/css/gale.css">
     <!-- endinjector -->
 </head>
 
@@ -29,13 +27,10 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/lodash/lodash.js"></script>
-    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
     <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/angular-moment/angular-moment.js"></script>
     <script src="bower_components/angular-mocks/angular-mocks.js"></script>
-    <script src="bower_components/d3/d3.js"></script>
-    <script src="bower_components/n3-charts.pie-chart/dist/pie-chart.min.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/ng-file-upload/angular-file-upload.js"></script>
     <script src="bundles/bundles.js"></script>
     <script src="bundles/app/app.js"></script>
@@ -43,38 +38,35 @@
     <script src="bundles/app/js/filters/restricted.js"></script>
     <script src="bundles/app/js/mocks.js"></script>
     <script src="bundles/app/js/moment.es-CL.js"></script>
-    <script src="bundles/app/js/services/GoogleMapDrawingHelper.js"></script>
     <script src="bundles/app/js/services/UploadHelper.js"></script>
-    <script src="bundles/core/core.js"></script>
-    <script src="bundles/core/js/components/karma-content/directives/karmaContent.js"></script>
-    <script src="bundles/core/js/components/karma-finder/directives/karmaFinder.js"></script>
-    <script src="bundles/core/js/components/karma-finder/services/$karmaFinder.js"></script>
-    <script src="bundles/core/js/components/karma-loading/directives/karmaCenter.js"></script>
-    <script src="bundles/core/js/components/karma-loading/directives/karmaLoading.js"></script>
-    <script src="bundles/core/js/components/karma-loading/services/$karmaLoading.js"></script>
-    <script src="bundles/core/js/components/karma-pad/directives/karmaPad.js"></script>
-    <script src="bundles/core/js/components/karma-page/directives/karmaPage.js"></script>
-    <script src="bundles/core/js/components/karma-table/directives/karmaCell.js"></script>
-    <script src="bundles/core/js/components/karma-table/directives/karmaColumn.js"></script>
-    <script src="bundles/core/js/components/karma-table/directives/karmaItem.js"></script>
-    <script src="bundles/core/js/components/karma-table/directives/karmaRow.js"></script>
-    <script src="bundles/core/js/components/karma-table/directives/karmaTable.js"></script>
-    <script src="bundles/core/js/components/karma-table/services/$karmaTable.js"></script>
-    <script src="bundles/core/js/directives/SelectTextOnClick.js"></script>
-    <script src="bundles/core/js/directives/ToNumberOnBlur.js"></script>
-    <script src="bundles/core/js/directives/validators/Range.js"></script>
-    <script src="bundles/core/js/directives/validators/Rut.js"></script>
-    <script src="bundles/core/js/filters/Capitalize.js"></script>
-    <script src="bundles/core/js/filters/Localize.js"></script>
-    <script src="bundles/core/js/filters/Template.js"></script>
-    <script src="bundles/core/js/services/configuration/$Configuration.js"></script>
-    <script src="bundles/core/js/services/configuration/$Localization.js"></script>
-    <script src="bundles/core/js/services/rest/$Api.js"></script>
-    <script src="bundles/core/js/services/rest/ODataBuilder.js"></script>
-    <script src="bundles/core/js/services/security/Identity.js"></script>
-    <script src="bundles/core/js/services/storage/$LocalStorage.js"></script>
-    <script src="bundles/core/js/services/utility/$Timer.js"></script>
-    <script src="bundles/md-date-time/md-date-time.js"></script>
+    <script src="bundles/gale/gale.js"></script>
+    <script src="bundles/gale/js/components/gale-content/directives/galeContent.js"></script>
+    <script src="bundles/gale/js/components/gale-finder/directives/galeFinder.js"></script>
+    <script src="bundles/gale/js/components/gale-finder/services/$galeFinder.js"></script>
+    <script src="bundles/gale/js/components/gale-loading/directives/galeCenter.js"></script>
+    <script src="bundles/gale/js/components/gale-loading/directives/galeLoading.js"></script>
+    <script src="bundles/gale/js/components/gale-loading/services/$galeLoading.js"></script>
+    <script src="bundles/gale/js/components/gale-pad/directives/galePad.js"></script>
+    <script src="bundles/gale/js/components/gale-page/directives/galePage.js"></script>
+    <script src="bundles/gale/js/components/gale-table/directives/galeColumn.js"></script>
+    <script src="bundles/gale/js/components/gale-table/directives/galeItem.js"></script>
+    <script src="bundles/gale/js/components/gale-table/directives/galeRow.js"></script>
+    <script src="bundles/gale/js/components/gale-table/directives/galeTable.js"></script>
+    <script src="bundles/gale/js/components/gale-table/services/$karmaTable.js"></script>
+    <script src="bundles/gale/js/directives/SelectTextOnClick.js"></script>
+    <script src="bundles/gale/js/directives/ToNumberOnBlur.js"></script>
+    <script src="bundles/gale/js/directives/validators/Range.js"></script>
+    <script src="bundles/gale/js/directives/validators/Rut.js"></script>
+    <script src="bundles/gale/js/filters/Capitalize.js"></script>
+    <script src="bundles/gale/js/filters/Localize.js"></script>
+    <script src="bundles/gale/js/filters/Template.js"></script>
+    <script src="bundles/gale/js/services/configuration/$Configuration.js"></script>
+    <script src="bundles/gale/js/services/configuration/$Localization.js"></script>
+    <script src="bundles/gale/js/services/rest/$Api.js"></script>
+    <script src="bundles/gale/js/services/rest/ODataBuilder.js"></script>
+    <script src="bundles/gale/js/services/security/Identity.js"></script>
+    <script src="bundles/gale/js/services/storage/$LocalStorage.js"></script>
+    <script src="bundles/gale/js/services/utility/$Timer.js"></script>
     <script src="controllers/core/account/Administration_UserCreateController.js"></script>
     <script src="controllers/core/account/Administration_UserListController.js"></script>
     <script src="controllers/core/account/Administration_UserUpdateController.js"></script>

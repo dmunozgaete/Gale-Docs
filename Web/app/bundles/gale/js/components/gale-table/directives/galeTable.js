@@ -1,6 +1,6 @@
-angular.module('core.components.karma')
+angular.module('gale.components')
 
-.directive('karmaTable', function() {
+.directive('galeTable', function() {
     return {
         restrict: 'E',
         scope: {
@@ -10,16 +10,11 @@ angular.module('core.components.karma')
             showHeader: '@',    // Show Header in Table or Not
             rowClick:   '&',    // Row Click Handler
             cellClick:  '&',    // Cell Click Handler
-            name:       '@'     // Karma Table Unique ID
+            name:       '@'     // gale Table Unique ID
         },
         transclude: true,
-        template:   '<karma-header class="karma-header" layout="row" layout-align="start center" ng-transclude>'
-                    + '</karma-header>'
-                    + '<karma-body class="karma-body">'
-                        + '<karma-row layout="row" class="karma-row" ng-click="onRowClick(item)" layout-align="start center" ng-repeat="item in source" x="{{$index}}" formatters="$$formatters" item="item">'
-                        + '</karma-row>'
-                    + '</karma-body>',
-        controller: function($scope, $element, $interpolate, $compile, $Api, $karmaTable, ODataBuilder){
+        templateUrl: 'bundles/core/js/components/gale-table/templates/template.html',
+        controller: function($scope, $element, $interpolate, $compile, $Api, $galeTable, ODataBuilder){
             this.$$formatters   = $scope.$$formatters = [];                 //Lazy Load Instantation
             var self            = this;                                     //Auto reference
             var unique_id       = ($scope.name||(new Date()).getTime());    //Component Unique ID
@@ -67,9 +62,9 @@ angular.module('core.components.karma')
             
             //------------------------------------------------------------------------------
             //Register for Service Interaction
-            $karmaTable.$$register(self, unique_id);   
+            $galeTable.$$register(self, unique_id);   
             
-            //Retrieve the Unique Id for the Karma Table
+            //Retrieve the Unique Id for the gale Table
             self.getUniqueId = function(){
                 return unique_id;
             }
@@ -113,7 +108,7 @@ angular.module('core.components.karma')
 
             //Garbage Collector Destroy
             $scope.$on('$destroy', function() {
-                $karmaTable.$$unregister(self, unique_id);      //UnRegister for Service Interaction
+                $galeTable.$$unregister(self, unique_id);      //UnRegister for Service Interaction
             });
 
         },
@@ -123,12 +118,12 @@ angular.module('core.components.karma')
             var rowClickHandler = scope.rowClick();
 
             if(scope.showHeader && !scope.$eval(scope.showHeader)) {
-                element.find("karma-header").css("display", "none");
+                element.find("gale-header").css("display", "none");
             }
 
-            //General Clases on Karma Table
+            //General Clases on gale Table
             element.attr("layout-fill","");
-            element.addClass("karma-table");
+            element.addClass("gale-table");
 
             //Watch for Changes
             scope.$watch('endpoint', function(value) {

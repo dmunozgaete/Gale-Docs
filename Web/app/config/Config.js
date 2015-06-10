@@ -1,4 +1,4 @@
-angular.module("core.services.configuration")
+angular.module("gale.services.configuration")
 
 .constant("GLOBAL_CONFIGURATION", {
 
@@ -7,11 +7,7 @@ angular.module("core.services.configuration")
 		author: "David Antonio Muñoz Gaete",
 		environment: "qas",
 		language: "es",
-		name: "Sistema de Monitoreo Digital de Servicios"
-	},
-
-	customHeaders: {
-		businessUnit: 'X-Resiter-BusinessUnit'
+		name: "Gale Starter Project"
 	},
 	
     //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
