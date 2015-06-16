@@ -6,8 +6,8 @@ angular.module('gale.components')
         scope: {
             defaultMessage:     '@'     //Default Message
         },
-        templateUrl: 'bundles/core/js/components/gale-loading/templates/template.html',
-        controller: function($scope, $element, $log , $karmaLoading){
+        templateUrl: 'bundles/gale/js/components/gale-loading/templates/template.html',
+        controller: function($scope, $element, $log , $galeLoading){
             var self        = {};
 
             //-------------------------------------------------
@@ -29,11 +29,11 @@ angular.module('gale.components')
            
             //-------------------------------------------------
             //Register for Service Interaction
-            $karmaLoading.$$register(self);  
+            $galeLoading.$$register(self);  
 
             //Garbage Collector Destroy
             $scope.$on('$destroy', function() {
-                $karmaLoading.$$unregister();      //UnRegister for Service Interaction
+                $galeLoading.$$unregister();      //UnRegister for Service Interaction
             });
             //-------------------------------------------------
         },

@@ -1,0 +1,85 @@
+﻿<section layout="row" flex>
+
+    <!-- SIDENAV -->
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 " md-component-id="left" md-is-locked-open="true">
+
+        <div layout="column" class="logo" layout-align="center center">
+            <div flex>
+                <img ng-src="bundles/app/css/images/logo.png" />
+            </div>
+            <span class="title">
+                {{config.application.name}}
+            </span>
+        </div>
+
+        <md-content>
+            <md-divider>
+                Versión Actual: <strong>{{config.application.version}}</strong>
+            </md-divider>
+            <!-- Section Item's -->
+            <md-list>
+                <md-list-item ng-click="navigate('app.home-introduction', 'Gale > Introducción')">
+                    <p> Introducción </p>
+                    <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                </md-list-item>
+            </md-list>
+            <md-list>
+                <md-list-item ng-click="navigate('app.home-installation', 'Gale > Instalación')">
+                    <p> Instalación </p>
+                    <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                </md-list-item>
+            </md-list>
+            <md-divider>
+                Referencias API
+            </md-divider>
+
+            <!-- Menu  -->
+            <md-list ng-repeat="section in config.menu">
+
+                <!-- Section -->
+                <md-list ng-click="toggleMenu(section);" class="section" ng-class="{'toggled' : section.open}">
+                    <md-list-item>
+                        <p> {{section.label}} </p>
+                        <md-icon class="chevron" md-svg-src="{{ 'navigation' | icon: 'ic_expand_more_24px' }}"></md-icon>
+                    </md-list-item>
+                </md-list>
+
+                <!-- Section Item's -->
+                <div ng-show="section.open == true" ng-animate="'animate'">
+                    <md-list class="items">
+                        <md-list-item ng-click="navigateTo(section, item)" ng-repeat="item in section.items | orderBy:'+'">
+                            <p> {{item}} </p>
+                            <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                        </md-list-item>
+                    </md-list>
+                </div>
+
+            </md-list>
+
+        </md-content>
+
+    </md-sidenav>
+
+    <!-- CONTENT -->
+    <div layout="column" layout-fill layout-align="top center">
+
+        <md-whiteframe class="md-whiteframe-z2 doc-title">
+            
+            <h2>{{config.selected_menu}}</h2>
+            
+        </md-whiteframe>
+
+        <md-content ui-view name="content" ng-show="!config.loading" layout-padding>
+        </md-content>
+
+
+        <gale-loading> 
+            <gale-text>
+                Cargando Información
+            </gale-text>
+        </gale-loading>
+        
+
+    </div>
+
+</section>

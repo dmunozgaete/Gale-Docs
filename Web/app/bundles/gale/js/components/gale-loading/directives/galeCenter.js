@@ -3,7 +3,7 @@ angular.module('gale.components')
 .directive('galeCenter', function() {
     return {
         restrict: 'E',
-        require: '^karmaLoading',
+        require: '^galeLoading',
         scope: {
         },
         controller: function($scope, $element, $log ){

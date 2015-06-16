@@ -22,8 +22,8 @@ angular.module('gale.components')
     };
 
     //Manual Bootstrapp
-    self.show = function(){
-        return _get().show();
+    self.show = function(message){
+        return _get().show(message);
     }
 
     self.hide = function(){

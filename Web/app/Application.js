@@ -2,190 +2,82 @@
     'ui.router' //NG ROUTE
     , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
     , 'gale' //VALENTYS SDK LIBRARY
-    , 'app' //CUSTOM PROJECT LIBRARY,
-    , 'angularMoment' //ANGULAR MOMENT
-    , 'angularFileUpload' //Angular File Upload
+    , 'app' //CUSTOM PROJECT LIBRARY
 ])
-
 .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
     $log.debug("application is running!!");
-
-    //RECOVERY AND CREATING PROCESS
-    if ($location.path().indexOf("/account/password/") >= 0) {
-        return;
-    }
-
-    //RESTRICT ACCESS TO LOGIN USER'S ONLY
-    $rootScope.$on('$stateChangeStart', function(event, toState, current) {
-
-
-        if (toState.name !== "login" && !Identity.isAuthenticated()) {
-            $state.go('login');
-            event.preventDefault();
-        }
-
-        if (typeof(current) !== 'undefined') {
-            $templateCache.remove(current.templateUrl);
-        }
-
-    });
-
-    //REDIRECT TO DASHBOARD WHEN IS AUTHENTICATED
-    if (Identity.isAuthenticated()) {
-        $location.path('/app/home');
-
-    } else {
-        $location.path('/login');
-    }
-
-    //CALL WHEN IDENTITY HAS LOGOUT
-    $rootScope.$on('Identity.onLogOut', function() {
-        $state.go('login');
-    });
-
-    //REGISTER EVENT ON $API CALL's
-    $Api.$on("beforeSend", function(headers) {
-
-        //SET AUTHORIZATION HEADER IF USER IS AUTHENTICATED
-        if (Identity.isAuthenticated()) {
-            var jwt = Identity.token();
-            headers['Authorization'] = jwt.token_type + " " + jwt.access_token;
-        }
-    });
-
+    $location.url("/demo/home/introduction");
 })
-
 .config(function($mdThemingProvider) {
     $mdThemingProvider.theme('default')
-        .primaryPalette('deep-orange')
-        .accentPalette('pink')
+        .primaryPalette('blue')
+        .accentPalette('orange')
         .warnPalette('red');
-
-    //For Exceptions UI's
-    $mdThemingProvider.theme('exception')
-        .primaryPalette('red')
 })
-
 //API EndPoint Configuration
 .config(function($ApiProvider, ENVIRONMENT_CONFIGURATION) {
     $ApiProvider.setEndpoint(ENVIRONMENT_CONFIGURATION.endpoint)
 })
-
 //DECORATE $LOG
 .config(function($provide) {
-
     //------------------------------------------------------------------------
     //DECORATE ERROR
     $provide.decorator('$log', function($delegate, $injector) {
         // Save the original $log.debug()
         var errorFn = $delegate.error;
-
         $delegate.error = function() {
             //BroadCast UnhandledException
             var rScope = $injector.get('$rootScope');
             if (rScope) {
                 rScope.$broadcast('$log.unhandledException', arguments);
             }
-
             var env = $injector.get('ENVIRONMENT_CONFIGURATION');
             if (env.debugging) {
-
                 errorFn.apply(null, arguments)
-
             }
         };
-
         return $delegate;
     });
     //------------------------------------------------------------------------
-
     //------------------------------------------------------------------------
     $provide.decorator('mdSidenavDirective', function($delegate, $controller, $rootScope) {
         var directive = $delegate[0];
         var compile = directive.compile;
-
         directive.compile = function(tElement, tAttrs) {
             var link = compile.apply(this, arguments);
             return function(scope, elem, attrs) {
-
                 scope.$watch('isOpen', function(val) {
-
                     if (!angular.isUndefined(val)) {
                         $rootScope.$broadcast('$mdSideNavChange',
                             tAttrs.mdComponentId,
                             scope.isOpen
                         );
-
                     }
-
                 });
-
                 link.apply(this, arguments);
             };
         };
-
         return $delegate;
     });
     //------------------------------------------------------------------------
 })
-
-
 .config(function($stateProvider, $urlRouterProvider) {
-
     $stateProvider
+        .state('app', {
+        url: "/demo",
+        abstract: true,
+        templateUrl: "views/shared/2-columns.html",
+        controller: "2ColumnsController"
+    })
 
     // ---------------------------------------------
-    // GALE: ACCOUNT
+    // GALE: Services
     // ---------------------------------------------
-    .state('account-authenticate', {
-        url: '/account/authenticate',
-        templateUrl: 'views/security/login.html',
-        controller: 'Gale_AccountLogInController'
-    })
-
-    .state('account-logout', {
-        url: '/account/logOut',
-        controller: 'Gale_AccountLogOutController'
-    })
-
-    .state('account-password-create', {
-        url: '/account/password/create/:token',
-        templateUrl: 'views/account/password-create.html',
-        controller: 'Gale_AccountCreateController'
-    })
-
-    .state('account-password-recovery', {
-        url: '/account/password/recovery/:token',
-        templateUrl: 'views/account/password-recovery.html',
-        controller: 'Gale_AccountCreateController'
-    })
-
-    .state('app.account', {
-        url: '/account/',
+    .state('app.services-$api', {
+        url: '/services/$api',
         views: {
             content: {
-                templateUrl: 'views/administration/user/list.html',
-                controller: 'Gale_AccountListController'
-            }
-        }
-    })
-
-    .state('app.account-create', {
-        url: '/account/create',
-        views: {
-            content: {
-                templateUrl: 'views/administration/user/create.html',
-                controller: 'Gale_AccountCreateController'
-            }
-        }
-    })
-
-    .state('app.account-update', {
-        url: '/account/update/:token',
-        views: {
-            content: {
-                templateUrl: 'views/administration/user/update.html',
-                controller: 'Gale_AccountUpdateController'
+                templateUrl: 'views/services/$api.html',
             }
         }
     })
@@ -208,41 +100,17 @@
             }
         }
     })
-
-    // ---------------------------------------------
-    // BPM
-    // ---------------------------------------------
-
-    .state('app.bpm-inbox', {
-        url: '/bpm/inbox/',
-        views: {
-            content: {
-                templateUrl: 'views/administration/bpm/inbox.html',
-                controller: 'Administration_BpmInboxController'
-            }
-        }
-    })
-
-    .state('app.bpm-notification', {
-        url: '/bpm/notification/',
-        views: {
-            content: {
-                templateUrl: 'views/administration/bpm/notification.html',
-                controller: 'Administration_BpmNotificationController'
-            }
-        }
-    })
-
-
     // ---------------------------------------------
     // GENERALES
     // ---------------------------------------------
-
-    .state('app.home', {
-        url: '/home'
+    .state('app.home-introduction', {
+        url: '/home/introduction',
+        views: {
+            content: {
+                templateUrl: 'views/home/index.html',
+            }
+        }
     })
-
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise("/error/404");
-
 });

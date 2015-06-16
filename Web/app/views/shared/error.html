@@ -1,0 +1,29 @@
+<section layout="row" flex>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 " md-component-id="left" md-is-locked-open="true">
+
+        <div layout="column" class="logo" layout-align="center center">
+            <div flex>
+                <img ng-src="bundles/app/css/images/logo-blanco.png" />
+            </div>
+            <span class="title">
+            	Grupo Valentys
+            </span>
+        </div>
+
+        <md-content>
+
+            <md-list>
+                <md-list-item ng-click="navigateTo(setting.extraScreen, $event)">
+                    <p> Lista </p>
+                    <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                </md-list-item>
+            </md-list>
+
+        </md-content>
+
+    </md-sidenav>
+
+    <div ui-view name="content" layout="column" layout-fill layout-align="top center">
+    </div>
+
+</section>

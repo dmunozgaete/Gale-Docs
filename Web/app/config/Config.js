@@ -7,7 +7,7 @@ angular.module("gale.services.configuration")
 		author: "David Antonio Muñoz Gaete",
 		environment: "qas",
 		language: "es",
-		name: "Gale Starter Project"
+		name: "Gale Docs"
 	},
 	
     //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
