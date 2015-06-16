@@ -17,51 +17,7 @@ angular.module('app.controllers')
         $scope.config = {
             application: $Configuration.get("application"),
             selected_menu: "Gale  > Introducción",
-            menu: [{
-                "label": "Servicios",
-                "name": "services",
-                "open": false,
-                "items": [
-                    "$Configuration",
-                    "$Localization",
-                    "$Api",
-                    "$LocalStorage",
-                    "$Timer",
-                    "ODataBuilder",
-                    "Identity"
-                ]
-            }, {
-                "label": "Componentes",
-                "name": "components",
-                "open": false,
-                "items": [
-                    "gale-content",
-                    "gale-finder",
-                    "gale-loading",
-                    "gale-pad",
-                    "gale-page",
-                    "gale-table"
-                ]
-            }, {
-                "label": "Filtros",
-                "name": "filters",
-                "open": false,
-                "items": [
-                    "capitalize",
-                    "localize",
-                    "template"
-                ]
-            }, {
-                "label": "Directivas",
-                "name": "directives",
-                "open": false,
-                "items": [
-                    "range",
-                    "rut",
-                    "select-text-on-click",
-                    "to-number-on-blur"
-                ]
-            }]
+            menu: $Configuration.get("menu_items")
         };
         //------------------------------------------------------------------------------------
         // Gale Communication - Change Page Title
@@ -148,13 +104,13 @@ angular.module('app.controllers')
         //------------------------------------------------------------------------------------
         // CONTENT - LOADING (Show Loadig Circular While Loading Child View's)
         $scope.$on('$viewContentLoading', function(event) {
-            $galeLoading.show();
+            $scope.config.loading= true;
         });
         // CONTENT - LOADED (Hie Loadig Circular)
         $scope.$on('$viewContentLoaded', function(event) {
-            //$timeout(function() {
-            $galeLoading.hide();
-            //}, 300);
+            $timeout(function() {
+                $scope.config.loading= false;
+            }, 300);
         });
         //------------------------------------------------------------------------------------
     });

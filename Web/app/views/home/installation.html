@@ -1,0 +1,37 @@
+<p>
+----------------------------------------------------------------------------------------------
+## Instalando las Dependencias para el Ambiente de Desarrollo:
+
+_(Omitir este paso si ya has configurado previamente un ambiente de desarrollo para otro proyecto)._
+
+Antes de comenzar a configurar el ambiente de desarrollo son necesarias las siguientes dependencias (En el orden presentado):
+
+1. API
+      * [Microsoft .NET 4.5](http://www.microsoft.com/es-cl/download/details.aspx?id=30653): Framework de Trabajo .NET y principal dependencia para el ambiente de desarrollo (Visual Studio).
+
+      * [SQL Server 2008](http://www.microsoft.com/es-cl/download/details.aspx?id=29062): Motor de base de datos , que usará la API Restful.
+
+2. Web
+      * [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git): Control de versiones para nuestro proyecto... solo con esa descripción basta...
+
+      * [Node.js](https://nodejs.org/): Administrador de paquetes , y contiene las funcionalidades mas importante para la optimización de los tiempos de desarrollo. (Descargar desde el [enlace](https://nodejs.org/))
+
+      * [Grunt](http://gruntjs.com/): Nuestro principal caballito de batalla en la __automatización de los procesos__ monótonos como la reducción , unificación y ofuscación de archivos, así como también la de proveernos en una sola linea la configuración y creación del servidor web que usaremos para el desarrollo.
+
+      * [Bower](http://bower.io/): El administrador de tareas de nuestra aplicación web  __AngularJS__ , y que nos permitirá administrar las librerías (__bundles__) que necesitemos usar en la creación de nuestra aplicación , _(google-map, angular-material,angular-ui-route, etc., en resumen ya no necesitaremos buscar los componentes o librerías externas nunca mas)_
+
+```shell
+#Instalamos Grunt de forma global
+npm install -g grunt-cli
+
+#Hacemos lo mismo con Bower
+npm install -g bower
+
+#Actualizamos los paquetes de NodeJS
+npm update
+
+#Actualzamos los paquetes de Bower
+bower update
+```
+
+</p>

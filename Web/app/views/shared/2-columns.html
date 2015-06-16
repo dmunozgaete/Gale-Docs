@@ -64,21 +64,18 @@
     <div layout="column" layout-fill layout-align="top center">
 
         <md-whiteframe class="md-whiteframe-z2 doc-title">
-            
+
             <h2>{{config.selected_menu}}</h2>
-            
+
         </md-whiteframe>
 
         <md-content ui-view name="content" ng-show="!config.loading" layout-padding>
         </md-content>
 
-
-        <gale-loading> 
-            <gale-text>
-                Cargando Información
-            </gale-text>
-        </gale-loading>
-        
+        <md-content ng-show="config.loading" layout-margin layout layout-align="center center">
+            <md-progress-circular class="md-hue-2" md-mode="indeterminate">
+            </md-progress-circular>
+        </md-content>
 
     </div>
 
