@@ -3,7 +3,7 @@
         , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
         , 'gale' //VALENTYS SDK LIBRARY
         , 'app' //CUSTOM PROJECT LIBRARY
-        , 'btford.markdown'
+        , 'hljs'   //HIGHLIGHT
     ])
     .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
         $log.debug("application is running!!");

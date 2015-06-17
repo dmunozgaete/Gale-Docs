@@ -1,6 +1,30 @@
+/*
+    -----------------------------
+    GLOBALS
+    -----------------------------
+ */
+a {
+  color: #0D47A1;
+  text-decoration: none; }
+
+.pointer {
+  cursor: pointer; }
+
+.logo div {
+  width: 90%;
+  max-width: 120px;
+  padding-top: 32px; }
+  .logo div img {
+    width: 100%; }
+.logo span {
+  color: #fff;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  font-size: 1.4em; }
+
 /*  
   -----------------------------
-  GENERAL STYLES
+  SIDENAV STYLE
   -----------------------------
  */
 .md-sidenav-left {
@@ -37,32 +61,32 @@
     color: #5071A5;
     padding: 8px 16px; }
 
+/*  
+  -----------------------------
+  LAYOUT
+  -----------------------------
+ */
 section .doc-title {
   background-color: #F4F2F2;
-  color: #525252; }
+  color: #525252;
+  min-height: 63px; }
   section .doc-title h2 {
     font-size: 1.4em;
     font-weight: normal;
     padding-left: 16px; }
+section ul.doc-list {
+  padding-bottom: 16px; }
+  section ul.doc-list li {
+    font-size: 1em;
+    line-height: 1.6em;
+    text-align: justify;
+    padding-bottom: 4px; }
+  section ul.doc-list a {
+    font-weight: bold; }
 section md-content[name=content] {
-  margin-top: 8px;
-  padding-left: 16px; }
+  margin-top: 16px;
+  padding: 0px 16px 16px 16px; }
   section md-content[name=content] p {
     line-height: 1.6em; }
-
-.pointer {
-  cursor: pointer; }
-
-.logo div {
-  width: 90%;
-  max-width: 120px;
-  padding-top: 32px; }
-  .logo div img {
-    width: 100%; }
-.logo span {
-  color: #fff;
-  padding-top: 8px;
-  padding-bottom: 16px;
-  font-size: 1.4em; }
 
 /*# sourceMappingURL=default.css.map */

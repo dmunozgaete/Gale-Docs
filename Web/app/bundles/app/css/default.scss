@@ -1,9 +1,40 @@
 $primary_color: #0D47A1;
 $primary_active_color: #0B3F8E;
 $primary_hover_color: #033889;
+/*
+    -----------------------------
+    GLOBALS
+    -----------------------------
+ */
+
+a {
+    color: #0D47A1;
+    text-decoration: none;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.logo {
+    div {
+        width: 90%;
+        max-width: 120px;
+        padding-top: 32px;
+        img {
+            width: 100%;
+        }
+    }
+    span {
+        color: #fff;
+        padding-top: 8px;
+        padding-bottom: 16px;
+        font-size: 1.4em;
+    }
+}
 /*  
   -----------------------------
-  GENERAL STYLES
+  SIDENAV STYLE
   -----------------------------
  */
 
@@ -31,7 +62,7 @@ $primary_hover_color: #033889;
         }
     }
     .section:focus {
-    	outline: none;
+        outline: none;
     }
     md-list {
         padding: 0px;
@@ -53,50 +84,47 @@ $primary_hover_color: #033889;
         }
     }
     md-divider {
-		color: #5071A5;
-		padding: 8px 16px;
+        color: #5071A5;
+        padding: 8px 16px;
     }
 }
+/*  
+  -----------------------------
+  LAYOUT
+  -----------------------------
+ */
 
 section {
     .doc-title {
         background-color: #F4F2F2;
         color: #525252;
-        
+        min-height: 63px;
         h2 {
             font-size: 1.4em;
             font-weight: normal;
             padding-left: 16px;
         }
     }
-    md-content[name=content] {
-        margin-top: 8px;
-        padding-left: 16px;
 
-        p {
-			line-height: 1.6em;
-        }
-    }
-}
-
-.pointer {
-    cursor: pointer;
-}
-
-.logo {
-    div {
-        width: 90%;
-        max-width: 120px;
-        padding-top: 32px;
-        img {
-            width: 100%;
-        }
-    }
-    span {
-        color: #fff;
-        padding-top: 8px;
+    ul.doc-list {
         padding-bottom: 16px;
-        font-size: 1.4em;
+        li {
+            font-size: 1em;
+            line-height: 1.6em;
+            text-align: justify;
+            padding-bottom: 4px;
+        }
+        a {
+            font-weight: bold;
+        }
+    }
+
+    md-content[name=content] {
+        margin-top: 16px;
+        padding: 0px 16px 16px 16px;
+        p {
+            line-height: 1.6em;
+        }
     }
 }
 
