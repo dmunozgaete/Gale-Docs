@@ -90,7 +90,7 @@ a {
 }
 /*  
   -----------------------------
-  LAYOUT
+  LAYOUT (DOC'S)
   -----------------------------
  */
 
@@ -105,7 +105,6 @@ section {
             padding-left: 16px;
         }
     }
-
     ul.doc-list {
         padding-bottom: 16px;
         li {
@@ -118,13 +117,42 @@ section {
             font-weight: bold;
         }
     }
-
     md-content[name=content] {
         margin-top: 16px;
         padding: 0px 16px 16px 16px;
         p {
             line-height: 1.6em;
+            text-align: justify;
         }
+    }
+    code:not(.hljs) {
+        color: #106CC8;
+        margin-left: 1px;
+        margin-right: 1px;
+        -webkit-font-smoothing: auto;
+        padding: 0.125em 0.35em;
+        border-radius: 2px;
+        font-size: 1.2em;
+    }
+    code {
+        background: rgba(0, 0, 0, 0.065);
+    }
+    pre,
+    code {
+        margin: 0;
+        padding: 0;
+        overflow-wrap: break-word;
+    }
+    /* High Light JS */
+    hljs:before {
+        content: attr(language);
+        text-transform: uppercase;
+        display: block;
+        background: $primary_color;
+        color: #FFF;
+        line-height: 48px;
+        padding: 0 16px;
+        border-radius: 2px 2px 0 0;
     }
 }
 

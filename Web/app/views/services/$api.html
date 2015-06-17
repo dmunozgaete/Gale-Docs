@@ -1,1 +1,47 @@
-$api
+<h2 class="md-display-1">Referencia API</h2>
+
+<p>
+	El servicio <code>$Api</code> es el encargado de conectar con 
+	nuestra API en el lado del servidor y utiliza el servicio base 
+	<a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a>, 
+	tiene como principal objetivo ser el conector, entre ambos lados del 
+	proyecto permitiendo crear, leer, actualizar y eliminar elementos a traves del 
+	modelo RESTful en nuestro servidor.
+
+	<br />
+	<br />
+
+	Una de las funcionalidades extras que tiene el servicio , permite securitizar un canal
+	de comuninación con el servidor a traves de 
+	<a href="http://jwt.io/" target="_blank">JWT</a>.
+	
+	<br />
+
+	<h2>Uso Basico</h2>
+	<hljs language="js">
+app.controller('MyController', function($scope, $Api) {
+
+  var method = 'GET';
+  var endpoint = '/Administration/Account';
+  var parameters = {
+    username: 'dmunoz@valentys.com'
+  };
+  var customHeaders = {
+    'content-type': 'application/json'
+  };
+
+  //Ejecutamos la llamada al servidor
+  $Api.invoke(method, endpoint , parameters, customHeaders)
+  .success(function(data, status, headers, config){
+    //Respuesta OK
+  })
+  .error(function(data, status, headers, config){
+    //Error
+  });
+
+});
+	</hljs>
+
+
+
+</p>

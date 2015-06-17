@@ -63,30 +63,57 @@ a {
 
 /*  
   -----------------------------
-  LAYOUT
+  LAYOUT (DOC'S)
   -----------------------------
  */
-section .doc-title {
-  background-color: #F4F2F2;
-  color: #525252;
-  min-height: 63px; }
-  section .doc-title h2 {
-    font-size: 1.4em;
-    font-weight: normal;
-    padding-left: 16px; }
-section ul.doc-list {
-  padding-bottom: 16px; }
-  section ul.doc-list li {
-    font-size: 1em;
-    line-height: 1.6em;
-    text-align: justify;
-    padding-bottom: 4px; }
-  section ul.doc-list a {
-    font-weight: bold; }
-section md-content[name=content] {
-  margin-top: 16px;
-  padding: 0px 16px 16px 16px; }
-  section md-content[name=content] p {
-    line-height: 1.6em; }
+section {
+  /* High Light JS */ }
+  section .doc-title {
+    background-color: #F4F2F2;
+    color: #525252;
+    min-height: 63px; }
+    section .doc-title h2 {
+      font-size: 1.4em;
+      font-weight: normal;
+      padding-left: 16px; }
+  section ul.doc-list {
+    padding-bottom: 16px; }
+    section ul.doc-list li {
+      font-size: 1em;
+      line-height: 1.6em;
+      text-align: justify;
+      padding-bottom: 4px; }
+    section ul.doc-list a {
+      font-weight: bold; }
+  section md-content[name=content] {
+    margin-top: 16px;
+    padding: 0px 16px 16px 16px; }
+    section md-content[name=content] p {
+      line-height: 1.6em;
+      text-align: justify; }
+  section code:not(.hljs) {
+    color: #106CC8;
+    margin-left: 1px;
+    margin-right: 1px;
+    -webkit-font-smoothing: auto;
+    padding: 0.125em 0.35em;
+    border-radius: 2px;
+    font-size: 1.2em; }
+  section code {
+    background: rgba(0, 0, 0, 0.065); }
+  section pre,
+  section code {
+    margin: 0;
+    padding: 0;
+    overflow-wrap: break-word; }
+  section hljs:before {
+    content: attr(language);
+    text-transform: uppercase;
+    display: block;
+    background: #0D47A1;
+    color: #FFF;
+    line-height: 48px;
+    padding: 0 16px;
+    border-radius: 2px 2px 0 0; }
 
 /*# sourceMappingURL=default.css.map */
