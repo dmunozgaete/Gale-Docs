@@ -142,18 +142,6 @@ section {
         padding: 0;
         overflow-wrap: break-word;
     }
-    /* High Light JS */
-    
-    hljs:before {
-        content: attr(language);
-        text-transform: uppercase;
-        display: block;
-        background: $primary_color;
-        color: #FFF;
-        line-height: 48px;
-        padding: 0 16px;
-        border-radius: 2px 2px 0 0;
-    }
     .api-param-table {
         padding: 0px 0px 16px 0px;
         table {
@@ -217,6 +205,73 @@ section {
             padding: 0px 16px;
             margin: 0 0 22px;
         }
+    }
+    /* High Light JS */
+    
+    hljs:before {
+        content: attr(language);
+        text-transform: uppercase;
+        display: block;
+        background: $primary_color;
+        color: #FFF;
+        line-height: 48px;
+        padding: 0 16px;
+        border-radius: 2px 2px 0 0;
+    }
+    .hljs-title {
+        color: #E5C3A2 !important;
+        font-weight: normal;
+    }
+    .hljs-string,
+    .hljs-value,
+    .hljs-inheritance,
+    .hljs-header,
+    .ruby .symbol,
+    .xml .cdata {
+        color: #8F9C6C !important;
+    }
+    .hljs {
+        background-color: #0C2238;
+    }
+    .hljs-link_url,
+    .hljs-tag .hljs-value,
+    .hljs-string,
+    .hljs-bullet,
+    .hljs-subst,
+    .hljs-emphasis,
+    .hljs-type,
+    .hljs-preprocessor,
+    .hljs-pragma,
+    .ruby .hljs-class .hljs-parent,
+    .hljs-built_in,
+    .django .hljs-template_tag,
+    .django .hljs-variable,
+    .smalltalk .hljs-class,
+    .hljs-javadoc,
+    .django .hljs-filter .hljs-argument,
+    .smalltalk .hljs-localvars,
+    .smalltalk .hljs-array,
+    .hljs-attr_selector,
+    .hljs-pseudo,
+    .hljs-addition,
+    .hljs-stream,
+    .hljs-envvar,
+    .apache .hljs-tag,
+    .apache .hljs-cbracket,
+    .tex .hljs-command,
+    .hljs-prompt,
+    .hljs-name {
+        color: #9CCC65 !important;
+    }
+
+    .hljs-link_label,
+    .hljs-attribute,
+    .hljs-symbol,
+    .hljs-symbol .hljs-string,
+    .hljs-value,
+    .hljs-params,
+    .hljs-regexp {
+        color: #7DB9F4;
     }
 }
 

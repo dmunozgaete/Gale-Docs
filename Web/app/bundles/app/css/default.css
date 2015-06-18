@@ -105,15 +105,6 @@ section {
     margin: 0;
     padding: 0;
     overflow-wrap: break-word; }
-  section hljs:before {
-    content: attr(language);
-    text-transform: uppercase;
-    display: block;
-    background: #0D47A1;
-    color: #FFF;
-    line-height: 48px;
-    padding: 0 16px;
-    border-radius: 2px 2px 0 0; }
   section .api-param-table {
     padding: 0px 0px 16px 0px; }
     section .api-param-table table {
@@ -162,5 +153,63 @@ section {
       background: #E3ECF5;
       padding: 0px 16px;
       margin: 0 0 22px; }
+  section hljs:before {
+    content: attr(language);
+    text-transform: uppercase;
+    display: block;
+    background: #0D47A1;
+    color: #FFF;
+    line-height: 48px;
+    padding: 0 16px;
+    border-radius: 2px 2px 0 0; }
+  section .hljs-title {
+    color: #E5C3A2 !important;
+    font-weight: normal; }
+  section .hljs-string,
+  section .hljs-value,
+  section .hljs-inheritance,
+  section .hljs-header,
+  section .ruby .symbol,
+  section .xml .cdata {
+    color: #8F9C6C !important; }
+  section .hljs {
+    background-color: #0C2238; }
+  section .hljs-link_url,
+  section .hljs-tag .hljs-value,
+  section .hljs-string,
+  section .hljs-bullet,
+  section .hljs-subst,
+  section .hljs-emphasis,
+  section .hljs-type,
+  section .hljs-preprocessor,
+  section .hljs-pragma,
+  section .ruby .hljs-class .hljs-parent,
+  section .hljs-built_in,
+  section .django .hljs-template_tag,
+  section .django .hljs-variable,
+  section .smalltalk .hljs-class,
+  section .hljs-javadoc,
+  section .django .hljs-filter .hljs-argument,
+  section .smalltalk .hljs-localvars,
+  section .smalltalk .hljs-array,
+  section .hljs-attr_selector,
+  section .hljs-pseudo,
+  section .hljs-addition,
+  section .hljs-stream,
+  section .hljs-envvar,
+  section .apache .hljs-tag,
+  section .apache .hljs-cbracket,
+  section .tex .hljs-command,
+  section .hljs-prompt,
+  section .hljs-name {
+    color: #9CCC65 !important; }
+  section .hljs-link_label,
+  section .hljs-attribute,
+  section .hljs-symbol,
+  section .hljs-symbol .hljs-string,
+  section .hljs-value,
+  section .hljs-params,
+  section .hljs-regexp {
+    color: #7DB9F4; }
 
 /*# sourceMappingURL=default.css.map */

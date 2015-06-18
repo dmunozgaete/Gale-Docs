@@ -81,7 +81,7 @@ app.controller('MyController', function($scope, $Configuration) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.get(name [,defaultValue]);
+				$Configuration.get(name [,defaultValue]);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -182,7 +182,7 @@ app.controller('MyController', function($scope, $Configuration) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.exists(name);
+				$Configuration.exists(name);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -233,7 +233,7 @@ app.controller('MyController', function($scope, $Configuration) {
 						<tr>
 							<td>
 								<code>
-									booleano
+									boolean
 								</code>
 							</td>
 							<td class="description">

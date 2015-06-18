@@ -662,7 +662,10 @@ app.controller('MyController', function($scope, $Api) {
   //Conexión RESTful en modo lectura en formato KQL (Karma Query Language)
   $Api.KQL(endpoint , kql, headers)
   .success(function(data, status, headers, config){
+
     //Respuesta OK
+    console.log(data);
+    
   });
 
   //Datos de Usuario
