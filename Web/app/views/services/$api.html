@@ -1,6 +1,5 @@
-<h2 class="md-display-1">Referencia API</h2>
-
 <p>
+	<!-- DESCRIPTION -->
 	El servicio <code>$Api</code> es el encargado de conectar con 
 	nuestra API en el lado del servidor y utiliza el servicio base 
 	<a href="https://docs.angularjs.org/api/ng/service/$http" target="_blank">$http</a>, 
@@ -16,8 +15,12 @@
 	<a href="http://jwt.io/" target="_blank">JWT</a>.
 	
 	<br />
+	<!-- /DESCRIPTION -->
 
-	<h2>Uso Basico</h2>
+	<!-- USAGE -->
+	<h2 class="md-headline">	
+		Uso Basico
+	</h2>
 	<hljs language="js">
 app.controller('MyController', function($scope, $Api) {
 
@@ -26,12 +29,12 @@ app.controller('MyController', function($scope, $Api) {
   var parameters = {
     username: 'dmunoz@valentys.com'
   };
-  var customHeaders = {
+  var headers = {
     'content-type': 'application/json'
   };
 
   //Ejecutamos la llamada al servidor
-  $Api.invoke(method, endpoint , parameters, customHeaders)
+  $Api.invoke(method, endpoint , [parameters, headers])
   .success(function(data, status, headers, config){
     //Respuesta OK
   })
@@ -42,6 +45,656 @@ app.controller('MyController', function($scope, $Api) {
 });
 	</hljs>
 
+	<h2 class="md-headline">
+		Argumentos
+	</h2>
+	<div class="api-param-table">
+		<table class="no-style">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Tipo</th>
+					<th>Descripción</th>
+				</tr>
+			</thead>
+		<tbody>
+			<!-- -->
+			<tr>
+				<td>
+					<code class="required">
+						method
+					</code>
+				</td>
+				<td>
+					String
+				</td>
+				<td class="description">
+					<p>Verbo a enviar con la solicitud en la llamada a la API.</p>
+				</td>
+			</tr>
+			<!-- -->
+			<tr>
+				<td>
+					<code class="required">
+						endpoint
+					</code>
+				</td>
+				<td>
+					String
+				</td>
+				<td class="description">
+					<p>Dirección URL del recurso en la llamada a la API.</p>
+				</td>
+			</tr>
+			<!-- -->
+			<tr>
+				<td>
+					<code>parameters</code>
+				</td>
+				<td>
+					JSON
+				</td>
+				<td class="description">
+					<p>Parametros a enviar en la solicitud.</p>
+				</td>
+			</tr>
+			<!-- -->
+			<tr>
+				<td>
+					<code>headers</code>
+				</td>
+				<td>
+					JSON
+				</td>
+				<td class="description">
+					<p>Encabezados a enviar en la solicitud.</p>
+				</td>
+			</tr>
+			<!-- -->
+		</tbody>
+		</table>
+	</div>
+	<!-- /USAGE -->
+
+	<!-- METHODS -->
+	<h2 class="md-headline">
+		Métodos
+	</h2>
+	<ul class="methods">
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				$Api.KQL(endpoint [,kql ,headers]);
+			</h3>
+			<div class="service-desc">
+				<p>
+					Ejecuta una solicitud de lectura (GET) sobre un recurso RESTful
+					en el formato KQL (Karma Query Language).
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code class="required">
+								endpoint
+							</code>
+						</td>
+						<td>
+							String
+						</td>
+						<td class="description">
+							<p>Dirección URL del recurso en la llamada a la API.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code class="required">
+								kql
+							</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Configuración KQL del recurso.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>headers</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Encabezados a enviar en la solicitud.</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code>
+								promise
+							</code>
+						</td>
+						<td class="description">
+							<p>
+								Retorna una 
+								<a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank">promesa</a> 
+								estandar con el método <code>then</code> y dos métodos especificos:
+								<code>success</code> y <code>error</code> que se ejecutarán de acuerdo al 
+								código de estado de la respuesta en la solicitud.
+							</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				$Api.Read(endpoint [,parameters ,headers]);
+			</h3>
+			<div class="service-desc">
+				<p>
+					Ejecuta una solicitud de lectura (GET) sobre un recurso RESTful.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code class="required">
+								endpoint
+							</code>
+						</td>
+						<td>
+							String
+						</td>
+						<td class="description">
+							<p>Dirección URL del recurso en la llamada a la API.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>parameters</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Colección de parametros a enviar en la solicitud.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>headers</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Encabezados a enviar en la solicitud.</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code>
+								promise
+							</code>
+						</td>
+						<td class="description">
+							<p>
+								Retorna una 
+								<a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank">promesa</a> 
+								estandar con el método <code>then</code> y dos métodos especificos:
+								<code>success</code> y <code>error</code> que se ejecutarán de acuerdo al 
+								código de estado de la respuesta en la solicitud.
+							</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				$Api.Create(endpoint [,body ,headers]);
+			</h3>
+			<div class="service-desc">
+				<p>
+					Ejecuta una solicitud de escritura (POST) sobre un recurso basado en el 
+					protocolo RESTful
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code class="required">
+								endpoint
+							</code>
+						</td>
+						<td>
+							String
+						</td>
+						<td class="description">
+							<p>Dirección URL del recurso en la llamada a la API.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>body</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>
+								Cuerpo del mensaje que contiene los datos en formato
+								a transportar en la solicitud.
+							</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>headers</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Encabezados a enviar en la solicitud.</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code>
+								promise
+							</code>
+						</td>
+						<td class="description">
+							<p>
+								Retorna una 
+								<a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank">promesa</a> 
+								estandar con el método <code>then</code> y dos métodos especificos:
+								<code>success</code> y <code>error</code> que se ejecutarán de acuerdo al 
+								código de estado de la respuesta en la solicitud.
+							</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				$Api.Update(endpoint, id [,body ,headers]);
+			</h3>
+			<div class="service-desc">
+				<p>
+					Ejecuta una solicitud de actualización (PUT) sobre un recurso basado en el 
+					protocolo RESTful
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									endpoint
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Dirección URL del recurso en la llamada a la API.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									id
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Token o identificador único del recurso a actualizar.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>body</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Cuerpo del mensaje que contiene los datos en formato
+									a transportar en la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>headers</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Encabezados a enviar en la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									promise
+								</code>
+							</td>
+							<td class="description">
+								<p>
+									Retorna una 
+									<a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank">promesa</a> 
+									estandar con el método <code>then</code> y dos métodos especificos:
+									<code>success</code> y <code>error</code> que se ejecutarán de acuerdo al 
+									código de estado de la respuesta en la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				$Api.Delete(endpoint ,id [,headers]);
+			</h3>
+			<div class="service-desc">
+				<p>
+					Ejecuta una solicitud de borrado (DELETE) sobre un recurso basado en el 
+					protocolo RESTful
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									endpoint
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Dirección URL del recurso en la llamada a la API.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									id
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Token o identificador único del recurso a eliminar.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>headers</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Encabezados a enviar en la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code>
+								promise
+							</code>
+						</td>
+						<td class="description">
+							<p>
+								Retorna una 
+								<a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank">promesa</a> 
+								estandar con el método <code>then</code> y dos métodos especificos:
+								<code>success</code> y <code>error</code> que se ejecutarán de acuerdo al 
+								código de estado de la respuesta en la solicitud.
+							</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+	</ul>
+	<!-- /METHODS -->
 
 
+	<h2>Uso Avanzado (RESTful)</h2>
+	<hljs language="js">
+app.controller('MyController', function($scope, $Api) {
+
+  var endpoint = '/Account';
+  var headers = {};
+  var kql = {
+    limit: 1,
+    offset: 0,
+    filters: [
+      {
+        'name': 'email',
+        'operator': 'eq',
+        'value' 'dmunoz@valentys.com'
+      }
+    ]
+  };
+
+  //Conexión RESTful en modo lectura en formato KQL (Karma Query Language)
+  $Api.KQL(endpoint , kql, headers)
+  .success(function(data, status, headers, config){
+    //Respuesta OK
+  });
+
+  //Datos de Usuario
+  var user = {
+    name: 'David Muñoz Gaete',
+    email: 'dmunoz@valentys.com',
+    company: 'Valentys Ltda.'
+  };
+
+  //Creación de un recurso (protocolo RESTful)
+  $Api.Create(endpoint , user, headers)
+  .success(function(data, status, headers, config){
+
+    //Creación OK (status: 200)
+    user.token = data.token;
+
+  });
+
+  user.name = 'David Antonio Gaete';
+
+  //Actualización de un recurso (protocolo RESTful)
+  $Api.Update(endpoint , user.token, user, headers)
+  .success(function(data, status, headers, config){
+    //Actualización OK (status: 204)
+  });
+
+  //Borrado de un recurso (protocolo RESTful)
+  $Api.Delete(endpoint , user.token, headers)
+  .success(function(data, status, headers, config){
+    //Borrado OK (status: 200)
+  });
+
+});
+	</hljs>
 </p>

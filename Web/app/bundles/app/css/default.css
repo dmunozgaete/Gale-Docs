@@ -5,7 +5,8 @@
  */
 a {
   color: #0D47A1;
-  text-decoration: none; }
+  text-decoration: none;
+  font-weight: normal; }
 
 .pointer {
   cursor: pointer; }
@@ -83,8 +84,6 @@ section {
       line-height: 1.6em;
       text-align: justify;
       padding-bottom: 4px; }
-    section ul.doc-list a {
-      font-weight: bold; }
   section md-content[name=content] {
     margin-top: 16px;
     padding: 0px 16px 16px 16px; }
@@ -115,5 +114,53 @@ section {
     line-height: 48px;
     padding: 0 16px;
     border-radius: 2px 2px 0 0; }
+  section .api-param-table {
+    padding: 0px 0px 16px 0px; }
+    section .api-param-table table {
+      margin-bottom: 8px;
+      max-width: 100%;
+      width: 100%;
+      border-spacing: 0;
+      border-radius: 2px;
+      overflow: hidden; }
+      section .api-param-table table th {
+        background-color: #4C9EF0;
+        color: #FFF;
+        padding: 12px 16px;
+        text-align: left; }
+      section .api-param-table table tr:nth-child(odd) td {
+        background-color: #E3ECF5; }
+      section .api-param-table table tr td:first-child {
+        white-space: nowrap; }
+      section .api-param-table table tr td {
+        border-bottom: 1px solid #E3ECF5;
+        padding: 12px 16px;
+        text-align: left; }
+        section .api-param-table table tr td code.required:before {
+          content: '*';
+          font-weight: bold;
+          color: red; }
+  section ul.methods {
+    padding: 0px;
+    list-style: none;
+    margin: 0px; }
+    section ul.methods li {
+      padding-bottom: 32px; }
+    section ul.methods li:last-child {
+      padding-bottom: 0px; }
+    section ul.methods h3.method-function-syntax {
+      padding: 0 16px;
+      background: #0D47A1;
+      color: #FFF;
+      line-height: 48px;
+      margin: 0px;
+      border-radius: 2px;
+      display: block;
+      font-family: "Menlo, Monaco, " Andale Mono ", " Lucida Console ", " Courier New ", monospace;"; }
+    section ul.methods div.service-desc {
+      overflow: hidden;
+      background: #E3ECF5;
+      padding: 0px 16px;
+      margin: 0 0 22px; }
 
 /*# sourceMappingURL=default.css.map */

@@ -116,17 +116,23 @@
         }
         //------------------------------------------------------------------------------
         
+        //------------------------------------------------------------------------------
+        //CRUD: GET OPERATION
+        self.KQL= function(url, kql, headers){
+            
+            //Has OData Configuration???
+            url = ODataBuilder.build(url, kql);   
+            
+            return self.invoke('GET', url, {}, headers);
+        }
+        //------------------------------------------------------------------------------
+        
 
         //------------------------------------------------------------------------------
         //CRUD: GET OPERATION
-        self.Read= function(url, configuration, headers){
-            
-            if(configuration){
-                //Has OData Configuration???
-                url = ODataBuilder.build(url, configuration);
-            }
-
-            return self.invoke('GET', url, {}, headers);
+        self.Read= function(url, parameters, headers){
+    
+            return self.invoke('GET', url, parameters, headers);
         }
         //------------------------------------------------------------------------------
         
