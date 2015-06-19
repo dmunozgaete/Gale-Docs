@@ -29,30 +29,13 @@
 		Uso Basico
 	</h2>
 	<hljs language="js">
-app.controller('MyController', function($scope, $Localization) {
+app.controller('MyController', function($scope, $LocalStorage) {
 
-  var locale = $Localization.get('labels.helloWorld');
+  var locale = $LocalStorage.get('labels.helloWorld');
   
   console.log(locale);	//Hola Mundo
 
 });
-	</hljs>
-
-	<h2 class="md-headline">
-		Uso Declarativo
-	</h2>
-	<hljs language="html">
-<div ng-app="demoApp" ng-controller="MyController"> 
-  <md-input-container>
-    <label>{{ 'login.username.label' | localize }}</label>
-    <input ng-model="user.username">
-  </md-input-container>
-
-  <md-input-container>
-    <label>{{ 'login.password.label' | localize }}</label>
-    <input type="password" ng-model="user.password">
-  </md-input-container>
-</div>
 	</hljs>
 	<!-- /USAGE -->
 
@@ -65,11 +48,11 @@ app.controller('MyController', function($scope, $Localization) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Localization.get(name [,defaultValue]);
+				$LocalStorage.get(key [,defaultValue]);
 			</h3>
 			<div class="service-desc">
 				<p>
-					Obtiene un recurso localizado y retorna su valor.
+					Obtiene el valor de la variable almacenada
 				</p>
 			</div>
 			<div class="api-param-table">
@@ -86,7 +69,7 @@ app.controller('MyController', function($scope, $Localization) {
 						<tr>
 							<td>
 								<code class="required">
-									name
+									key
 								</code>
 							</td>
 							<td>
@@ -94,7 +77,7 @@ app.controller('MyController', function($scope, $Localization) {
 							</td>
 							<td class="description">
 								<p>
-									Nombre del recurso a obtener 
+									Identificador del recurso asociado.
 								</p>
 							</td>
 						</tr>
@@ -111,7 +94,7 @@ app.controller('MyController', function($scope, $Localization) {
 							<td class="description">
 								<p>
 									Valor por defecto a retornar si es que no se encuentra 
-									configurada el recurso objetivo.
+									configurada la llave.
 								</p>
 							</td>
 						</tr>
@@ -137,9 +120,10 @@ app.controller('MyController', function($scope, $Localization) {
 						</td>
 						<td class="description">
 							<p>
-								Retorna el valor del recurso deseado; En el caso de
-								no encontrarse la variable se ejecutará una excepción de control
-								indicando que no existe tal variable.
+								Retorna el valor de la llave; 
+								En el caso de no encontrarse la variable se 
+								ejecutará una excepción de control indicando que no 
+								existe tal variable.
 								</br />
 								<i>
 									Si se encuentra establecido el parametro 
@@ -165,11 +149,11 @@ app.controller('MyController', function($scope, $Localization) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Localization.exists(name);
+				$LocalStorage.exists(name);
 			</h3>
 			<div class="service-desc">
 				<p>
-					Verifica la existencia de un recurso localizado.
+					Verifica la existencia de la variable en el almacenamiento.
 				</p>
 			</div>
 			<div class="api-param-table">
@@ -194,7 +178,7 @@ app.controller('MyController', function($scope, $Localization) {
 							</td>
 							<td class="description">
 								<p>
-									Nombre del recurso a verificar.
+									Nombre de la llave a verificar.
 								</p>
 							</td>
 						</tr>

@@ -1,1 +1,161 @@
-range
+<p>
+    <!-- DESCRIPTION -->
+    Valida que un numero sea mayor o menor (o ambos) de acuerdo a los rangos establecidos.
+    <!-- /DESCRIPTION -->
+
+    <!-- USAGE -->
+    <section class="demo-container md-whiteframe-z1" ng-class="{'show-source': $showSource}">
+        <md-toolbar class="demo-toolbar">
+            <div class="md-toolbar-tools">
+
+                <h2>
+                	<span>
+                		Uso Basico
+                	</span>
+                </h2>
+                <span flex></span>
+                <button class="md-button md-primary" aria-label="al" ng-class="{ active: $showSource }" ng-click="$showSource = !$showSource">
+                    <md-icon md-svg-src="{{ 'action' | icon:'ic_code_24px' }}"></md-icon>
+                </button>
+
+            </div>
+        </md-toolbar>
+
+    	<div ng-if="$showSource">
+	        <!-- Views -->
+	        <md-tabs  md-border-bottom class="md-primary">
+	            <md-tab label="html">
+	                <md-content class="md-padding">
+	                	<!-- SOURCE CODE -->
+	                    <hljs language="html">
+<div ng-app="demoApp" ng-controller="MyController">
+
+  <form name="form"> 
+
+    <div layout="row">
+      <md-input-container flex="20">
+        <label>Día</label>
+        <input ng-model="dia" range min="1" max="31">
+      </md-input-container>
+      /
+      <md-input-container flex="20">
+        <label>Mes</label>
+        <input ng-model="mes" range min="1" max="12">
+      </md-input-container>
+      /
+      <md-input-container flex="20">
+        <label>Año</label>
+        <input ng-model="anio" range min="1960">
+      </md-input-container>					
+    </div>
+
+    <md-button class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="enviar(user)">
+      &nbsp;Enviar
+    </md-button>
+  </form>
+
+</div>
+	                    </hljs>
+	                    <!-- /SOURCE CODE -->
+	                </md-content>
+	            </md-tab>
+	        </md-tabs>
+        </div>
+        <!-- /Views -->
+
+        <!-- Live Demos -->
+        <md-content class="md-padding live-demo">
+
+            <form name="form"> 
+
+	            <div layout="row">
+
+	            	<md-input-container flex="20">
+						<label>Día</label>
+						<input ng-model="dia"
+							type="number" 
+							required
+							range min="1" max="31"
+							maxlength="2">
+					</md-input-container>
+					/
+	            	<md-input-container flex="20">
+						<label>Mes</label>
+						<input ng-model="mes" 
+							type="number" 
+							required
+							range min="1" max="12"
+							maxlength="2">
+					</md-input-container>
+					/
+	                <md-input-container flex="20">
+						<label>Año (>1960)</label>
+						<input ng-model="anio" 
+							type="number"
+							required 
+							range min="1960"
+							maxlength="4">
+					</md-input-container>					
+				</div>
+
+                <md-button class="md-raised md-primary" type="button" ng-disabled="form.$invalid" ng-click="enviar(user)">
+                    &nbsp;Enviar
+                </md-button>
+            </form>
+
+	    </md-content>
+        <!-- /Live Demos -->
+    </section>
+    <!-- /USAGE -->
+
+    <!-- FILTER -->
+    <h2 class="md-headline">
+		Uso
+	</h2>
+    <ul class="methods">
+        <!-- -->
+        <li>
+            <!-- METHOD -->
+            <h3 class="method-function-syntax">
+				$filter('capitalize')(literal);
+			</h3>
+            <div class="service-desc">
+                <p>
+
+                </p>
+            </div>
+            <div class="api-param-table">
+                <table class="no-style">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code class="required">
+									literal
+								</code>
+                            </td>
+                            <td>
+                                String
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Cadena de caracteres a capitlizar.
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /METHOD -->
+        </li>
+        <!-- -->
+    </ul>
+    <!-- /FILTER -->
+</p>

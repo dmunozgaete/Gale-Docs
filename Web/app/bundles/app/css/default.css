@@ -212,4 +212,20 @@ section {
   section .hljs-regexp {
     color: #7DB9F4; }
 
+section.demo-container md-toolbar button, section.demo-container md-toolbar md-button:hover {
+  background-color: transparent !important;
+  float: right; }
+  section.demo-container md-toolbar button md-icon, section.demo-container md-toolbar md-button:hover md-icon {
+    color: #fff !important; }
+section.demo-container md-tabs md-content {
+  padding: 0px; }
+  section.demo-container md-tabs md-content hljs:before {
+    content: "";
+    text-transform: inherits;
+    background: #0D47A1;
+    color: #FFF;
+    line-height: 48px;
+    padding: 0 16px;
+    border-radius: 2px 2px 0 0; }
+
 /*# sourceMappingURL=default.css.map */

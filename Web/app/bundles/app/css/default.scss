@@ -263,7 +263,6 @@ section {
     .hljs-name {
         color: #9CCC65 !important;
     }
-
     .hljs-link_label,
     .hljs-attribute,
     .hljs-symbol,
@@ -272,6 +271,32 @@ section {
     .hljs-params,
     .hljs-regexp {
         color: #7DB9F4;
+    }
+}
+
+section.demo-container {
+    md-toolbar {
+        button, md-button:hover {
+            background-color: transparent !important;
+            float:right;
+            md-icon {
+                color: #fff !important;
+            }
+        }
+    }
+    md-tabs {
+        md-content {
+            padding: 0px;
+            hljs:before {
+                content: "";
+                text-transform: inherits;
+                background: $primary_color;
+                color: #FFF;
+                line-height: 48px;
+                padding: 0 16px;
+                border-radius: 2px 2px 0 0;
+            }
+        }
     }
 }
 
