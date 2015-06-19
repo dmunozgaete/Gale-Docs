@@ -21,7 +21,7 @@ angular.module("gale.services.configuration")
                 "$Api",
                 "$LocalStorage",
                 "$Timer",
-                "ODataBuilder",
+                "KQLBuilder",
                 "Identity"
             ]
         }, {

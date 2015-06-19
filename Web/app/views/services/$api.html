@@ -34,7 +34,7 @@ app.controller('MyController', function($scope, $Api) {
   };
 
   //Ejecutamos la llamada al servidor
-  $Api.invoke(method, endpoint , [parameters, headers])
+  $Api.invoke(method, endpoint , parameters, headers)
   .success(function(data, status, headers, config){
     //Respuesta OK
   })
@@ -46,74 +46,21 @@ app.controller('MyController', function($scope, $Api) {
 	</hljs>
 
 	<h2 class="md-headline">
-		Argumentos
+		Configuración Global
 	</h2>
-	<div class="api-param-table">
-		<table class="no-style">
-			<thead>
-				<tr>
-					<th>Nombre</th>
-					<th>Tipo</th>
-					<th>Descripción</th>
-				</tr>
-			</thead>
-		<tbody>
-			<!-- -->
-			<tr>
-				<td>
-					<code class="required">
-						method
-					</code>
-				</td>
-				<td>
-					String
-				</td>
-				<td class="description">
-					<p>Verbo a enviar con la solicitud en la llamada a la API.</p>
-				</td>
-			</tr>
-			<!-- -->
-			<tr>
-				<td>
-					<code class="required">
-						endpoint
-					</code>
-				</td>
-				<td>
-					String
-				</td>
-				<td class="description">
-					<p>Dirección URL del recurso en la llamada a la API.</p>
-				</td>
-			</tr>
-			<!-- -->
-			<tr>
-				<td>
-					<code>parameters</code>
-				</td>
-				<td>
-					JSON
-				</td>
-				<td class="description">
-					<p>Parametros a enviar en la solicitud.</p>
-				</td>
-			</tr>
-			<!-- -->
-			<tr>
-				<td>
-					<code>headers</code>
-				</td>
-				<td>
-					JSON
-				</td>
-				<td class="description">
-					<p>Encabezados a enviar en la solicitud.</p>
-				</td>
-			</tr>
-			<!-- -->
-		</tbody>
-		</table>
-	</div>
+	<hljs language="js">
+angular.module('App', [
+  'ui.router'    //NG ROUTE
+  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
+  , 'gale'       //VALENTYS SDK LIBRARY
+])
+.config(function($ApiProvider) {
+  
+  //Configuración de la URL base
+  $ApiProvider.setEndpoint('http://demoApp.valentys.com/API/v1')
+
+});
+	</hljs>
 	<!-- /USAGE -->
 
 	<!-- METHODS -->
@@ -125,7 +72,88 @@ app.controller('MyController', function($scope, $Api) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.KQL(endpoint [,kql ,headers]);
+				$Api.invoke(method, endpoint [,parameters, headers])
+			</h3>
+			<div class="service-desc">
+				<p>
+					Ejecuta una solicitud hacia un recurso web.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+				<tbody>
+					<!-- -->
+					<tr>
+						<td>
+							<code class="required">
+								method
+							</code>
+						</td>
+						<td>
+							String
+						</td>
+						<td class="description">
+							<p>Verbo a enviar con la solicitud en la llamada a la API.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code class="required">
+								endpoint
+							</code>
+						</td>
+						<td>
+							String
+						</td>
+						<td class="description">
+							<p>
+								Dirección URL del recurso en la llamada a la API.
+							</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>parameters</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Parametros a enviar en la solicitud.</p>
+						</td>
+					</tr>
+					<!-- -->
+					<tr>
+						<td>
+							<code>headers</code>
+						</td>
+						<td>
+							JSON
+						</td>
+						<td class="description">
+							<p>Encabezados a enviar en la solicitud.</p>
+						</td>
+					</tr>
+					<!-- -->
+				</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				$Api.kql(endpoint [,kql ,headers]);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -223,7 +251,7 @@ app.controller('MyController', function($scope, $Api) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.Read(endpoint [,parameters ,headers]);
+				$Api.read(endpoint [,parameters ,headers]);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -318,7 +346,7 @@ app.controller('MyController', function($scope, $Api) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.Create(endpoint [,body ,headers]);
+				$Api.create(endpoint [,body ,headers]);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -417,7 +445,7 @@ app.controller('MyController', function($scope, $Api) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.Update(endpoint, id [,body ,headers]);
+				$Api.update(endpoint, id [,body ,headers]);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -536,7 +564,7 @@ app.controller('MyController', function($scope, $Api) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				$Api.Delete(endpoint ,id [,headers]);
+				$Api.delete(endpoint ,id [,headers]);
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -639,9 +667,9 @@ app.controller('MyController', function($scope, $Api) {
 		<!-- -->
 	</ul>
 	<!-- /METHODS -->
-
-
-	<h2>Uso Avanzado (RESTful)</h2>
+	<h2 class="md-headline">
+		Uso Avanzado: RESTful
+	</h2>
 	<hljs language="js">
 app.controller('MyController', function($scope, $Api) {
 
@@ -660,7 +688,7 @@ app.controller('MyController', function($scope, $Api) {
   };
 
   //Conexión RESTful en modo lectura en formato KQL (Karma Query Language)
-  $Api.KQL(endpoint , kql, headers)
+  $Api.kql(endpoint , kql, headers)
   .success(function(data, status, headers, config){
 
     //Respuesta OK
@@ -676,7 +704,7 @@ app.controller('MyController', function($scope, $Api) {
   };
 
   //Creación de un recurso (protocolo RESTful)
-  $Api.Create(endpoint , user, headers)
+  $Api.create(endpoint , user, headers)
   .success(function(data, status, headers, config){
 
     //Creación OK (status: 200)
@@ -687,17 +715,94 @@ app.controller('MyController', function($scope, $Api) {
   user.name = 'David Antonio Gaete';
 
   //Actualización de un recurso (protocolo RESTful)
-  $Api.Update(endpoint , user.token, user, headers)
+  $Api.update(endpoint , user.token, user, headers)
   .success(function(data, status, headers, config){
     //Actualización OK (status: 204)
   });
 
   //Borrado de un recurso (protocolo RESTful)
-  $Api.Delete(endpoint , user.token, headers)
+  $Api.delete(endpoint , user.token, headers)
   .success(function(data, status, headers, config){
     //Borrado OK (status: 200)
   });
 
 });
 	</hljs>
+
+	<br />
+	<!-- METHODS -->
+	<h2 class="md-headline">
+		Eventos
+	</h2>
+	<ul class="methods">
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				beforeSend
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento que se ejecuta cada vez que una solicitud web ha sido ejecutada.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									headers
+								</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Colección actual de encabezados enviados con la solicitud, 
+									la cúal permite modificación directa.									
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+angular.module('App', [
+  'ui.router'    //NG ROUTE
+  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
+  , 'gale'       //VALENTYS SDK LIBRARY
+])
+.run(function(Identity) {
+
+  $Api.$on("beforeSend", function(headers){
+	
+    //Header de  Autenticación
+    if(Identity.isAuthenticated()){
+      var jwt = Identity.getToken();
+      headers['Authorization'] = jwt.token_type + " " + jwt.access_token;
+    }
+    
+  });
+
+});
+	</hljs>
+			<!-- /USAFE -->
+		</li>
+		<!-- -->
+	</ul>
+	<!-- /EVENTS -->
 </p>

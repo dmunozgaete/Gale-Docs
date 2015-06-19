@@ -1,6 +1,6 @@
 angular.module('gale.services')
 
-.factory('ODataBuilder', function() {
+.factory('KQLBuilder', function() {
 
 	var self = this;
 

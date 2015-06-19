@@ -8,7 +8,7 @@
     .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
         $log.debug("application is running!!");
         //$location.url("/demo/home/introduction");
-        $location.url("/demo/services/$localization");
+        $location.url("/demo/services/kqlbuilder");
     })
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')

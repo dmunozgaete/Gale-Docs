@@ -50,7 +50,7 @@ angular.module('gale.services.security')
 		_addProperty(name,value);
 	};
 
-	self.token = function(){
+	self.getToken = function(){
 		return _token;
 	};
 

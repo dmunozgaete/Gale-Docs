@@ -12,7 +12,7 @@
     //---------------------------------------------------
 
     //---------------------------------------------------
-    this.$get = function ($rootScope, $http, $log, ODataBuilder) {
+    this.$get = function ($rootScope, $http, $log, KQLBuilder) {
         var self            =   this;
         
         //------------------------------------------------------------------------------
@@ -46,7 +46,7 @@
         
 
         //------------------------------------------------------------------------------
-        self.get_endpoint = function(value){
+        self.getEndpoint = function(value){
             if(!_endpoint){
                 throw Error("ENDPOINT_NOT_CONFIGURED");
             }
@@ -111,17 +111,17 @@
 
         //------------------------------------------------------------------------------
         //CRUD: CREATE OPERATION
-        self.Create= function(url, body, headers){
+        self.create= function(url, body, headers){
             return self.invoke('POST', url, body, headers);
         }
         //------------------------------------------------------------------------------
         
         //------------------------------------------------------------------------------
         //CRUD: GET OPERATION
-        self.KQL= function(url, kql, headers){
+        self.kql= function(url, kql, headers){
             
             //Has OData Configuration???
-            url = ODataBuilder.build(url, kql);   
+            url = KQLBuilder.build(url, kql);   
             
             return self.invoke('GET', url, {}, headers);
         }
@@ -130,7 +130,7 @@
 
         //------------------------------------------------------------------------------
         //CRUD: GET OPERATION
-        self.Read= function(url, parameters, headers){
+        self.read= function(url, parameters, headers){
     
             return self.invoke('GET', url, parameters, headers);
         }
@@ -139,7 +139,7 @@
 
         //------------------------------------------------------------------------------
         //CRUD: UPDATE OPERATION
-        self.Update= function(url, id, body, headers){
+        self.update= function(url, id, body, headers){
             url += "/{0}".format([id]); //PUT url/id
 
             return self.invoke('PUT', url, body, headers);
@@ -149,7 +149,7 @@
 
         //------------------------------------------------------------------------------
         //CRUD: DELETE OPERATION
-        self.Delete= function(url, id, headers){
+        self.delete= function(url, id, headers){
 
             url += "/{0}".format([id]); //DELETE url/id
 

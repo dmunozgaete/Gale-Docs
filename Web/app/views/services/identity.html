@@ -1,1 +1,439 @@
-identity
+<p>
+	<!-- DESCRIPTION -->
+	El servicio <code>Identity</code> es el encargado de canalizar la seguridad y control 
+	del usuario actual en el sistema, permitiendo encapsular la lógica de control de usuario
+	en la aplicación.
+
+	<br />
+	<br />
+
+	Solo se debe ocupar en el caso en que el protocolo de
+	seguridad se encuentre basado en 
+	<a href="http://oauth.net/2/" target="_blank">OAuth2</a>
+	y con respuesta <a href="http://jwt.io/" target="_blank">JWT</a>
+	
+	<br />
+	<!-- /DESCRIPTION -->
+
+	<!-- USAGE -->
+	<h2 class="md-headline">	
+		Uso Basico
+	</h2>
+	<hljs language="js">
+app.controller('MyController', function($scope, Identity) {
+
+  if(Identity.isAuthenticated()){
+    var user = Identity.get();
+    console.log('Usuario Autenticado!');
+    console.log(user.name);	//Claim 'name'
+    console.log(user.uid);	//Claim 'PrimarySid'
+    console.log(user.property('company'));	//Propiedad Extendida
+
+    if(user.isInRole('ADMIN')){
+      console.log('Usuario Adminsitrador!');
+    }
+  }
+
+});
+	</hljs>
+
+	<h2 class="md-headline">
+		Configuración Global
+	</h2>
+	<hljs language="js">
+angular.module('App', [
+  'ui.router'    //NG ROUTE
+  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
+  , 'gale'       //VALENTYS SDK LIBRARY
+])
+.config(function(IdentityProvider) {
+  
+  //Configuración de la URL de authenticación
+  var endpoint = 'http://demoApp.valentys.com/v1/OAuth/Authenticate';
+  IdentityProvider.setIssuerEndpoint(endpoint);
+
+});
+	</hljs>
+
+	<h2 class="md-headline">
+		Ejemplo: Acceso solo a usuarios autenticados
+	</h2>
+	<hljs language="js" escape="false">
+angular.module('App', [
+  'ui.router'    //NG ROUTE
+  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
+  , 'gale'       //VALENTYS SDK LIBRARY
+])
+.run(function ($rootScope, $state, $location, Identity) {
+    
+  $rootScope.$on('$stateChangeStart', function (event, toState,current){
+    if(toState.name !== 'login' && !Identity.isAuthenticated()){
+      $state.go('login');
+      event.preventDefault();
+    }
+  });
+
+  if(Identity.isAuthenticated()){
+    $location.path('/app/home');
+  }else{
+    $location.path('/login'); 
+  }
+
+  $rootScope.$on('Identity.onLogOut', function (){
+    $state.go('login');
+  });
+
+});
+	</hljs>
+	<!-- /USAGE -->
+
+	<!-- METHODS -->
+	<h2 class="md-headline">
+		Métodos
+	</h2>
+	<ul class="methods">
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.authenticate(credentials);
+			</h3>
+			<div class="service-desc">
+				<p>
+					Envia una solicitud de autenticación (POST) hacia un recurso web 
+					basado en <code>OAuth2</code>, y de acuerdo a la respuesta , el 
+					componente identifica al usuario en el sistema.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									credentials
+								</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Objeto que contiene los parametros o variables de seguridad
+									que solicita el recurso WEB.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									promise
+								</code>
+							</td>
+							<td class="description">
+								<p>
+									Retorna una 
+									<a href="https://docs.angularjs.org/api/ng/service/$q" target="_blank">promesa</a> 
+									estandar con el método <code>then</code> y dos métodos especificos:
+									<code>success</code> y <code>error</code> que se ejecutarán de acuerdo al 
+									código de estado de la respuesta en la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.getToken();
+			</h3>
+			<div class="service-desc">
+				<p>
+					Obtiene el valor del token JWT, asociado al servicio de 
+					autenticación.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Valor del token en formato JWT.
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.getAccessToken();
+			</h3>
+			<div class="service-desc">
+				<p>
+					Obtiene el valor del token de acceso contenido en el token JWT.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Valor del token de acceso en formato JWT.
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.get();
+			</h3>
+			<div class="service-desc">
+				<p>
+					Obtiene la información del usuario contenida en el token JWT como un objeto 
+					con dos métodos especificos:
+					<ul class="doc-list">
+						<li>
+							<code>property(name)</code>: Obtiene el valor de una propiedad extendida del
+							usuario a través del metodo property del servicio <code>Identity</code>
+						</li>
+						<li>
+							<code>isInRole(role)</code>: Devuelve <code>verdadero</code> en el caso de 
+							que el rol (<i>claim "role"</i>) se encuentre asociado al usuario de acuerdo
+							a la información contenida en el <code>payload</code> del token JWT.
+						</li>
+					</ul>
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								Object
+							</td>
+							<td class="description">
+								<p>
+									Información del usuario contenida en el token JWT (payload).
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.isAuthenticated();
+			</h3>
+			<div class="service-desc">
+				<p>
+					Verifica si el usuario actual se encuentra identificado en el sistema.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Retorno</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								Boolean
+							</td>
+							<td class="description">
+								<p>
+									Retorna <code>verdadero</code> si el usuario se encuentra
+									identificado en el sistema; De lo contrario retornará
+									<code>falso</code>.
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.logOut();
+			</h3>
+			<div class="service-desc">
+				<p>
+					Cierra la sesión actual del usuario, limpiando la información de sesión 
+					local y ejecutando el evento <code>Identity.onLogOut</code> al finalizar
+					correctamente el cierre.
+				</p>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+	</ul>
+	<!-- /METHODS -->
+	<br />
+	<!-- EVENTS -->
+	<h2 class="md-headline">
+		Eventos
+	</h2>
+	<ul class="methods">
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.onAuthenticate
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento que se ejecuta una vez el usuario ha sido autenticado contra el
+					servicio de autenticación basado en <code>OAuth2</code>.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									token
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Token JWT devuelto por el servicio de autenticación basado
+									en <code>OAuth2</code>.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /EVENTS -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+app.controller('LayoutController', function($scope, $rootScope) {
+
+  $rootScope.$on("Identity.onAuthenticate", function(token){
+    console.log(token);
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				Identity.onLogOut
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento que se ejecuta cuando se ha cerrado la sesión actual del usuario.
+				</p>
+			</div>
+			<!-- /EVENTS -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+app.controller('LayoutController', function($scope, $rootScope, $state) {
+
+  $rootScope.$on("Identity.onLogOut", function(){
+    $state.go('login');
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+	</ul>
+	<!-- /EVENTS -->
+</p>
