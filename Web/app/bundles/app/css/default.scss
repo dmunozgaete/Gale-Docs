@@ -278,7 +278,7 @@ section.demo-container {
     md-toolbar {
         button, md-button:hover {
             background-color: transparent !important;
-            float:right;
+            float: right;
             md-icon {
                 color: #fff !important;
             }
@@ -297,6 +297,13 @@ section.demo-container {
                 border-radius: 2px 2px 0 0;
             }
         }
+    }
+    md-tabs:not(.md-no-tab-content):not([md-dynamic-height]) {
+        min-height: 350px;
+    }
+
+    span.demo-error {
+        color:red;
     }
 }
 

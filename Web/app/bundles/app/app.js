@@ -4,5 +4,6 @@ angular.$manifiest('app', [
     'app.directives',
     'app.filters',
     'app.services',
-    'app.services.api'
+    'app.services.api',
+    'app.demos'
 ]);

@@ -28,28 +28,28 @@
 	                <md-content class="md-padding">
 	                	<!-- SOURCE CODE -->
 	                    <hljs language="html">
-<div ng-app="demoApp" ng-controller="MyController">
+<div ng-app="rangeDemoApp" ng-controller="MyController">
 
   <form name="form"> 
 
     <div layout="row">
       <md-input-container flex="20">
         <label>Día</label>
-        <input ng-model="dia" range min="1" max="31">
+        <input ng-model="day" range min="1" max="31">
       </md-input-container>
       /
       <md-input-container flex="20">
         <label>Mes</label>
-        <input ng-model="mes" range min="1" max="12">
+        <input ng-model="month" range min="1" max="12">
       </md-input-container>
       /
       <md-input-container flex="20">
         <label>Año</label>
-        <input ng-model="anio" range min="1960">
+        <input ng-model="year" range min="1960">
       </md-input-container>					
     </div>
 
-    <md-button class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="enviar(user)">
+    <md-button class="md-raised md-primary" ng-disabled="form.$invalid" ng-click="submit(user)">
       &nbsp;Enviar
     </md-button>
   </form>
@@ -59,50 +59,64 @@
 	                    <!-- /SOURCE CODE -->
 	                </md-content>
 	            </md-tab>
+
+                <md-tab label="js">
+                    <md-content class="md-padding">
+                        <!-- SOURCE CODE -->
+                        <hljs language="js">
+
+                        </hljs>
+                        <!-- /SOURCE CODE -->
+                    </md-content>
+                </md-tab>
 	        </md-tabs>
         </div>
         <!-- /Views -->
 
         <!-- Live Demos -->
         <md-content class="md-padding live-demo">
+            <div ng-controller="RangeDemoController">
+                <form name="form"> 
 
-            <form name="form"> 
+    	            <div layout="row">
 
-	            <div layout="row">
+    	            	<md-input-container flex="20">
+    						<label>Día</label>
+    						<input ng-model="day"
+    							type="text" 
+    							required
+    							range min="1" max="31"
+    							maxlength="2">
+    					</md-input-container>
+    					/
+    	            	<md-input-container flex="20">
+    						<label>Mes</label>
+    						<input ng-model="month" 
+    							type="number" 
+    							required
+    							range min="1" max="12"
+    							maxlength="2">
+    					</md-input-container>
+    					/
+    	                <md-input-container flex="20">
+    						<label>Año (>1960)</label>
+    						<input ng-model="year" 
+    							type="text"
+    							required 
+    							range min="1960"
+    							maxlength="4">
+    					</md-input-container>					
+    				</div>
 
-	            	<md-input-container flex="20">
-						<label>Día</label>
-						<input ng-model="dia"
-							type="number" 
-							required
-							range min="1" max="31"
-							maxlength="2">
-					</md-input-container>
-					/
-	            	<md-input-container flex="20">
-						<label>Mes</label>
-						<input ng-model="mes" 
-							type="number" 
-							required
-							range min="1" max="12"
-							maxlength="2">
-					</md-input-container>
-					/
-	                <md-input-container flex="20">
-						<label>Año (>1960)</label>
-						<input ng-model="anio" 
-							type="number"
-							required 
-							range min="1960"
-							maxlength="4">
-					</md-input-container>					
-				</div>
+                    <md-button class="md-raised md-primary" type="button" ng-disabled="form.$invalid" ng-click="submit(form)">
+                        &nbsp;Enviar
+                    </md-button>
 
-                <md-button class="md-raised md-primary" type="button" ng-disabled="form.$invalid" ng-click="enviar(user)">
-                    &nbsp;Enviar
-                </md-button>
-            </form>
-
+                    <span ng-if="form.$invalid" class="demo-error">
+                        Complete todos los campos
+                    </span>
+                </form>
+            </div>
 	    </md-content>
         <!-- /Live Demos -->
     </section>

@@ -129,22 +129,3 @@
             });
         });
     });
-
-
-angular.module('demoApp', [
-        , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
-        , 'gale' //VALENTYS SDK LIBRARY
-        , 'app' //CUSTOM PROJECT LIBRARY
-        , 'hljs'   //HIGHLIGHT
-    ])
-    .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
-        $log.debug("application is running!!");
-        //$location.url("/demo/home/introduction");
-        $location.url("/demo/directives/range");
-    })
-    .config(function($mdThemingProvider) {
-        $mdThemingProvider.theme('default')
-            .primaryPalette('blue')
-            .accentPalette('orange')
-            .warnPalette('red');
-    })

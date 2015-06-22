@@ -13,7 +13,7 @@ angular.module('gale.directives', [])
             var max = parseInt(attrs.max);
 
             ctrl.$validators.range = function(modelValue, viewValue) {
-
+                alert("DD")
                 var value = parseInt(viewValue);
 
                 if (ctrl.$isEmpty(modelValue)) {
@@ -27,6 +27,7 @@ angular.module('gale.directives', [])
                 }
 
                 if(!isNaN(min) && !isNaN(max)){
+
                     if (value >= min && value <= max) {
                         return true; 
                     }
