@@ -6,7 +6,7 @@ angular.module("gale.services.configuration")
             author: "David Antonio Muñoz Gaete",
             environment: "qas",
             language: "es",
-            name: "Gale Docs"
+            name: "Gale Doc's"
         },
         //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
         on_build_new_version: function(new_version, old_version) {},
@@ -50,10 +50,10 @@ angular.module("gale.services.configuration")
             "name": "directives",
             "open": false,
             "items": [
-                "range",
-                "rut",
-                "select-text-on-click",
-                "to-number-on-blur"
+                "ngrange",
+                "ngrut",
+                "selectTextOnClick",
+                "toNumbeOnBlur"
             ]
         }]
     });

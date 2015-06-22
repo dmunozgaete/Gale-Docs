@@ -94,7 +94,7 @@ angular.module('app.controllers')
             ]);
             $state.go("app.{0}-{1}".format([
                 section.name,
-                item.toLowerCase()
+                item
             ]));
         };
         $scope.navigate = function(state, item) {
@@ -104,12 +104,12 @@ angular.module('app.controllers')
         //------------------------------------------------------------------------------------
         // CONTENT - LOADING (Show Loadig Circular While Loading Child View's)
         $scope.$on('$viewContentLoading', function(event) {
-            $scope.config.loading= true;
+            $scope.config.loading = true;
         });
         // CONTENT - LOADED (Hie Loadig Circular)
         $scope.$on('$viewContentLoaded', function(event) {
             $timeout(function() {
-                $scope.config.loading= false;
+                $scope.config.loading = false;
             }, 300);
         });
         //------------------------------------------------------------------------------------

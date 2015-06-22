@@ -7,14 +7,6 @@
 				"Web/app/bundles/app/css/default.css.map"
 			],
 			"path": "."
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/Arquitectura/NET/Docs/API"
-		},
-		{
-			"follow_symlinks": true,
-			"path": "/Users/davidmunozgaete/Documents/Shared/Proyectos/BitBucket/Arquitectura/NET/Docs/Web"
 		}
 	]
 }

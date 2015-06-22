@@ -297,6 +297,9 @@ section.demo-container {
                 border-radius: 2px 2px 0 0;
             }
         }
+        md-tab-content{
+            background-color: #0C2238;
+        }
     }
     md-tabs:not(.md-no-tab-content):not([md-dynamic-height]) {
         min-height: 350px;

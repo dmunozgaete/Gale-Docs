@@ -8,7 +8,7 @@
     .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
         $log.debug("application is running!!");
         //$location.url("/demo/home/introduction");
-        $location.url("/demo/directives/range");
+        $location.url("/demo/directives/toNumbeOnBlur");
     })
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -116,7 +116,7 @@
             angular.forEach(category.items, function(service) {
                 var arr = [
                     category.name.toLowerCase(),
-                    service.toLowerCase()
+                    service
                 ]
                 $stateProvider.state('app.{0}-{1}'.format(arr), {
                     url: '/{0}/{1}'.format(arr),
