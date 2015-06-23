@@ -13,8 +13,8 @@ angular.module('gale.components')
             name:       '@'     // gale Table Unique ID
         },
         transclude: true,
-        templateUrl: 'bundles/core/js/components/gale-table/templates/template.html',
-        controller: function($scope, $element, $interpolate, $compile, $Api, $galeTable, ODataBuilder){
+        templateUrl: 'bundles/gale/js/components/gale-table/templates/template.html',
+        controller: function($scope, $element, $interpolate, $compile, $Api, $galeTable, KQLBuilder){
             this.$$formatters   = $scope.$$formatters = [];                 //Lazy Load Instantation
             var self            = this;                                     //Auto reference
             var unique_id       = ($scope.name||(new Date()).getTime());    //Component Unique ID
@@ -73,7 +73,7 @@ angular.module('gale.components')
             self.setup = function(endpoint, cfg){
                 var url = endpoint;
                 if(cfg){
-                    url = ODataBuilder.build(url, cfg);
+                    url = KQLBuilder.build(url, cfg);
                 }
 
                 configuration = cfg||{};    //Save current configuration

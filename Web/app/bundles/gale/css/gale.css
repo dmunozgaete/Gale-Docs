@@ -26,66 +26,27 @@ gale-page {
 }
 
 /*--------------------------------------------------*/
-/*  gale PAD
+/*  GALE ALIGN'S
 /*--------------------------------------------------*/
-gale-pad {
-	display: inline-block;
-	margin: 0;
-	width: 100%;
-	position: fixed;
-	right: 0px;
-	left: 0px;
-	padding: 4px;
-	border-top: 1px solid #ECECEC;
-	background-color: #F4F4F4;
-}
-
-gale-pad.alignRight > button {
-	margin-right: 15px !important;
-}
-
-gale-pad.alignLeft > button {
-	margin-left: 15px !important;
-}
-
-gale-pad.top {
-	top:0px;
-}
-
-gale-pad.bottom {
-	bottom:0px;
-}
 
 div.alignRight,
 .gale-column > div.alignRight,
-.gale-cell.alignRight,
-gale-pad.alignRight {
+.gale-cell.alignRight {
 	text-align: right;
 }
 
 div.alignLeft,
 .gale-column > div.alignLeft,
-.gale-cell.alignLeft,
-gale-pad.alignLeft {
+.gale-cell.alignLeft {
 	text-align: left;
 }
 
 div.alignCenter,
 .gale-column > div.alignCenter,
-.gale-cell.alignCenter,
-gale-pad.alignCenter {
+.gale-cell.alignCenter {
 	text-align: center;
 }
 
-
-/*--------------------------------------------------*/
-/*  GALE CONTENT
-/*--------------------------------------------------*/
-gale-content {
-	display: block;
-	position: relative;
-	overflow: auto;
-}
 
 /*--------------------------------------------------*/
 /*  GALE TABLE
@@ -137,7 +98,7 @@ gale-content {
 	background-color: #EFF8FF;
 }
 
-.gale-table > .gale-body > .gale-row > .gale-cell{
+.gale-table > .gale-body > .gale-row > gale-cell{
 	padding:8px 16px;
 	overflow: hidden;
 }
@@ -147,7 +108,7 @@ gale-content {
 	width: 2.2em;
 	overflow: hidden;
 	border-radius: 50%;
-	margin-left: 16px;
+	margin-left: 0px;
 	margin-bottom: 0px;
 }
 
@@ -170,8 +131,8 @@ gale-finder {
 	padding: 4px 8px;
 	box-shadow: 0px 0px 25px rgb(48, 48, 48);
 	color: rgb(73, 73, 73);
-	opacity: 0.9;
 	display: none;
+	z-index: 999999;
 }
 
 gale-finder.show {
@@ -251,6 +212,11 @@ gale-finder div.finder div.results > div div.thumb {
 	width: 30px;
 	margin: 0px;
 }
+
+gale-finder div.finder div.results > div div.thumb > img{
+	width: 100%;
+}
+
 
 gale-finder div.finder div.results > div div.name {
 	padding-left: 16px;

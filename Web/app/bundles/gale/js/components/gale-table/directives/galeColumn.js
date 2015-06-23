@@ -37,7 +37,7 @@ angular.module('gale.components')
                     if(script.length >0 ){
                         header = script;
                     }else{
-                        var template = item.find("template");
+                        var template = header.find("template");
                         if(template.length >0 ){
                             header = template;
                         }

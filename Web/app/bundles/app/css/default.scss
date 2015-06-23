@@ -183,7 +183,7 @@ section {
         padding: 0px;
         list-style: none;
         margin: 0px;
-        li {
+        > li {
             padding-bottom: 32px;
         }
         li:last-child {

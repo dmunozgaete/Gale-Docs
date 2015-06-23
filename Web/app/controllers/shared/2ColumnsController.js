@@ -92,12 +92,15 @@ angular.module('app.controllers')
                 section.label,
                 item
             ]);
-            $state.go("app.{0}-{1}".format([
+            $scope.navigate("app.{0}-{1}".format([
                 section.name,
                 item
-            ]));
+            ]), item);
         };
         $scope.navigate = function(state, item) {
+            
+            document.title = $scope.config.application.name + " - " + item;
+
             $scope.config.selected_menu = item;
             $state.go(state);
         };

@@ -29,10 +29,8 @@ angular.module("gale.services.configuration")
             "name": "components",
             "open": false,
             "items": [
-                "gale-content",
                 "gale-finder",
                 "gale-loading",
-                "gale-pad",
                 "gale-page",
                 "gale-table"
             ]

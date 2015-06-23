@@ -30,7 +30,7 @@ angular.module('gale.components')
         },
 
         link: function (scope, element, attrs) {
-            scope.$emit("karma-page:title:changed", {
+            scope.$emit("gale-page:title:changed", {
                 title: (scope.title||" ")
             });
         }

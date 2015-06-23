@@ -8,7 +8,8 @@ angular.module('gale.components')
         },
         templateUrl: 'bundles/gale/js/components/gale-loading/templates/template.html',
         controller: function($scope, $element, $log , $galeLoading){
-            var self        = {};
+            var self            = {};
+            var defaultMesasage = $scope.defaultMessage||"";
 
             //-------------------------------------------------
             //--[ GLOBAL FUNCTION'S
@@ -22,7 +23,7 @@ angular.module('gale.components')
                 if(message){
                     elm.html(message);
                 }else{
-                    elm.html($scope.defaultMessage);
+                    elm.html(defaultMesasage);
                 }
             }
             //-------------------------------------------------

@@ -7,14 +7,18 @@ angular.module('gale.components')
             onSearch:       '=',    // Search Function,
             onSelect:       '=',    // Select Function,
             placeholder:    '@',    // Placeholder
-            minLength:      '@'     // Search Minimun Length
+            minLength:      '@',    // Search Minimun Length
+            blockUi:        '@'     //Block UI??
         },
-        templateUrl: 'bundles/core/js/components/gale-finder/templates/template.html',
-        controller: function($scope, $element, $log , Finder){
+        templateUrl: 'bundles/gale/js/components/gale-finder/templates/template.html',
+        controller: function($scope, $element, $log , $galeFinder, $window){
             var self        = {};
             var minLength   = $scope.minLength||3;
             var onSearch    = $scope.onSearch;
             var onSelect    = $scope.onSelect;
+            var blockUi     = $scope.blockUi ? ($scope.blockUi == 'true' ? true : false) : true;
+            var body        = angular.element(document.body);
+            var blocker     = null;
 
             if(!onSearch){
                 $log.error("undefined 'onSearch' for finder component");
@@ -24,15 +28,21 @@ angular.module('gale.components')
                 $log.error("undefined 'onSelect' for finder component");
             }
 
+
             $scope.search = function(query){
                 $scope.activeIndex = 0;
                 if(query.length >= minLength){
 
                     // Call find Function
-                    var results = onSearch(query);
-                    if(results){
-                        $scope.results = results;
+                    var promise = onSearch(query);
+                    if( angular.isArray(promise) ){
+                        $scope.results = items;
+                    }else{
+                        promise.then(function(items){
+                            $scope.results = items;
+                        });
                     }
+                    
 
                 }else{
 
@@ -61,21 +71,32 @@ angular.module('gale.components')
                 $scope.query ="";
                 $scope.results = [];
                 $scope.activeIndex = 0;
+
+                //BLOCKER
+                if(blocker){
+                    blocker.remove();
+                }
             }
 
             self.show = function(){
+                if(blockUi){
+                    blocker =  angular.element('<md-backdrop class="md-sidenav-backdrop md-opaque ng-scope md-default-theme"></md-backdrop>');
+                    body.append(blocker);
+                }
+
                 $element.addClass("show");
                 $element.find("input").focus();
+
             }
             //-------------------------------------------------
            
             //-------------------------------------------------
             //Register for Service Interaction
-            Finder.$$register(self);  
+            $galeFinder.$$register(self);  
 
             //Garbage Collector Destroy
             $scope.$on('$destroy', function() {
-                Finder.$$unregister();      //UnRegister for Service Interaction
+                $galeFinder.$$unregister();      //UnRegister for Service Interaction
             });
             //-------------------------------------------------
             
