@@ -87,7 +87,7 @@
         /*
             COMPONENTS: GALE-TABLE
          */
-        .controller("GaleTableDemoController", function($scope, $galeTable) {
+        .controller("GaleTableDemoController", function($scope) {
             $scope.dataSource1 = [{
                 icon: "Dmunoz1-160x160.jpg",
                 name: "David Gaete",
@@ -109,5 +109,33 @@
                 name: "Alejandro Shae",
                 email: "ashae@valentys.com"
             }];
+        })
+        /*
+            COMPONENTS: GALE-TABLE EXAMPLE 2
+         */
+        .controller("GaleTableServiceDemoController", function($scope, $galeTable, $timeout) {
+            //----------------------------------------------
+            // Gale Table
+            $galeTable.then(function(component) {
+                $timeout(function(){
+                    var tbl_demo1 = 'tbl_demo1';
+                    var email = "dmunoz@valentys.com";
+                    var endpoint = '/Mocks/User/{0}'.format([email]);
+                    component.setup(endpoint, null, tbl_demo1);
+                    //Row Click 
+                    component.$on("rowClick", function(ev, item) {
+                        console.log(item);
+                    }, tbl_demo1);
+                    //On Complete Data
+                    component.$on("loadComplete", function(data) {
+                        //Add User Profiles
+                        angular.forEach(data.items, function(profile) {
+                            profile.icon = "bundles/app/css/images/logo.png";
+                        });
+                    }, tbl_demo1);
+                
+                },1000)
+            });
+            //----------------------------------------------
         });
 })();

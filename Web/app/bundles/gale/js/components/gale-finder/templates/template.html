@@ -2,12 +2,12 @@
 <div class="finder">
 
 	<div class="close" ng-click="close()">
-		<md-icon md-svg-src="{{ 'navigation' | icon:'ic_close_24px' }}"></md-icon>
+		<md-icon md-svg-icon="navigation:close"></md-icon>
 	</div>
 	<table>
 		<tr>
 			<td class="icon"> 
-				<md-icon md-svg-src="{{ 'action' | icon:'ic_search_24px' }}"></md-icon>
+				<md-icon md-svg-icon="action:search"></md-icon>
 			</td>
 			<td class="box">
 				<input ng-change="search(query)" ng-model="query" placeholder="{{placeholder}}" />

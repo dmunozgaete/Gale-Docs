@@ -20,13 +20,13 @@
             <md-list>
                 <md-list-item ng-click="navigate('app.home-introduction', 'Gale > Introducción')">
                     <p> Introducción </p>
-                    <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                    <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
                 </md-list-item>
             </md-list>
             <md-list>
                 <md-list-item ng-click="navigate('app.home-installation', 'Gale > Instalación')">
                     <p> Instalación </p>
-                    <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                    <md-icon md-svg-src="hardware:keyboard_arrow_right"></md-icon>
                 </md-list-item>
             </md-list>
             <md-divider>
@@ -40,7 +40,7 @@
                 <md-list ng-click="toggleMenu(section);" class="section" ng-class="{'toggled' : section.open}">
                     <md-list-item>
                         <p> {{section.label}} </p>
-                        <md-icon class="chevron" md-svg-src="{{ 'navigation' | icon: 'ic_expand_more_24px' }}"></md-icon>
+                        <md-icon class="chevron" md-svg-icon="navigation:expand_more"></md-icon>
                     </md-list-item>
                 </md-list>
 
@@ -49,7 +49,7 @@
                     <md-list class="items">
                         <md-list-item ng-click="navigateTo(section, item)" ng-repeat="item in section.items | orderBy:'+'">
                             <p> {{item}} </p>
-                            <md-icon md-svg-src="{{ 'hardware' | icon:'ic_keyboard_arrow_right_48px' }}"></md-icon>
+                            <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
                         </md-list-item>
                     </md-list>
                 </div>

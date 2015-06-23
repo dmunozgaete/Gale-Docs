@@ -4,6 +4,7 @@
         , 'gale' //VALENTYS SDK LIBRARY
         , 'app' //CUSTOM PROJECT LIBRARY
         , 'hljs' //HIGHLIGHT
+        , 'mocks'   //DEMO MOCK'S
     ])
     .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
         $log.debug("application is running!!");

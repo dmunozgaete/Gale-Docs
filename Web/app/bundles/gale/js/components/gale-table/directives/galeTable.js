@@ -71,6 +71,7 @@ angular.module('gale.components')
 
             //Manual Bootstrap
             self.setup = function(endpoint, cfg){
+                
                 var url = endpoint;
                 if(cfg){
                     url = KQLBuilder.build(url, cfg);

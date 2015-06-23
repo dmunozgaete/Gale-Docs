@@ -1,4 +1,4 @@
 {
 	"debugging": false,
-	"endpoint": "http://10.211.55.4/Resiter/API/v1"
+	"endpoint": "http://gale-docs-mocks.valentys.com/API/v1"
 }

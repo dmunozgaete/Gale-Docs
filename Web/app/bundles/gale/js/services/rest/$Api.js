@@ -75,7 +75,7 @@
             //---------------------------------------------------
 
             var cfg = {
-                url: self.get_endpoint() + url,
+                url: self.getEndpoint() + url,
                 method: method,
                 headers: _headers
             };

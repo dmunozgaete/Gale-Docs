@@ -1,4 +1,4 @@
 {
 	"debugging": true,
-	"endpoint": "http://10.211.55.4/Resiter/API/v1"
+	"endpoint": "demo-mocks.valentys/API/v1"
 }

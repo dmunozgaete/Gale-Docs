@@ -4,7 +4,7 @@ angular.module("gale.services.configuration")
         application: {
             version: "2.0.1",
             author: "David Antonio Muñoz Gaete",
-            environment: "qas",
+            environment: "development",
             language: "es",
             name: "Gale Doc's"
         },

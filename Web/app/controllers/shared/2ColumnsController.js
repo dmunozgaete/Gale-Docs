@@ -43,30 +43,22 @@ angular.module('app.controllers')
                 var headers = args[2];
                 var config = args[3];
                 var message = null;
-                //Has Default Error Format??
-                if (err.error && err.error_description) {
-                    message = "{0} {1}: {2}".format([
-                        moment().format('HH:mm:ss'),
-                        err.error,
-                        err.error_description
-                    ]);
+                
+                switch (status) {
+                    case 404:
+                    case 405:
+                    case 500:
+                        message = "{2}: {0} {1}".format([
+                            config.method,
+                            config.url,
+                            status
+                        ]);
+                        break;
+                    case 401:
+                        //Custom Handled
+                        break;
                 }
-                else {
-                    switch (status) {
-                        case 404:
-                        case 405:
-                        case 500:
-                            message = "{2}: {0} {1}".format([
-                                config.method,
-                                config.url,
-                                status
-                            ]);
-                            break;
-                        case 401:
-                            //Custom Handled
-                            break;
-                    }
-                }
+            
                 if (message) {
                     handle(message);
                 }
