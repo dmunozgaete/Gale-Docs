@@ -97,6 +97,18 @@ a {
  */
 
 section {
+    .source-icons {
+        position: fixed;
+        top: 10px;
+        right: 16px;
+        height: 40px;
+        .github {
+            img {
+                height: 30px;
+                margin-top: 10px;
+            }
+        }
+    }
     .doc-title {
         background-color: #F4F2F2;
         color: #525252;
@@ -297,16 +309,15 @@ section.demo-container {
                 border-radius: 2px 2px 0 0;
             }
         }
-        md-tab-content{
+        md-tab-content {
             background-color: #0C2238;
         }
     }
     md-tabs:not(.md-no-tab-content):not([md-dynamic-height]) {
         min-height: 350px;
     }
-
     span.demo-error {
-        color:red;
+        color: red;
     }
 }
 

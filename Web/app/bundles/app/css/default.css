@@ -69,6 +69,14 @@ a {
  */
 section {
   /* High Light JS */ }
+  section .source-icons {
+    position: fixed;
+    top: 10px;
+    right: 16px;
+    height: 40px; }
+    section .source-icons .github img {
+      height: 30px;
+      margin-top: 10px; }
   section .doc-title {
     background-color: #F4F2F2;
     color: #525252;
