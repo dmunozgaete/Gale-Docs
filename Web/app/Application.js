@@ -8,8 +8,8 @@
     ])
     .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
         $log.debug("application is running!!");
-        //$location.url("/demo/home/introduction");
-        $location.url("/demo/components/gale-table");
+        $location.url("/demo/home/introduction");
+        //$location.url("/demo/components/gale-table");
     })
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')

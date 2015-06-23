@@ -21,6 +21,7 @@ angular.module('app.controllers')
         };
         //------------------------------------------------------------------------------------
         // Gale Communication - Change Page Title
+        document.title = $scope.config.application.name;
         $scope.$on("gale-page:title:changed", function(event, data) {
             document.title = data.title;
         });
