@@ -1,8 +1,4 @@
 {
-	"MATERIAL_ICON_SVG_FOLDER": "./bower_components/material-design-icons/{{category}}/svg/production/{{icon}}.svg",
-	"debugging": true,
-	"endpoint": "http://val-demos.cloudapp.net:81/Resiter/MDS/API/v1",
-	
-	"monitor.realtime.frequency": 5000,
-	"start_url_page": "app.dashboard"	
+	"debugging": false,
+	"endpoint": "http://10.211.55.4/Resiter/API/v1"
 }
