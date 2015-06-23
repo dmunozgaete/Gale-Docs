@@ -17,6 +17,7 @@
             .warnPalette('red');
     })
     .config(['$mdIconProvider', function($mdIconProvider) {
+        //Icons Set's (https://github.com/nkoterba/material-design-iconsets)
         var bundle_src = "bundles/md-iconset/icons/{0}-icons.svg";
         var sets = [
             "action",
@@ -35,15 +36,9 @@
             "notification",
             "social",
             "toggle"
-        ]
+        ];
         angular.forEach(sets, function(toolset) {
-            $mdIconProvider
-                .iconSet(
-                    toolset,
-                    bundle_src.format([
-                        toolset
-                    ]),
-                    24);
+            $mdIconProvider.iconSet(toolset, bundle_src.format([toolset]), 24);
         });
     }])
     //API EndPoint Configuration
