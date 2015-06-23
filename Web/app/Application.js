@@ -16,6 +16,36 @@
             .accentPalette('orange')
             .warnPalette('red');
     })
+    .config(['$mdIconProvider', function($mdIconProvider) {
+        var bundle_src = "bundles/md-iconset/icons/{0}-icons.svg";
+        var sets = [
+            "action",
+            "alert",
+            "av",
+            "communication",
+            "content",
+            "device",
+            "editor",
+            "file",
+            "hardware",
+            "icons",
+            "image",
+            "maps",
+            "navigation",
+            "notification",
+            "social",
+            "toggle"
+        ]
+        angular.forEach(sets, function(toolset) {
+            $mdIconProvider
+                .iconSet(
+                    toolset,
+                    bundle_src.format([
+                        toolset
+                    ]),
+                    24);
+        });
+    }])
     //API EndPoint Configuration
     .config(function($ApiProvider, ENVIRONMENT_CONFIGURATION) {
         $ApiProvider.setEndpoint(ENVIRONMENT_CONFIGURATION.endpoint)
