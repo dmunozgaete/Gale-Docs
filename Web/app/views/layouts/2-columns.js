@@ -25,47 +25,7 @@ angular.module('app.controllers')
         $scope.$on("gale-page:title:changed", function(event, data) {
             document.title = data.title;
         });
-        //------------------------------------------------------------------------------------
-        // Global Exception Handling
-        $rootScope.$on("$log.unhandledException", function(event, args) {
-            var handle = function(content) {
-                $mdToast.show(
-                    $mdToast.simple()
-                    .content(content)
-                    .position("bottom left")
-                    .theme('exception')
-                    .hideDelay(4500)
-                );
-            };
-            //HTTP Error??
-            if (args.length > 3 && args[3].url) {
-                var err = args[0];
-                var status = args[1];
-                var headers = args[2];
-                var config = args[3];
-                var message = null;
-                
-                switch (status) {
-                    case 404:
-                    case 405:
-                    case 500:
-                        message = "{2}: {0} {1}".format([
-                            config.method,
-                            config.url,
-                            status
-                        ]);
-                        break;
-                    case 401:
-                        //Custom Handled
-                        break;
-                }
-            
-                if (message) {
-                    handle(message);
-                }
-            }
-            event.preventDefault();
-        });
+        
         //------------------------------------------------------------------------------------
         // Layout Actions
         $scope.link = function(url) {

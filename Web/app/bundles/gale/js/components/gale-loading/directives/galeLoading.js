@@ -15,7 +15,7 @@ angular.module('gale.components')
             //--[ GLOBAL FUNCTION'S
             self.hide = function(){
                 $element.removeClass("show");
-            }
+            };
 
             self.show = function(message){
                 $element.addClass("show");
@@ -25,7 +25,7 @@ angular.module('gale.components')
                 }else{
                     elm.html(defaultMesasage);
                 }
-            }
+            };
             //-------------------------------------------------
            
             //-------------------------------------------------

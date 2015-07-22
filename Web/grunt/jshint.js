@@ -12,7 +12,7 @@ module.exports = function(grunt, options) {
 
         controllers: {
             src: [
-                'app/controllers/**/*.js'
+                'app/views/**/*.js'
             ]
         },
 
@@ -24,7 +24,7 @@ module.exports = function(grunt, options) {
 
         core: {
             src: [
-                'app/Application.js'
+                'app/application.js'
             ]
         }
     };

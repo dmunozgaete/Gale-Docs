@@ -6,10 +6,13 @@
         , 'hljs' //HIGHLIGHT
         , 'mocks'   //DEMO MOCK'S
     ])
-    .run(function($rootScope, $state, $location, $log, Identity, $templateCache, $Api, $Configuration) {
-        $log.debug("application is running!!");
-        $location.url("/demo/home/introduction");
-        //$location.url("/demo/components/gale-table");
+    .run(function($location, $Configuration, $log) {
+        var application = $Configuration.get("application");
+        $log.info("application start... ;)!", {
+            env: application.environment,
+            version: application.version
+        });
+        $location.url(application.home);
     })
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -17,96 +20,36 @@
             .accentPalette('orange')
             .warnPalette('red');
     })
-    .config(['$mdIconProvider', function($mdIconProvider) {
-        //Icons Set's (https://github.com/nkoterba/material-design-iconsets)
-        var bundle_src = "bundles/md-iconset/icons/{0}-icons.svg";
-        var sets = [
-            "action",
-            "alert",
-            "av",
-            "communication",
-            "content",
-            "device",
-            "editor",
-            "file",
-            "hardware",
-            "icons",
-            "image",
-            "maps",
-            "navigation",
-            "notification",
-            "social",
-            "toggle"
-        ];
-        angular.forEach(sets, function(toolset) {
-            $mdIconProvider.iconSet(toolset, bundle_src.format([toolset]), 24);
-        });
-    }])
     //API EndPoint Configuration
-    .config(function($ApiProvider, ENVIRONMENT_CONFIGURATION) {
-        $ApiProvider.setEndpoint(ENVIRONMENT_CONFIGURATION.endpoint)
+    .config(function($ApiProvider, CONFIGURATION) {
+        $ApiProvider.setEndpoint(CONFIGURATION.endpoint);
     })
-    //DECORATE $LOG
-    .config(function($provide) {
-        //------------------------------------------------------------------------
-        //DECORATE ERROR
-        $provide.decorator('$log', function($delegate, $injector) {
-            // Save the original $log.debug()
-            var errorFn = $delegate.error;
-            $delegate.error = function() {
-                //BroadCast UnhandledException
-                var rScope = $injector.get('$rootScope');
-                if (rScope) {
-                    rScope.$broadcast('$log.unhandledException', arguments);
-                }
-                var env = $injector.get('ENVIRONMENT_CONFIGURATION');
-                if (env.debugging) {
-                    errorFn.apply(null, arguments)
-                }
-            };
-            return $delegate;
-        });
-        //------------------------------------------------------------------------
-        //------------------------------------------------------------------------
-        $provide.decorator('mdSidenavDirective', function($delegate, $controller, $rootScope) {
-            var directive = $delegate[0];
-            var compile = directive.compile;
-            directive.compile = function(tElement, tAttrs) {
-                var link = compile.apply(this, arguments);
-                return function(scope, elem, attrs) {
-                    scope.$watch('isOpen', function(val) {
-                        if (!angular.isUndefined(val)) {
-                            $rootScope.$broadcast('$mdSideNavChange',
-                                tAttrs.mdComponentId,
-                                scope.isOpen
-                            );
-                        }
-                    });
-                    link.apply(this, arguments);
-                };
-            };
-            return $delegate;
-        });
-        //------------------------------------------------------------------------
-    })
-    .config(function($stateProvider, $urlRouterProvider, GLOBAL_CONFIGURATION) {
+    
+    .config(function($stateProvider, $urlRouterProvider, CONFIGURATION) {
         $stateProvider
             .state('app', {
                 url: "/demo",
                 abstract: true,
-                templateUrl: "views/shared/2-columns.html",
+                // ---------------------------------------------
+                // TWO COLUMNS TEMPLATE
+                // ---------------------------------------------
+                templateUrl: "views/layouts/2-columns.html",
                 controller: "2ColumnsController"
             })
-            // ---------------------------------------------
-            // ERRORES
-            // ---------------------------------------------
-            .state('error', {
-                url: "/error",
+            .state('exception', {
+                url: "/exception",
                 abstract: true,
-                templateUrl: "views/shared/error.html",
-                controller: "ErrorController"
+                // ---------------------------------------------
+                // EXCEPTION TEMPLATE
+                // ---------------------------------------------
+                templateUrl: "views/layouts/exception.html",
+                controller: "ExceptionController"
             })
-            .state('error.404', {
+
+            // ---------------------------------------------
+            // GENERALES
+            // ---------------------------------------------
+            .state('exception.404', {
                 url: '/404',
                 views: {
                     content: {
@@ -114,9 +57,6 @@
                     }
                 }
             })
-            // ---------------------------------------------
-            // GENERALES
-            // ---------------------------------------------
             .state('app.home-introduction', {
                 url: '/home/introduction',
                 views: {
@@ -134,11 +74,11 @@
                 }
             })
             // if none of the above states are matched, use this as the fallback
-        $urlRouterProvider.otherwise("/error/404");
+        $urlRouterProvider.otherwise("/exception/404");
         // ---------------------------------------------
         // GALE: Menu State's
         // ---------------------------------------------
-        angular.forEach(GLOBAL_CONFIGURATION.menu_items, function(category) {
+        angular.forEach(CONFIGURATION.menu_items, function(category) {
             angular.forEach(category.items, function(service) {
                 var arr = [
                     category.name.toLowerCase(),

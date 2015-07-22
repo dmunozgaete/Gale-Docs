@@ -9,41 +9,46 @@
 /// NOTE: If you want to add dependdencies THIS IS THE FILE ;)!
 //------------------------------------------------------
 module.exports = function(grunt, options) {
-	
-	var conf = {
-		options: {
-			separator: ';',
-		},
+    var conf = {
+        production: {
+            options: {
+                separator: ';',
+            },
+            files: {
+                'app/dist/js/gale.js': [
+                    'app/bundles/bundles.js',
+                    'app/bundles/gale/**/*.js'
+                ],
 
-		dependencies: {
-			src: options.dependencies,	//FROM INJECTOR
-			dest: 'app/dist/dependencies.js'
-		},
+                'app/dist/js/bundles.js': [
+                    'app/bundles/**/*.js',
+                    '!app/bundles/bundles.js',
+                    '!app/bundles/gale/**/*.js'
+                ],
+                
+                'app/dist/js/controllers.js': [
+                    'app/views/**/*.js',
+                    'app/application.js',
+                    'app/config/config.js'
+                ],
 
-		controllers: {
-			src: [
-				'app/controllers/**/*.js'
-			],
-			dest: 'app/dist/controllers.js'
-		},
+                'app/dist/js/application.js': [
+                	'app/dist/js/bundles.js',
+                	'app/dist/js/controllers.js'
+                ],
 
-		sdk: {
-			src: [
-				'app/bundles/sdk/**/*.js'
-			],
-			dest: 'app/dist/sdk.js'
-		},
 
-		app: {
-			src: [
-				'app/bundles/app/js/**/*.js'
-			],
-			dest: 'app/dist/app.js'
-		}
-	};
-	
-	//---------------------------------------------------------------
+                'app/dist/css/gale.css': [
+                    'app/bundles/gale/**/*.css'
+                ],
 
+                'app/dist/css/application.css': [
+                    'app/bundles/**/*.css',
+                    '!app/bundles/gale/**/*.css'
+                ]
+            }
+        }
+    };
+    //---------------------------------------------------------------
     return conf;
-
 };

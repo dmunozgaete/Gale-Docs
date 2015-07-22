@@ -1,5 +1,5 @@
 //#Manifiest
-angular.$manifiest('app', [
+angular.manifiest('app', [
 	'app.controllers',
     'app.directives',
     'app.filters',

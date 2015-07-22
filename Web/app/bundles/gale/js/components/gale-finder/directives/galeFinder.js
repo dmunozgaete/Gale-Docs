@@ -16,7 +16,7 @@ angular.module('gale.components')
             var minLength   = $scope.minLength||3;
             var onSearch    = $scope.onSearch;
             var onSelect    = $scope.onSelect;
-            var blockUi     = $scope.blockUi ? ($scope.blockUi == 'true' ? true : false) : true;
+            var blockUi     = $scope.blockUi ? ($scope.blockUi === 'true' ? true : false) : true;
             var body        = angular.element(document.body);
             var blocker     = null;
 
@@ -49,18 +49,18 @@ angular.module('gale.components')
                     $scope.results = [];
 
                 }
-            }
+            };
 
             $scope.select = function(item){
                 var ret = onSelect(item);
                 if(ret){
                     self.hide();
                 }
-            }
+            };
 
             $scope.close = function(){
                 self.hide();
-            }
+            };
 
             //-------------------------------------------------
             //--[ GLOBAL FUNCTION'S
@@ -76,7 +76,7 @@ angular.module('gale.components')
                 if(blocker){
                     blocker.remove();
                 }
-            }
+            };
 
             self.show = function(){
                 if(blockUi){
@@ -87,7 +87,7 @@ angular.module('gale.components')
                 $element.addClass("show");
                 $element.find("input").focus();
 
-            }
+            };
             //-------------------------------------------------
            
             //-------------------------------------------------

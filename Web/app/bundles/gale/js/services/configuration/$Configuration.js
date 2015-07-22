@@ -1,15 +1,11 @@
 angular.module('gale.services.configuration')
 
-.service('$Configuration', function ($rootScope, $LocalStorage, GLOBAL_CONFIGURATION, ENVIRONMENT_CONFIGURATION) {
+.service('$Configuration', function ($rootScope, $LocalStorage, CONFIGURATION) {
     var _values             = {};
 
     //LOAD THE INITIAL CONFIGURATION
-    for(var env_name in ENVIRONMENT_CONFIGURATION){
-        set(env_name, ENVIRONMENT_CONFIGURATION[env_name]);
-    }
-
-    for(var cfg_name in GLOBAL_CONFIGURATION){
-        set(cfg_name, GLOBAL_CONFIGURATION[cfg_name]);
+    for(var env_name in CONFIGURATION){
+        set(env_name, CONFIGURATION[env_name]);
     }
     
     function get(name, defaultValue){

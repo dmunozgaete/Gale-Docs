@@ -7,35 +7,41 @@
 // URL: https://www.npmjs.com/package/grunt-html-build
 //------------------------------------------------------
 module.exports = function(grunt, options) {
-
-	var conf = {
+    return {
         development: {
+            options: {
+                ignorePath: '',
+                relative: true,
+                addRootSlash: false
+            },
             files: {
                 'app/index.html': [
                     'bower.json',
                     'app/bundles/bundles.js',
                     'app/bundles/**/*.js',
-                    'app/controllers/**/*.js',
-                    'app/bundles/**/*.css'
+                    'app/views/**/*.js',
+                    'app/bundles/**/*.css',
+                    'app/application.js',
+                    'app/config/config.js'
                 ]
             }
         },
-
         production: {
+            options: {
+                ignorePath: '',
+                relative: true,
+                addRootSlash: false
+            },
             files: {
                 'app/index.html': [
-                    'app/dist/**/*.min.js'
+                    'app/dist/css/bower.css',
+                    'app/dist/css/gale.css',
+                    'app/dist/css/application.css',
+                    'app/dist/js/bower.min.js',
+                    'app/dist/js/gale.min.js',
+                    'app/dist/js/application.min.js'
                 ]
             }
         }
-	};
-
-    return {
-        options: {
-            ignorePath: '',
-            relative: true,
-            addRootSlash: false
-        },
-        files: conf[options.environment]
     };
 };

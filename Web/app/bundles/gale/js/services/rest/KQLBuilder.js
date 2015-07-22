@@ -8,6 +8,7 @@ angular.module('gale.services')
     self.build = function(endpoint , configuration) {
 
     	//Add Endpoint
+        var arr = [];
         var builder = [
         	endpoint + "?"
         ];
@@ -17,7 +18,7 @@ angular.module('gale.services')
         if(configuration.select){
     		builder.push("$select=");
     		//---------------------------------
-    		var arr = [];
+    		arr = [];
     		angular.forEach(function(key){
     			arr.push(key);
     		});
@@ -30,15 +31,15 @@ angular.module('gale.services')
         if(configuration.filters){
             builder.push("$filter=");
             //---------------------------------
-            var arr = [];
+            arr = [];
             angular.forEach(configuration.filters, function(item){
                 arr.push(
-                    item.property
-                    + " "
-                    + item.operator
-                    + " '"
-                    + item.value 
-                    + "'"
+                    item.property +
+                    " " +
+                    item.operator +
+                    " '" +
+                    item.value  +
+                    "'"
                 );
             });
             //---------------------------------
@@ -66,7 +67,7 @@ angular.module('gale.services')
         var url = builder.join("");
 
         return url;
-    }
+    };
 
 
     return this;

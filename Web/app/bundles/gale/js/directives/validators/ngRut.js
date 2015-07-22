@@ -28,7 +28,7 @@ angular.module('gale.directives')
                     return false;
                 }
 
-                return (dv(tmp[0])) == tmp[1].toLowerCase();
+                return (dv(tmp[0]) + "") === (tmp[1].toLowerCase() + "");
             };
 
             var dv  = function(T){

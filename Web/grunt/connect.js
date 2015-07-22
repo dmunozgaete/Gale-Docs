@@ -9,15 +9,27 @@
 module.exports = function(grunt, options) {
 
     return {
-		server: {
+		development: {
 	        options: {
-	        	open:options.openBrowser,
+	        	open: false,
 	            livereload:options.livereload,
+	            keepalive: !options.livereload,
 	            base: options.server.path,
 	            port: options.server.port,
 	            hostname: options.server.hostname,
-	            protocol: options.server.protocol,
-	            keepalive: !options.livereload
+	            protocol: options.server.protocol
+	        }
+	    },
+
+	    production: {
+	    	options: {
+	        	open: true,
+	            livereload:false,
+	            keepalive: true,
+	            base: options.server.path,
+	            port: options.server.port,
+	            hostname: options.server.hostname,
+	            protocol: options.server.protocol
 	        }
 	    }
     }

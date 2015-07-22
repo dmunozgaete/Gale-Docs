@@ -5,6 +5,11 @@
     //---------------------------------------------------
     //Configurable Variable on .config Step
     var _endpoint = null;
+    var EVENTS = {
+        BEFORE_SEND:'beforeSend',
+        SUCCESS:    'success',
+        ERROR:      'error'
+    };
 
     this.setEndpoint = function (endpoint) {
         _endpoint = endpoint;
@@ -41,7 +46,7 @@
             angular.forEach(listeners, function(listener){
                 listener.apply(listener, args);
             });
-        }
+        };
         //------------------------------------------------------------------------------
         
 
@@ -51,7 +56,7 @@
                 throw Error("ENDPOINT_NOT_CONFIGURED");
             }
             return _endpoint;
-        }
+        };
         //------------------------------------------------------------------------------
         
 
@@ -65,13 +70,13 @@
             //Custom Header's??
             if(headers){
                 for(var name in headers){
-                    _headers[name] = headers[name]
+                    _headers[name] = headers[name];
                 }
             }
             
             //---------------------------------------------------
             // CALL LISTENER'S
-            fire("beforeSend", [_headers, url, body]);
+            fire(EVENTS.BEFORE_SEND, [_headers, url, body]);
             //---------------------------------------------------
 
             var cfg = {
@@ -84,28 +89,23 @@
 
             $log.debug("["+method+" " + url + "] parameters: " , body);
 
-
             var http = $http(cfg)
             .success(function (data, status, headers, config) {
-                //IF DEBUGGING??
-                //console.log(arguments)
+                //---------------------------------------------------
+                fire(EVENTS.SUCCESS, [data, status, headers]);
+                //---------------------------------------------------
             })
-
             .error(function (data, status, headers, config) {
-                //IF DEBUGGING??
-                //console.log(arguments)
                 
-                //Unathorized??
-                if(status == 401){
-                    $rootScope.$broadcast('Identity.Unauthorized', data);
-                }
+                //---------------------------------------------------
+                fire(EVENTS.ERROR, [data, status, headers]);
+                //---------------------------------------------------
 
-                $log.error(data, status, headers, config);
-
+                //$log.error(data, status, headers, config);
             });
 
             return http;
-        }
+        };
         //------------------------------------------------------------------------------
         
 
@@ -113,7 +113,7 @@
         //CRUD: CREATE OPERATION
         self.create= function(url, body, headers){
             return self.invoke('POST', url, body, headers);
-        }
+        };
         //------------------------------------------------------------------------------
         
         //------------------------------------------------------------------------------
@@ -124,7 +124,7 @@
             url = KQLBuilder.build(url, kql);   
             
             return self.invoke('GET', url, {}, headers);
-        }
+        };
         //------------------------------------------------------------------------------
         
 
@@ -133,7 +133,7 @@
         self.read= function(url, parameters, headers){
     
             return self.invoke('GET', url, parameters, headers);
-        }
+        };
         //------------------------------------------------------------------------------
         
 
@@ -143,7 +143,7 @@
             url += "/{0}".format([id]); //PUT url/id
 
             return self.invoke('PUT', url, body, headers);
-        }
+        };
         //------------------------------------------------------------------------------
         
 
@@ -154,7 +154,7 @@
             url += "/{0}".format([id]); //DELETE url/id
 
             return self.invoke('DELETE', url, {}, headers);
-        }
+        };
         //------------------------------------------------------------------------------
 
 

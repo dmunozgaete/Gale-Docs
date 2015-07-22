@@ -1,15 +1,19 @@
-angular.module("gale.services.configuration")
+angular.module("config", [])
     .constant("GLOBAL_CONFIGURATION", {
+
         //Application data
         application: {
             version: "2.0.1",
             author: "David Antonio Muñoz Gaete",
             environment: "development",
             language: "es",
-            name: "Gale Doc's"
+            name: "Starter Project",
+            home: "/demo/home/introduction"
         },
+
         //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
         on_build_new_version: function(new_version, old_version) {},
+
         //SideNav Menu
         menu_items: [{
             "label": "Servicios",

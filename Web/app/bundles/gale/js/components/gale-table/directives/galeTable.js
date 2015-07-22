@@ -27,7 +27,7 @@ angular.module('gale.components')
 
                 //----------------------------------------
                 //If hook, via $on change the pointer to hand
-                if(name == "rowClick"){
+                if(name === "rowClick"){
                     $element.addClass("row-click");
                 }
                 //----------------------------------------
@@ -46,7 +46,7 @@ angular.module('gale.components')
 
             self.hasEventHandlersFor = function(name){
                 return $$listeners[name] != null;
-            }
+            };
 
             self.$fire = function(name, args){
                 var listeners = $$listeners[name];
@@ -57,7 +57,7 @@ angular.module('gale.components')
                 angular.forEach(listeners, function(listener){
                     listener.apply(listener, args);
                 });
-            }
+            };
             //------------------------------------------------------------------------------
             
             //------------------------------------------------------------------------------
@@ -67,7 +67,7 @@ angular.module('gale.components')
             //Retrieve the Unique Id for the gale Table
             self.getUniqueId = function(){
                 return unique_id;
-            }
+            };
 
             //Manual Bootstrap
             self.setup = function(endpoint, cfg){
@@ -84,11 +84,17 @@ angular.module('gale.components')
 
             //Bind to Endpoint
             self.bind = function(endpoint){
+                $scope.isLoading = true;
+
                 $Api.invoke('GET', endpoint, null, configuration.headers)
                 .success(function(data){
 
                     self.render(data.items);
                     self.$fire("loadComplete", [data, unique_id]);
+                    
+                })
+                .finally(function(){
+                    $scope.isLoading = false;
                 });
             };
             
@@ -96,7 +102,7 @@ angular.module('gale.components')
             self.render = function(data){
                 self.$fire("beforeRender", [data, unique_id]);
                 $scope.source = data;
-            }
+            };
             //------------------------------------------------------------------------------
 
             //Cell Click
@@ -153,7 +159,7 @@ angular.module('gale.components')
                    rowClickHandler(item);
                 }
 
-            }
+            };
            
         }
     };

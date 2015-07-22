@@ -1,7 +1,7 @@
 angular.module('mocks', ['App', 'ngMockE2E'])
-.run(function($httpBackend, ENVIRONMENT_CONFIGURATION, $log) {
+.run(function($httpBackend, CONFIGURATION, $log) {
   
-    var endpoint  = ENVIRONMENT_CONFIGURATION.endpoint;
+    var endpoint  = CONFIGURATION.endpoint;
     var Api = null;
     var build = function(Api){
         var exp = new RegExp(endpoint + Api ); 

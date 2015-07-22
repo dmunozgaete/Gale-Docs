@@ -2,14 +2,16 @@ angular.module('gale.components')
 
 .factory('$galeLoading', function($q, $rootScope) {
     var self        = this;
-    var _component  = {};
+    var _component  = null;
 
     var _get = function(){
         if(!_component){
-            throw { message: 'no gale-loading has found' }
+            throw { 
+                message: 'no gale-loading has found' 
+            };
         }
         return _component;
-    }
+    };
 
     //Entry Point to register
     self.$$register = function(component, uniqueID){
@@ -18,17 +20,17 @@ angular.module('gale.components')
 
     //Entry Point to register
     self.$$unregister = function(component, uniqueID){
-        delete _component;
+        _component = null;
     };
 
     //Manual Bootstrapp
     self.show = function(message){
         return _get().show(message);
-    }
+    };
 
     self.hide = function(){
         return _get().hide();
-    }
+    };
 
     return self;
 });

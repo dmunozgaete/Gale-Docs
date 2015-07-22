@@ -12,10 +12,12 @@ module.exports = function(grunt, options) {
 
 	return {
 		dist: [
-			'app/dist/**/*.*',
-			'!app/dist/dependencies.js',
-			'!app/dist/dependencies.min.js',
-			'!app/dist/dependencies.min.js.map'
+			'app/dist/**/*.*'
+		],
+
+		post: [
+			'app/dist/js/bundles.js',
+			'app/dist/js/controllers.js'
 		]
 	};
 

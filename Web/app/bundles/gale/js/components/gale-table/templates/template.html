@@ -6,6 +6,9 @@
 </gale-header>
 
 <gale-body class="gale-body">
+	<div class="loading" ng-if="isLoading">
+		<md-progress-linear md-mode="indeterminate"></md-progress-linear>
+	</div>
 	<gale-row 
 		layout="row" 
 		class="gale-row" 

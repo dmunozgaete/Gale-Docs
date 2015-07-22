@@ -1,0 +1,82 @@
+﻿<section layout="row" flex>
+
+    <!-- SIDENAV -->
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 " md-component-id="left" md-is-locked-open="true">
+
+        <div layout="column" class="logo" layout-align="center center">
+            <div flex>
+                <img ng-src="https://dl.dropboxusercontent.com/u/24087768/GrupoValentys/Logos/Isotipos/Grupo%20Valentys%20-%20Blanco.png" />
+            </div>
+            <span class="title">
+                {{config.application.name}}
+            </span>
+        </div>
+
+        <md-content>
+            <md-divider>
+                Versión Actual: <strong>{{config.application.version}}</strong>
+            </md-divider>
+            <!-- Section Item's -->
+            <md-list>
+                <md-list-item ng-click="navigate('app.home-introduction', 'Gale > Introducción')">
+                    <p> Introducción </p>
+                    <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
+                </md-list-item>
+            </md-list>
+            <md-list>
+                <md-list-item ng-click="navigate('app.home-installation', 'Gale > Instalación')">
+                    <p> Instalación </p>
+                    <md-icon md-svg-src="hardware:keyboard_arrow_right"></md-icon>
+                </md-list-item>
+            </md-list>
+            <md-divider>
+                Referencias API
+            </md-divider>
+
+            <!-- Menu  -->
+            <md-list ng-repeat="section in config.menu">
+
+                <!-- Section -->
+                <md-list ng-click="toggleMenu(section);" class="section" ng-class="{'toggled' : section.open}">
+                    <md-list-item>
+                        <p> {{section.label}} </p>
+                        <md-icon class="chevron" md-svg-icon="navigation:expand_more"></md-icon>
+                    </md-list-item>
+                </md-list>
+
+                <!-- Section Item's -->
+                <div ng-show="section.open == true" ng-animate="'animate'">
+                    <md-list class="items">
+                        <md-list-item ng-click="navigateTo(section, item)" ng-repeat="item in section.items | orderBy:'+'">
+                            <p> {{item}} </p>
+                            <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
+                        </md-list-item>
+                    </md-list>
+                </div>
+
+            </md-list>
+
+        </md-content>
+
+    </md-sidenav>
+
+    <!-- CONTENT -->
+    <div layout="column" layout-fill layout-align="top center">
+
+        <md-whiteframe class="md-whiteframe-z2 doc-title">
+
+            <h2>{{config.selected_menu}}</h2>
+
+        </md-whiteframe>
+
+        <md-content ui-view name="content" ng-show="!config.loading" layout-padding>
+        </md-content>
+
+        <md-content ng-show="config.loading" style="background-color:transparent" layout-margin layout layout-align="center center">
+            <md-progress-circular class="md-hue-2" md-mode="indeterminate">
+            </md-progress-circular>
+        </md-content>
+
+    </div>
+
+</section>

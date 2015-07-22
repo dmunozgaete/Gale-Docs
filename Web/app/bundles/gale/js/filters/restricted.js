@@ -15,32 +15,13 @@
 	};
 
 
-	angular.module('app.filters')	
+	angular.module('gale.filters')
 
-	.filter('image', function ($Api, Identity) {
-		return function (token) {
-			var endpoint = $Api.get_endpoint() + '/File/';
-			var resx = resourceUrl(endpoint, token , Identity);
-			if(!resx){
-				//OTHERWISE SHOW A LOGO IMAGE
-				resx = "bundles/app/css/images/logo-white.png";
-			}
-			return resx;
-		};
-	})
-
-	.filter('avatar', function ($Api, Identity) {
-		return function (token) {
-			var endpoint = $Api.get_endpoint() + '/Account/Avatar/';
-			return resourceUrl(endpoint, token, Identity);
-		};
-	})
-
-	.filter('resource', function ($Api, Identity) {
+	.filter('restricted', function ($Api, Identity) {
 		return function (token) {
 			var endpoint = $Api.get_endpoint() + '/File/';
 			return resourceUrl(endpoint, token, Identity);
 		};
 	});
 
-})()
+})();

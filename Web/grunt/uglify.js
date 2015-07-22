@@ -10,40 +10,42 @@
 //------------------------------------------------------
 module.exports = function(grunt, options) {
     var conf = {
-    	options: {  
-            compress: true,
-            mangle: false,
-            sourceMap: true
-        },  
-        
-        dependencies: {
-            src: [
-                'app/dist/dependencies.js'
-            ],
-            dest: 'app/dist/dependencies.min.js'
+        bower: {
+            options: {
+                compress: true,
+                mangle: true,
+                sourceMap: true
+            },
+            files: {
+                'app/dist/js/bower.min.js': [
+                    'app/dist/js/bower.js'
+                ]
+            }
         },
-
-        controllers: {
-            src: [
-                'app/dist/controllers.js'
-            ],
-            dest: 'app/dist/controllers.min.js'
+        application: {
+            options: {
+                compress: true,
+                mangle: false,
+                sourceMap: true
+            },
+            files :{
+                'app/dist/js/application.min.js': [
+                    'app/dist/js/application.js'
+                ]
+            }
         },
-
-        sdk: {
-            src: [
-                'app/dist/sdk.js'
-            ],
-            dest: 'app/dist/sdk.min.js'
-        },
-
-        app: {
-            src: [
-                'app/dist/app.js'
-            ],
-            dest: 'app/dist/app.min.js'
+        gale: {
+            options: {
+                compress: true,
+                mangle: false,
+                sourceMap: true
+            },
+            files :{
+                'app/dist/js/gale.min.js': [
+                    'app/dist/js/gale.js'
+                ]
+            }
         }
     };
-
     return conf;
 };

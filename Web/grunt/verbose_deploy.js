@@ -5,19 +5,10 @@
 // Description: Lift Web Server , and run some tasks
 //------------------------------------------------------
 module.exports = function(grunt, options) {
-    var util = require('util');
-    var tasks = [];
-    
-    grunt.log.ok("syncing package.json => bower.json"); 
-    tasks.push('sync');
-    tasks.push('clean');
-    tasks.push('injector:development');
-    tasks.push('connect:development');
-    if (options.livereload) {
-        tasks.push('watch');
-    }
-    var verbose = function() {
+    var run = function() {
+        //-----------------------------------------------------------------------------
         //Clear Console
+        var util = require('util');
         util.print("\u001b[2J\u001b[0;0H");
         grunt.log.ok("-------------------------------------------------------------------------");
         grunt.log.ok("Valentys Ltda.");
@@ -29,24 +20,15 @@ module.exports = function(grunt, options) {
             options.server.hostname + ":" +
             options.server.port
         );
-        //LIVE RELOAD
-        if (options.livereload) {
-            grunt.log.warn("Livereload: enabled, (to disable set arg --no-livereload when run grunt)");
-        }
-        else {
-            grunt.log.warn("Livereload: disabled");
-        }
         //SERVER PATH INFO
         grunt.log.warn("Base path: '" +
             options.server.path + "'"
         );
         grunt.log.ok(" ");
-        grunt.log.ok("Lifting Deployment Server...settings thing's up");
+        grunt.log.ok(" ");
+        grunt.log.ok("Deploying...settings thing's up");
         grunt.log.ok("-------------------------------------------------------------------------");
-        //Other TASKS
-        for (var task in tasks) {
-            grunt.task.run(tasks[task]);
-        }
+        //-----------------------------------------------------------------------------
     };
-    grunt.registerTask('lift', verbose);
+    grunt.registerTask('verbose_deploy', run);
 }

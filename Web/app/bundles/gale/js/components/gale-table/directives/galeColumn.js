@@ -24,22 +24,22 @@ angular.module('gale.components')
                 //--------------------------------------------------------
                 //Try to get header element (CUSTOM)
                 var header = _.find(fragments,function(elm){
-                    return elm.nodeName.toLowerCase() == "gale-header"
+                    return elm.nodeName.toLowerCase() === "gale-header";
                 });
 
                 if(!header){
-                    header = angular.element("<div>" + (scope.title||"") + "</div>")
+                    header = angular.element("<div>" + (scope.title||"") + "</div>");
                 }else{
                     header = angular.element(header);
 
                     //IF HAS NG-TEMPLATE (FIX BUG TRANSCLUDE)
-                    var script = header.find("script");
-                    if(script.length >0 ){
-                        header = script;
+                    var hscript = header.find("script");
+                    if(hscript.length >0 ){
+                        header = hscript;
                     }else{
-                        var template = header.find("template");
+                        var htemplate = header.find("template");
                         if(template.length >0 ){
-                            header = template;
+                            htemplate = htemplate;
                         }
                     }
                 }
@@ -68,7 +68,7 @@ angular.module('gale.components')
                 //--------------------------------------------------------
                 //Try to get item element (CUSTOM)
                 var item = _.find(fragments,function(elm){
-                    return elm.nodeName.toLowerCase() == "gale-item"
+                    return elm.nodeName.toLowerCase() === "gale-item";
                 });
 
                 if(!item){
