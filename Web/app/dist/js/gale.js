@@ -1183,16 +1183,6 @@ angular.module('gale.directives')
 
         }
     };
-});;angular.module('gale.filters')	
-
-.filter('template', function ($log,$interpolate) {
-	return function (template, context) {
-
-            var exp = $interpolate(template);
-            var content = exp(context);
-           
-           return content;
-	};
 });;angular.module('gale.filters')
 .filter('capitalize', function() {
     return function(input, all) {
@@ -1202,6 +1192,16 @@ angular.module('gale.directives')
     };
 });
 ;angular.module('gale.filters')	
+
+.filter('template', function ($log,$interpolate) {
+	return function (template, context) {
+
+            var exp = $interpolate(template);
+            var content = exp(context);
+           
+           return content;
+	};
+});;angular.module('gale.filters')	
 
 .filter('localize', function ($Localization, $log, $interpolate) {
 	return function (text, parameters) {

@@ -390,7 +390,7 @@ angular.manifiest('app', [
             author: "David Antonio Muñoz Gaete",
             environment: "development",
             language: "es",
-            name: "Starter Project",
+            name: "Gale Documentation",
             home: "/demo/home/introduction"
         },
 

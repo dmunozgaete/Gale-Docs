@@ -1,8 +1,6 @@
 {
-  "name": "Starter_Project",
-  "description": "Gale Documentation",
+  "name": "Gale_Docs_Project",
   "version": "0.0.0",
-  "homepage": "https://github.com/dmunozgaete/Gale-Docs.git",
   "license": "MIT",
   "private": true,
   "dependencies": {

@@ -7,7 +7,7 @@ angular.module("config", [])
             author: "David Antonio Muñoz Gaete",
             environment: "development",
             language: "es",
-            name: "Starter Project",
+            name: "Gale Doc's",
             home: "/demo/home/introduction"
         },
 
