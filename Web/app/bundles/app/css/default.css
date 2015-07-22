@@ -68,6 +68,7 @@ a {
   -----------------------------
  */
 section {
+  background-color: #F7F7F7;
   /* High Light JS */ }
   section .source-icons {
     position: fixed;
@@ -78,7 +79,7 @@ section {
       height: 30px;
       margin-top: 10px; }
   section .doc-title {
-    background-color: #F4F2F2;
+    background-color: #F7F7F7;
     color: #525252;
     min-height: 63px; }
     section .doc-title h2 {
@@ -93,6 +94,7 @@ section {
       text-align: justify;
       padding-bottom: 4px; }
   section md-content[name=content] {
+    background-color: #F7F7F7;
     margin-top: 16px;
     padding: 0px 16px 16px 16px; }
     section md-content[name=content] p {
@@ -128,7 +130,7 @@ section {
         padding: 12px 16px;
         text-align: left; }
       section .api-param-table table tr:nth-child(odd) td {
-        background-color: #F7F7F7; }
+        background-color: #FFF; }
       section .api-param-table table tr td:first-child {
         white-space: nowrap; }
       section .api-param-table table tr td {
@@ -158,7 +160,7 @@ section {
       font-family: "Menlo, Monaco, " Andale Mono ", " Lucida Console ", " Courier New ", monospace;"; }
     section ul.methods div.service-desc {
       overflow: hidden;
-      background: #F7F7F7;
+      background: #FFF;
       padding: 0px 16px;
       margin: 0 0 22px; }
   section hljs:before {
@@ -220,11 +222,15 @@ section {
   section .hljs-regexp {
     color: #7DB9F4; }
 
-section.demo-container md-toolbar button, section.demo-container md-toolbar md-button:hover {
-  background-color: transparent !important;
-  float: right; }
-  section.demo-container md-toolbar button md-icon, section.demo-container md-toolbar md-button:hover md-icon {
-    color: #fff !important; }
+section.demo-container md-toolbar {
+  background-color: #494848; }
+  section.demo-container md-toolbar button, section.demo-container md-toolbar md-button:hover {
+    background-color: transparent !important;
+    float: right; }
+    section.demo-container md-toolbar button md-icon, section.demo-container md-toolbar md-button:hover md-icon {
+      color: #fff !important; }
+section.demo-container md-tabs md-tabs-wrapper {
+  background-color: #494848; }
 section.demo-container md-tabs md-content {
   padding: 0px; }
   section.demo-container md-tabs md-content hljs:before {
@@ -236,7 +242,7 @@ section.demo-container md-tabs md-content {
     padding: 0 16px;
     border-radius: 2px 2px 0 0; }
 section.demo-container md-tabs md-tab-content {
-  background-color: #0C2238; }
+  background-color: #1F1F1F; }
 section.demo-container md-tabs:not(.md-no-tab-content):not([md-dynamic-height]) {
   min-height: 350px; }
 section.demo-container span.demo-error {

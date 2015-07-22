@@ -97,6 +97,7 @@ a {
  */
 
 section {
+    background-color:#F7F7F7;
     .source-icons {
         position: fixed;
         top: 10px;
@@ -110,7 +111,7 @@ section {
         }
     }
     .doc-title {
-        background-color: #F4F2F2;
+        background-color: #F7F7F7;
         color: #525252;
         min-height: 63px;
         h2 {
@@ -129,6 +130,7 @@ section {
         }
     }
     md-content[name=content] {
+        background-color: #F7F7F7;
         margin-top: 16px;
         padding: 0px 16px 16px 16px;
         p {
@@ -171,7 +173,7 @@ section {
             }
             tr:nth-child(odd) {
                 td {
-                    background-color: #F7F7F7;
+                    background-color: #FFF;
                 }
             }
             tr {
@@ -213,7 +215,7 @@ section {
         }
         div.service-desc {
             overflow: hidden;
-            background: #F7F7F7;
+            background: #FFF;
             padding: 0px 16px;
             margin: 0 0 22px;
         }
@@ -288,6 +290,7 @@ section {
 
 section.demo-container {
     md-toolbar {
+        background-color: #494848;
         button, md-button:hover {
             background-color: transparent !important;
             float: right;
@@ -297,6 +300,9 @@ section.demo-container {
         }
     }
     md-tabs {
+        md-tabs-wrapper{
+            background-color: #494848;
+        }
         md-content {
             padding: 0px;
             hljs:before {
@@ -310,7 +316,7 @@ section.demo-container {
             }
         }
         md-tab-content {
-            background-color: #0C2238;
+            background-color: #1F1F1F;
         }
     }
     md-tabs:not(.md-no-tab-content):not([md-dynamic-height]) {
