@@ -30,19 +30,19 @@ a {
  */
 .md-sidenav-left {
   min-width: 260px !important;
-  background-color: #0D47A1; }
+  background-color: #000; }
   .md-sidenav-left md-content {
-    background-color: #0D47A1;
+    background-color: #000;
     max-height: 470px;
     overflow-x: auto; }
   .md-sidenav-left .section {
     border: 1px solid transparent;
-    border-bottom: 1px solid #0B3F8E; }
+    border-bottom: 1px solid #2A2A2A; }
     .md-sidenav-left .section md-icon {
       transition: transform 0.45s ease-in-out;
       -webkit-transition: -webkit-transform 0.45s ease-in-out; }
   .md-sidenav-left .section.toggled {
-    background-color: #0B3F8E; }
+    background-color: #2A2A2A; }
     .md-sidenav-left .section.toggled md-icon {
       transform: rotate(180deg);
       -webkit-transform: rotate(180deg); }
@@ -53,13 +53,13 @@ a {
     .md-sidenav-left md-list md-list-item {
       color: #fff; }
       .md-sidenav-left md-list md-list-item button:hover {
-        background-color: #033889 !important; }
+        background-color: #2A2A2A !important; }
       .md-sidenav-left md-list md-list-item md-icon {
         color: #fff; }
   .md-sidenav-left md-list.items md-list-item button {
     padding-left: 32px; }
   .md-sidenav-left md-divider {
-    color: #5071A5;
+    color: #6E6E6E;
     padding: 8px 16px; }
 
 /*  
@@ -99,7 +99,7 @@ section {
       line-height: 1.6em;
       text-align: justify; }
   section code:not(.hljs) {
-    color: #106CC8;
+    color: #131313;
     margin-left: 1px;
     margin-right: 1px;
     -webkit-font-smoothing: auto;
@@ -123,12 +123,12 @@ section {
       border-radius: 2px;
       overflow: hidden; }
       section .api-param-table table th {
-        background-color: #4C9EF0;
+        background-color: #6C6C6C;
         color: #FFF;
         padding: 12px 16px;
         text-align: left; }
       section .api-param-table table tr:nth-child(odd) td {
-        background-color: #E3ECF5; }
+        background-color: #F7F7F7; }
       section .api-param-table table tr td:first-child {
         white-space: nowrap; }
       section .api-param-table table tr td {
@@ -149,7 +149,7 @@ section {
       padding-bottom: 0px; }
     section ul.methods h3.method-function-syntax {
       padding: 0 16px;
-      background: #0D47A1;
+      background: #000;
       color: #FFF;
       line-height: 48px;
       margin: 0px;
@@ -158,14 +158,14 @@ section {
       font-family: "Menlo, Monaco, " Andale Mono ", " Lucida Console ", " Courier New ", monospace;"; }
     section ul.methods div.service-desc {
       overflow: hidden;
-      background: #E3ECF5;
+      background: #F7F7F7;
       padding: 0px 16px;
       margin: 0 0 22px; }
   section hljs:before {
     content: attr(language);
     text-transform: uppercase;
     display: block;
-    background: #0D47A1;
+    background: #000;
     color: #FFF;
     line-height: 48px;
     padding: 0 16px;
@@ -181,7 +181,7 @@ section {
   section .xml .cdata {
     color: #8F9C6C !important; }
   section .hljs {
-    background-color: #0C2238; }
+    background-color: #1F1F1F; }
   section .hljs-link_url,
   section .hljs-tag .hljs-value,
   section .hljs-string,
@@ -230,7 +230,7 @@ section.demo-container md-tabs md-content {
   section.demo-container md-tabs md-content hljs:before {
     content: "";
     text-transform: inherits;
-    background: #0D47A1;
+    background: #000;
     color: #FFF;
     line-height: 48px;
     padding: 0 16px;

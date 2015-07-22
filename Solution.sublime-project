@@ -1,12 +1,2 @@
 {
-	"folders":
-	[
-		{
-			"file_exclude_patterns":
-			[
-				"Web/app/bundles/app/css/default.css.map"
-			],
-			"path": "."
-		}
-	]
 }
