@@ -68,6 +68,17 @@ angular.manifiest('app', [
         DIRECTIVES: RANGE
      */
     angular.module('app.demos', ['gale', 'ngMaterial'])
+        /*
+            DIRECTIVES: EMAIL
+         */
+        .controller("EmailDemoController", function($scope) {
+            $scope.submit = function(form) {
+                console.log("submit!")
+            };
+        })
+        /*
+            DIRECTIVES: RANGE
+         */
         .controller("RangeDemoController", function($scope) {
             $scope.submit = function(form) {
                 console.log("submit!")
@@ -390,7 +401,7 @@ angular.manifiest('app', [
             author: "David Antonio Muñoz Gaete",
             environment: "development",
             language: "es",
-            name: "Gale Documentation",
+            name: "Gale Doc's",
             home: "/demo/home/introduction"
         },
 
@@ -435,8 +446,9 @@ angular.manifiest('app', [
             "name": "directives",
             "open": false,
             "items": [
-                "ngrange",
-                "ngrut",
+                "ngRange",
+                "ngRut",
+                "ngEmail",
                 "selectTextOnClick",
                 "toNumbeOnBlur"
             ]

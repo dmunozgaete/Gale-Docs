@@ -10,7 +10,7 @@
 	Solo se debe ocupar en el caso en que el protocolo de
 	seguridad se encuentre basado en 
 	<a href="http://oauth.net/2/" target="_blank">OAuth2</a>
-	y con respuesta <a href="http://jwt.io/" target="_blank">JWT</a>
+	y estandar <a href="http://jwt.io/" target="_blank">JWT</a>
 	
 	<br />
 	<!-- /DESCRIPTION -->
@@ -23,7 +23,7 @@
 app.controller('MyController', function($scope, Identity) {
 
   if(Identity.isAuthenticated()){
-    var user = Identity.get();
+    var user = Identity.getCurrent();
     console.log('Usuario Autenticado!');
     console.log(user.name);	//Claim 'name'
     console.log(user.uid);	//Claim 'PrimarySid'
@@ -46,46 +46,199 @@ angular.module('App', [
   , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
   , 'gale'       //VALENTYS SDK LIBRARY
 ])
-.config(function(IdentityProvider) {
-  
-  //Configuración de la URL de authenticación
-  var endpoint = 'http://demoApp.valentys.com/v1/OAuth/Authenticate';
-  IdentityProvider.setIssuerEndpoint(endpoint);
 
-});
-	</hljs>
+.config(function($IdentityProvider) {
+  $IdentityProvider
+    .enable()	//Enable
+    .setIssuerEndpoint("api.valentys.com/v1/OAuth/Authorize")
+    .setLogInRoute("security/identity/login")
+    .setWhiteListResolver(function(toState, current) {
 
-	<h2 class="md-headline">
-		Ejemplo: Acceso solo a usuarios autenticados
-	</h2>
-	<hljs language="js" escape="false">
-angular.module('App', [
-  'ui.router'    //NG ROUTE
-  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
-  , 'gale'       //VALENTYS SDK LIBRARY
-])
-.run(function ($rootScope, $state, $location, Identity) {
-    
-  $rootScope.$on('$stateChangeStart', function (event, toState,current){
-    if(toState.name !== 'login' && !Identity.isAuthenticated()){
-      $state.go('login');
-      event.preventDefault();
-    }
-  });
+      //Exception State's
+      if (toState.name.startsWith("exception.")) {
+        return true;
+      }
 
-  if(Identity.isAuthenticated()){
-    $location.path('/app/home');
-  }else{
-    $location.path('/login'); 
-  }
+      //Request-Access State's
+      if (toState.name.startsWith("public.")) {
+        return true;
+      }
 
-  $rootScope.$on('Identity.onLogOut', function (){
-    $state.go('login');
-  });
+      //Restrict Other State's
+      return false;
 
-});
+    });
+
+})
 	</hljs>
 	<!-- /USAGE -->
+	<h2 class="md-headline">
+		Valores de Configuración
+	</h2>
+	<ul class="methods">
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				enable()
+			</h3>
+			<div class="service-desc">
+				<p>
+					Habilita el componente de autorización , denegando todo acceso a las rutas
+					con excepción de los valores retornados en la funcion <code>setWhiteListResolver</code>.
+				</p>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				setIssuerEndpoint(endpoint)
+			</h3>
+			<div class="service-desc">
+				<p>
+					Establece el <code>enpoint</code> del servicio de autenticación.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									endpoint
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Ruta del servicio de autenticación.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				setLogInRoute(LoginRoute)
+			</h3>
+			<div class="service-desc">
+				<p>
+					Establece la ruta del proyecto que contiene la pagina de autenticación.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code class="required">
+									LoginRoute
+								</code>
+							</td>
+							<td>
+								String
+							</td>
+							<td class="description">
+								<p>
+									Ruta (State Route) de angularJS donde se encuentra el
+									servicio de autenticación.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				setWhiteListResolver(function(toState, current){})
+			</h3>
+			<div class="service-desc">
+				<p>
+					Función de evaluación de acceso cuando se intenta acceder a una ruta en la
+					aplicación, <i>(Útil cuando existen rutas publicas en la aplicación)</i>.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									toState
+								</code>
+							</td>
+							<td>
+								Angular State
+							</td>
+							<td class="description">
+								<p>
+									Ruta solicitada por el usuario en la aplicación.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									current
+								</code>
+							</td>
+							<td>
+								Angular State
+							</td>
+							<td class="description">
+								<p>
+									Ruta actual donde se encuentra el usuario en la aplicación
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+		</li>
+		<!-- -->
+	</ul>
 
 	<!-- METHODS -->
 	<h2 class="md-headline">
@@ -96,12 +249,12 @@ angular.module('App', [
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.authenticate(credentials);
+				$Identity.authenticate(credentials);
 			</h3>
 			<div class="service-desc">
 				<p>
-					Envia una solicitud de autenticación (POST) hacia un recurso web 
-					basado en <code>OAuth2</code>, y de acuerdo a la respuesta , el 
+					Envia una solicitud de autenticación (POST) hacia un recurso web de
+					autenticación, y de acuerdo a la respuesta , el 
 					componente identifica al usuario en el sistema.
 				</p>
 			</div>
@@ -172,44 +325,7 @@ angular.module('App', [
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.getToken();
-			</h3>
-			<div class="service-desc">
-				<p>
-					Obtiene el valor del token JWT, asociado al servicio de 
-					autenticación.
-				</p>
-			</div>
-			<div class="api-param-table">
-				<table class="no-style">
-					<thead>
-						<tr>
-							<th>Retorno</th>
-							<th>Descripción</th>
-						</tr>
-					</thead>
-					<tbody>
-						<!-- -->
-						<tr>
-							<td>
-								String
-							</td>
-							<td class="description">
-								<p>
-									Valor del token en formato JWT.
-								</p>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<!-- /METHOD -->
-		</li>
-		<!-- -->
-		<li>
-			<!-- METHOD -->
-			<h3 class="method-function-syntax">
-				Identity.getAccessToken();
+				$Identity.getAccessToken();
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -245,7 +361,7 @@ angular.module('App', [
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.get();
+				$Identity.getCurrent();
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -254,7 +370,7 @@ angular.module('App', [
 					<ul class="doc-list">
 						<li>
 							<code>property(name)</code>: Obtiene el valor de una propiedad extendida del
-							usuario a través del metodo property del servicio <code>Identity</code>
+							usuario a través del metodo property del servicio <code>$Identity</code>
 						</li>
 						<li>
 							<code>isInRole(role)</code>: Devuelve <code>verdadero</code> en el caso de 
@@ -293,7 +409,7 @@ angular.module('App', [
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.isAuthenticated();
+				$Identity.isAuthenticated();
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -331,12 +447,12 @@ angular.module('App', [
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.logOut();
+				$Identity.logOut();
 			</h3>
 			<div class="service-desc">
 				<p>
 					Cierra la sesión actual del usuario, limpiando la información de sesión 
-					local y ejecutando el evento <code>Identity.onLogOut</code> al finalizar
+					local y ejecutando el evento <code>auth-logout-success</code> al finalizar
 					correctamente el cierre.
 				</p>
 			</div>
@@ -355,12 +471,12 @@ angular.module('App', [
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.onAuthenticate
+				auth-login-success
 			</h3>
 			<div class="service-desc">
 				<p>
-					Evento que se ejecuta una vez el usuario ha sido autenticado contra el
-					servicio de autenticación basado en <code>OAuth2</code>.
+					Evento <strong>Global</strong> que se ejecuta una vez el usuario ha sido autenticado contra el
+					servicio de autenticación.
 				</p>
 			</div>
 			<div class="api-param-table">
@@ -385,8 +501,7 @@ angular.module('App', [
 							</td>
 							<td class="description">
 								<p>
-									Token JWT devuelto por el servicio de autenticación basado
-									en <code>OAuth2</code>.
+									Token JWT devuelto por el servicio de autenticación.
 								</p>
 							</td>
 						</tr>
@@ -400,7 +515,7 @@ angular.module('App', [
 			<hljs language="js">
 app.controller('LayoutController', function($scope, $rootScope) {
 
-  $rootScope.$on("Identity.onAuthenticate", function(token){
+  $rootScope.$on("auth-login-success", function(token){
     console.log(token);
   });
 
@@ -412,11 +527,230 @@ app.controller('LayoutController', function($scope, $rootScope) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				Identity.onLogOut
+				auth-login-failed
 			</h3>
 			<div class="service-desc">
 				<p>
-					Evento que se ejecuta cuando se ha cerrado la sesión actual del usuario.
+					Evento <strong>Global</strong> que se ejecuta si autenticación contra el servicio de autenticación
+					fallo.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									data
+								</code>
+							</td>
+							<td>
+								Object
+							</td>
+							<td class="description">
+								<p>
+									Objeto que contiene la informacion de contexto
+									del error. 
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									status
+								</code>
+							</td>
+							<td>
+								Number
+							</td>
+							<td class="description">
+								<p>
+									Estado HTTP de la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /EVENTS -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+app.controller('LayoutController', function($scope, $rootScope) {
+
+  $rootScope.$on("auth-login-failed", function(data, status){
+    console.log("auth-login-failed");
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				auth-not-authorized
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento <strong>Global</strong> que se ejecuta el servicio de autenticación responde con estado 
+					"No autorizado" (401).
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									data
+								</code>
+							</td>
+							<td>
+								Object
+							</td>
+							<td class="description">
+								<p>
+									Objeto que contiene la informacion de contexto
+									del error. 
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									status
+								</code>
+							</td>
+							<td>
+								Number
+							</td>
+							<td class="description">
+								<p>
+									Estado HTTP de la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /EVENTS -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+app.controller('LayoutController', function($scope, $rootScope) {
+
+  $rootScope.$on("auth-not-authorized", function(data, status){
+    console.log("auth-not-authorized");
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				auth-session-timeout
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento <strong>Global</strong> que se ejecuta si autenticación contra el servicio de autenticación
+					responde con un estado de "Expiración del Token" de autenticación (419 o 440)
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									data
+								</code>
+							</td>
+							<td>
+								Object
+							</td>
+							<td class="description">
+								<p>
+									Objeto que contiene la informacion de contexto
+									del error. 
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									status
+								</code>
+							</td>
+							<td>
+								Number
+							</td>
+							<td class="description">
+								<p>
+									Estado HTTP de la solicitud.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /EVENTS -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+app.controller('LayoutController', function($scope, $rootScope) {
+
+  $rootScope.$on("auth-session-timeout", function(data,status){
+    console.log("auth-session-timeout");
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				auth-logout-success
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento <strong>Global</strong> que se ejecuta cuando se ha cerrado la sesión actual del usuario.
 				</p>
 			</div>
 			<!-- /EVENTS -->
@@ -425,8 +759,8 @@ app.controller('LayoutController', function($scope, $rootScope) {
 			<hljs language="js">
 app.controller('LayoutController', function($scope, $rootScope, $state) {
 
-  $rootScope.$on("Identity.onLogOut", function(){
-    $state.go('login');
+  $rootScope.$on("auth-logout-success", function(){
+    console.log("auth-logout-success");
   });
 
 });

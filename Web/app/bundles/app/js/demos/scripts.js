@@ -3,6 +3,17 @@
         DIRECTIVES: RANGE
      */
     angular.module('app.demos', ['gale', 'ngMaterial'])
+        /*
+            DIRECTIVES: EMAIL
+         */
+        .controller("EmailDemoController", function($scope) {
+            $scope.submit = function(form) {
+                console.log("submit!")
+            };
+        })
+        /*
+            DIRECTIVES: RANGE
+         */
         .controller("RangeDemoController", function($scope) {
             $scope.submit = function(form) {
                 console.log("submit!")

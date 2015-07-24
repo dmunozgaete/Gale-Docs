@@ -1,4 +1,5 @@
 angular.module('gale.services.configuration')
+
 .service('$Localization', function(RESOURCES) {
     function get(name, defaultValue) {
         var v = RESOURCES[name];

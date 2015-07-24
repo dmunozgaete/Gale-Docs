@@ -6,7 +6,7 @@
     //Configurable Variable on .config Step
     var _endpoint = null;
     var EVENTS = {
-        BEFORE_SEND:'beforeSend',
+        BEFORE_SEND:'before-send',
         SUCCESS:    'success',
         ERROR:      'error'
     };

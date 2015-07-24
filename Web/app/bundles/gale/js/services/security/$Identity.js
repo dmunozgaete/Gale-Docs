@@ -128,7 +128,7 @@
                 //Add Hook if authentication is enabled
                 if (_enable) {
                     //API HOOK
-                    $Api.$on("beforeSend", function(headers) {
+                    $Api.$on("before-send", function(headers) {
                         //SET AUTHORIZATION HEADER IF USER IS AUTHENTICATED
                         if (self.isAuthenticated()) {
                             var jwt = _authResponse;

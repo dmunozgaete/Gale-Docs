@@ -43,12 +43,27 @@
 			inmediata la función <code>on_build_new_version</code> configurada en el mismo 
 			archivo si es que esta se encuentra presente.
 			<br />
-			Está función recibe tiene dos parametros en su firma, 
+			Está función recibe dos parametros en su firma, 
 			(<code>new_version</code>, <code>old_version</code>) y permite 
 			inyeccion de dependencias a través del servicio 
 			<a href="https://docs.angularjs.org/api/auto/service/$injector" target="_blank">$injector</a>
 		</li>
+		<li>
+			En tiempo de ejecución las constantes <code>ENVIRONMENT_CONFIGURATION</code> y 
+			<code>GLOBAL_CONFIGURATION</code> no se encuentran disponibles para su acceso, pero 
+			se puede acceder en la etapa de inicialización a través de la constante 
+			<code>CONFIGURATION</code>.
+			<br />
+			<br />
+			<center>
+				<img src="https://docs.angularjs.org/img/guide/concepts-startup.png" />
+				<br />
+				<i>Esquema de inicialzación de angularJS</i>
+			</center>
+		</li>
 	</ul>
+
+
 	<!-- /DESCRIPTION -->
 
 	<!-- USAGE -->
@@ -66,7 +81,7 @@ app.controller('MyController', function($scope, $Configuration) {
   var language = application.language;  //Localización del Sistema
   var name = application.name;  //Nombre de la Aplicación
 
-  var exists_menu = $Configuration.exists("menu_items");  //Booleano
+  var hasMenu = $Configuration.exists("menu_items");  //Booleano
 
 });
 	</hljs>
@@ -149,7 +164,7 @@ app.controller('MyController', function($scope, $Configuration) {
 					<tr>
 						<td>
 							<code>
-								object
+								Object
 							</code>
 						</td>
 						<td class="description">
@@ -233,7 +248,7 @@ app.controller('MyController', function($scope, $Configuration) {
 						<tr>
 							<td>
 								<code>
-									boolean
+									Boolean
 								</code>
 							</td>
 							<td class="description">

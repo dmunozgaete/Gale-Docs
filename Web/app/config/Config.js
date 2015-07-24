@@ -52,8 +52,9 @@ angular.module("config", [])
             "name": "directives",
             "open": false,
             "items": [
-                "ngrange",
-                "ngrut",
+                "ngRange",
+                "ngRut",
+                "ngEmail",
                 "selectTextOnClick",
                 "toNumbeOnBlur"
             ]

@@ -997,6 +997,17 @@ angular.manifiest('gale', [
     return deferred.promise;
 });
 ;angular.module('gale.directives')
+
+.directive('selectTextOnClick', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.on('click', function () {
+                this.select();
+            });
+        }
+    };
+});;angular.module('gale.directives')
     .directive('toNumberOnBlur', function($filter, $locale) {
         return {
             require: 'ngModel',
@@ -1020,18 +1031,7 @@ angular.manifiest('gale', [
             }
         };
     });
-;angular.module('gale.directives')
-
-.directive('selectTextOnClick', function () {
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element.on('click', function () {
-                this.select();
-            });
-        }
-    };
-});;/**
+;/**
  * Created by Administrador on 26/08/14.
  */
 angular.module('gale.directives')
@@ -1193,16 +1193,6 @@ angular.module('gale.directives')
 });
 ;angular.module('gale.filters')	
 
-.filter('template', function ($log,$interpolate) {
-	return function (template, context) {
-
-            var exp = $interpolate(template);
-            var content = exp(context);
-           
-           return content;
-	};
-});;angular.module('gale.filters')	
-
 .filter('localize', function ($Localization, $log, $interpolate) {
 	return function (text, parameters) {
 
@@ -1250,7 +1240,17 @@ angular.module('gale.directives')
 	});
 
 })();
-;angular.module('gale.services.configuration')
+;angular.module('gale.filters')	
+
+.filter('template', function ($log,$interpolate) {
+	return function (template, context) {
+
+            var exp = $interpolate(template);
+            var content = exp(context);
+           
+           return content;
+	};
+});;angular.module('gale.services.configuration')
 
 .service('$Configuration', function ($rootScope, $LocalStorage, CONFIGURATION) {
     var _values             = {};
@@ -1284,6 +1284,7 @@ angular.module('gale.directives')
         exists: exists
     };
 });;angular.module('gale.services.configuration')
+
 .service('$Localization', function(RESOURCES) {
     function get(name, defaultValue) {
         var v = RESOURCES[name];
@@ -1329,7 +1330,7 @@ angular.module('gale.directives')
     //Configurable Variable on .config Step
     var _endpoint = null;
     var EVENTS = {
-        BEFORE_SEND:'beforeSend',
+        BEFORE_SEND:'before-send',
         SUCCESS:    'success',
         ERROR:      'error'
     };
@@ -1687,7 +1688,7 @@ angular.module('gale.directives')
                 //Add Hook if authentication is enabled
                 if (_enable) {
                     //API HOOK
-                    $Api.$on("beforeSend", function(headers) {
+                    $Api.$on("before-send", function(headers) {
                         //SET AUTHORIZATION HEADER IF USER IS AUTHENTICATED
                         if (self.isAuthenticated()) {
                             var jwt = _authResponse;

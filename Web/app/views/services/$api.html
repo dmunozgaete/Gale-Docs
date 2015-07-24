@@ -739,7 +739,7 @@ app.controller('MyController', function($scope, $Api) {
 		<li>
 			<!-- METHOD -->
 			<h3 class="method-function-syntax">
-				beforeSend
+				before-send
 			</h3>
 			<div class="service-desc">
 				<p>
@@ -788,7 +788,7 @@ angular.module('App', [
 ])
 .run(function(Identity) {
 
-  $Api.$on("beforeSend", function(headers){
+  $Api.$on("before-send", function(headers){
 	
     //Header de  Autenticación
     if(Identity.isAuthenticated()){
@@ -800,7 +800,197 @@ angular.module('App', [
 
 });
 	</hljs>
-			<!-- /USAFE -->
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				success
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento <strong>Global</strong> que se ejecuta cuando el requerimiento web , ha sido recibido correctamente.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									data
+								</code>
+							</td>
+							<td>
+								Object
+							</td>
+							<td class="description">
+								<p>
+									Respuesta del servidor.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									status
+								</code>
+							</td>
+							<td>
+								number
+							</td>
+							<td class="description">
+								<p>
+									Estado HTTP de la solicitud web.							
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									headers
+								</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Colección actual de encabezados enviados con la solicitud, 
+									la cúal permite modificación directa.									
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+angular.module('App', [
+  'ui.router'    //NG ROUTE
+  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
+  , 'gale'       //VALENTYS SDK LIBRARY
+])
+.run(function(Identity) {
+
+  $Api.$on("success", function(data, status, headers){
+	
+    console.log(data);
+    
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
+		</li>
+		<!-- -->
+		<li>
+			<!-- METHOD -->
+			<h3 class="method-function-syntax">
+				error
+			</h3>
+			<div class="service-desc">
+				<p>
+					Evento <strong>Global</strong> que se ejecuta cuando se ha producido un error en la respuesta del servidor.
+				</p>
+			</div>
+			<div class="api-param-table">
+				<table class="no-style">
+					<thead>
+						<tr>
+							<th>Nombre</th>
+							<th>Tipo</th>
+							<th>Descripción</th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									data
+								</code>
+							</td>
+							<td>
+								Object
+							</td>
+							<td class="description">
+								<p>
+									Respuesta del servidor.
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									status
+								</code>
+							</td>
+							<td>
+								number
+							</td>
+							<td class="description">
+								<p>
+									Estado HTTP de la solicitud web.							
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+						<tr>
+							<td>
+								<code>
+									headers
+								</code>
+							</td>
+							<td>
+								JSON
+							</td>
+							<td class="description">
+								<p>
+									Colección actual de encabezados enviados con la solicitud, 
+									la cúal permite modificación directa.									
+								</p>
+							</td>
+						</tr>
+						<!-- -->
+					</tbody>
+				</table>
+			</div>
+			<!-- /METHOD -->
+
+			<!-- USAGE -->
+			<hljs language="js">
+angular.module('App', [
+  'ui.router'    //NG ROUTE
+  , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
+  , 'gale'       //VALENTYS SDK LIBRARY
+])
+.run(function(Identity) {
+
+  $Api.$on("error", function(data, status, headers){
+	
+    console.log(data);
+    
+  });
+
+});
+	</hljs>
+			<!-- /USAGE -->
 		</li>
 		<!-- -->
 	</ul>
