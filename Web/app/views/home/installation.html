@@ -121,15 +121,16 @@ bower update
 
 	<hljs language="bash">
 # Hacemos una copia simple del repositorio (bare clone)
-git clone --bare https://github.com/dmunozgaete/gale-starter-project.git
+git clone --bare https://github.com/GrupoValentys/gale-starter-project.git
 
 # Enviamos el contenido clonado al nuevo repositorio (mirror-push)
 cd gale-starter-project.git
-git push --mirror https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
+git push --mirror https://dmunozgaete@github/{nuevo-repositorio}.git
 
-# Limpiamos un poco eliminando la copia simple del directorio (Remove our temporary local repository)
+# Limpiamos un poco eliminando la copia simple del 
+# directorio (Remove our temporary local repository)
 cd ..
-rm -rf https://github.com/dmunozgaete/gale-starter-project.git
+rm -rf https://github.com/GrupoValentys/gale-starter-project.git
 	</hljs>
 
 	Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , 
@@ -146,7 +147,7 @@ cd /direccion/de/nuestro/nuevo/proyecto
 git init
 
 # Añadimos la referencia remota (dirección .git)
-git remote add origin https://dmunozgaete@bitbucket.org/{team}/{nuevo-repositorio}.git
+git remote add origin https://dmunozgaete@github/{nuevo-repositorio}.git
 
 # Descargamos todo el contenido remoto de la rama a nuestra maquina
 git pull
