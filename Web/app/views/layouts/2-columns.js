@@ -16,15 +16,9 @@ angular.module('app.controllers')
         // Model
         $scope.config = {
             application: $Configuration.get("application"),
-            selected_menu: "Gale  > Introducción",
-            menu: $Configuration.get("menu_items")
+            menu: $Configuration.get("menu")
         };
-        //------------------------------------------------------------------------------------
-        // Gale Communication - Change Page Title
-        document.title = $scope.config.application.name;
-        $scope.$on("gale-page:title:changed", function(event, data) {
-            document.title = data.title;
-        });
+        $scope.config.selected_menu = $scope.config.menu[0].items[0];
         
         //------------------------------------------------------------------------------------
         // Layout Actions
@@ -33,29 +27,19 @@ angular.module('app.controllers')
                 $state.go(url);
             }, 300);
             $mdSidenav('left').close();
-        }
+        };
+        
         $scope.toggleLeft = function() {
             $mdSidenav('left').toggle();
         };
         $scope.toggleMenu = function(section) {
             section.open = !section.open;
         };
-        $scope.navigateTo = function(section, item) {
-            $scope.config.selected_menu = "{0} > {1}".format([
-                section.label,
-                item
-            ]);
-            $scope.navigate("app.{0}-{1}".format([
-                section.name,
-                item
-            ]), item);
-        };
-        $scope.navigate = function(state, item) {
-            
-            document.title = $scope.config.application.name + " - " + item;
+        $scope.navigateTo = function(item) {
 
             $scope.config.selected_menu = item;
-            $state.go(state);
+            $state.go("app.{0}".format([item.$path]));
+            
         };
         //------------------------------------------------------------------------------------
         // CONTENT - LOADING (Show Loadig Circular While Loading Child View's)

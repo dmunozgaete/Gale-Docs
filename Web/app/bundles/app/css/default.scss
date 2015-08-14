@@ -21,7 +21,7 @@ a {
 .logo {
     div {
         width: 90%;
-        max-width: 120px;
+        max-width: 95px;
         padding-top: 32px;
         img {
             width: 100%;
@@ -61,6 +61,7 @@ a {
         md-icon {
             transform: rotate(180deg);
             -webkit-transform: rotate(180deg);
+            
         }
     }
     .section:focus {

@@ -8,61 +8,47 @@
                 <img ng-src="https://dl.dropboxusercontent.com/u/24087768/GrupoValentys/Logos/Isotipos/Grupo%20Valentys%20-%20Blanco.png" />
             </div>
             <span class="title">
-                {{config.application.name}}
+                {{config.application.name}} - v{{config.application.version}}
             </span>
         </div>
 
         <md-content>
-            <md-divider>
-                Versión Actual: <strong>{{config.application.version}}</strong>
-            </md-divider>
-            <!-- Section Item's -->
-            <md-list>
-                <md-list-item ng-click="navigate('app.home-introduction', 'Gale > Introducción')">
-                    <p> Introducción </p>
-                    <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
-                </md-list-item>
-            </md-list>
-            <md-list>
-                <md-list-item ng-click="navigate('app.home-installation', 'Gale > Instalación')">
-                    <p> Instalación </p>
-                    <md-icon md-svg-src="hardware:keyboard_arrow_right"></md-icon>
-                </md-list-item>
-            </md-list>
-            <md-divider>
-                Referencias UI
-            </md-divider>
+            <div ng-repeat="section in config.menu">
 
-            <!-- Menu  -->
-            <md-list ng-repeat="section in config.menu">
+                <md-divider>
+                    {{section.label}}
+                </md-divider>
+                <md-list ng-repeat="group in section.items">
 
-                <!-- Section -->
-                <md-list ng-click="toggleMenu(section);" class="section" ng-class="{'toggled' : section.open}">
-                    <md-list-item>
-                        <p> {{section.label}} </p>
-                        <md-icon class="chevron" md-svg-icon="navigation:expand_more"></md-icon>
+                    <!-- ONE LEVEL -->
+                    <md-list-item ng-if="!group.items" ng-click="navigateTo(group)">
+                        <p> {{group.label}}</p>
+                        <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
                     </md-list-item>
-                </md-list>
 
-                <!-- Section Item's -->
-                <div ng-show="section.open == true" ng-animate="'animate'">
-                    <md-list class="items">
-                        <md-list-item ng-click="navigateTo(section, item)" ng-repeat="item in section.items | orderBy:'+'">
-                            <p> {{item}} </p>
-                            <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
+
+                    <!-- TWO LEVEL'S -->
+                    <md-list ng-if="group.items" ng-click="toggleMenu(group);" class="section" ng-class="{'toggled' : group.open}">
+                        <md-list-item >
+                            <p> {{group.label}} </p>
+                            <md-icon  class="chevron" md-svg-icon="navigation:expand_more"></md-icon>
                         </md-list-item>
                     </md-list>
-                </div>
+                    <div ng-show="group.open == true" ng-animate="'animate'">
+                        <md-list class="items">
+                            <md-list-item ng-click="navigateTo(link)" ng-repeat="link in group.items | orderBy:'+'">
+                                <p> {{link.label||link.name}} </p>
+                                <md-icon md-svg-icon="hardware:keyboard_arrow_right"></md-icon>
+                            </md-list-item>
+                        </md-list>
+                    </div>
 
-            </md-list>
+                </md-list>
 
-            <!-- Menu  -->
-            <md-divider>
-                <!-- Referencias API -->
-            </md-divider>
+                <br/>
+            </div>
 
         </md-content>
-
     </md-sidenav>
 
     <!-- CONTENT -->
@@ -70,7 +56,7 @@
 
         <md-whiteframe class="md-whiteframe-z2 doc-title">
 
-            <h2>{{config.selected_menu}}</h2>
+            <h2>{{config.selected_menu.$title}}</h2>
 
         </md-whiteframe>
 

@@ -56,42 +56,46 @@
                         templateUrl: 'views/error/404.html',
                     }
                 }
-            })
-            .state('app.home-introduction', {
-                url: '/home/introduction',
-                views: {
-                    content: {
-                        templateUrl: 'views/home/index.html',
-                    }
-                }
-            })
-            .state('app.home-installation', {
-                url: '/home/installation',
-                views: {
-                    content: {
-                        templateUrl: 'views/home/installation.html',
-                    }
-                }
-            })
+            });
+
             // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise("/exception/404");
+
         // ---------------------------------------------
         // GALE: Menu State's
         // ---------------------------------------------
-        angular.forEach(CONFIGURATION.menu_items, function(category) {
-            angular.forEach(category.items, function(service) {
-                var arr = [
-                    category.name.toLowerCase(),
-                    service
-                ]
-                $stateProvider.state('app.{0}-{1}'.format(arr), {
-                    url: '/{0}/{1}'.format(arr),
-                    views: {
-                        content: {
-                            templateUrl: 'views/{0}/{1}.html'.format(arr),
+        (function iterate(items, ref){
+            angular.forEach(items, function(item) {
+                
+                var data = angular.copy(ref);
+                data.paths.push(item.name);
+                data.labels.push(item.label||item.name);
+
+                if(!item.items){
+                    var path = data.paths.join("-");
+                    var url = "/" + data.paths.join("/");
+
+                    //attach _$variable to menu item
+                    item.$path = path;
+                    item.$title = data.labels.join(" > ");
+
+                    //Add Dynamic State
+                    $stateProvider.state('app.{0}'.format([path]), {
+                        url: url,
+                        views: {
+                            content: {
+                                templateUrl: 'views{0}.html'.format([url]),
+                            }
                         }
-                    }
-                });
-            });
-        });
+                    });
+
+                    return;
+                }
+
+                iterate(item.items, data);
+            });  
+        })(
+            CONFIGURATION.menu,
+            { paths: [], labels: [] }
+        );
     });

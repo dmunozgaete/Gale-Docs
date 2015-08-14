@@ -8,7 +8,7 @@
          */
         .controller("EmailDemoController", function($scope) {
             $scope.submit = function(form) {
-                console.log("submit!")
+                console.log("submit!");
             };
         })
         /*
@@ -16,7 +16,7 @@
          */
         .controller("RangeDemoController", function($scope) {
             $scope.submit = function(form) {
-                console.log("submit!")
+                console.log("submit!");
             };
         })
         /*
@@ -24,7 +24,7 @@
          */
         .controller("RutDemoController", function($scope) {
             $scope.submit = function(form) {
-                console.log("submit!")
+                console.log("submit!");
             };
         })
         /*
