@@ -33,7 +33,7 @@ a {
   background-color: #000; }
   .md-sidenav-left md-content {
     background-color: #000;
-    max-height: 470px;
+    max-height: 520px;
     overflow-x: auto; }
   .md-sidenav-left .section {
     border: 1px solid transparent;
@@ -95,7 +95,7 @@ section {
       padding-bottom: 4px; }
   section md-content[name=content] {
     background-color: #F7F7F7;
-    margin-top: 16px;
+    margin-top: 8px;
     padding: 0px 16px 16px 16px; }
     section md-content[name=content] p {
       line-height: 1.6em;
@@ -222,12 +222,23 @@ section {
   section .hljs-regexp {
     color: #7DB9F4; }
 
+snapshot {
+  text-align: center;
+  display: block; }
+  snapshot > img {
+    width: 90%;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.14), 0 4px 5px 0 rgba(0, 0, 0, 0.098), 0 1px 10px 0 rgba(0, 0, 0, 0.084); }
+  snapshot > span {
+    display: block; }
+
 section.demo-container md-toolbar {
   background-color: #494848; }
-  section.demo-container md-toolbar button, section.demo-container md-toolbar md-button:hover {
+  section.demo-container md-toolbar button,
+  section.demo-container md-toolbar md-button:hover {
     background-color: transparent !important;
     float: right; }
-    section.demo-container md-toolbar button md-icon, section.demo-container md-toolbar md-button:hover md-icon {
+    section.demo-container md-toolbar button md-icon,
+    section.demo-container md-toolbar md-button:hover md-icon {
       color: #fff !important; }
 section.demo-container md-tabs md-tabs-wrapper {
   background-color: #494848; }
@@ -241,6 +252,8 @@ section.demo-container md-tabs md-content {
     line-height: 48px;
     padding: 0 16px;
     border-radius: 2px 2px 0 0; }
+  section.demo-container md-tabs md-content > img {
+    width: 100%; }
 section.demo-container md-tabs md-tab-content {
   background-color: #1F1F1F; }
 section.demo-container md-tabs:not(.md-no-tab-content):not([md-dynamic-height]) {

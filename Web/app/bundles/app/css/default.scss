@@ -2,6 +2,7 @@ $primary_color: #000;
 $primary_active_color: #2A2A2A;
 $primary_hover_color: #2A2A2A;
 $font_family: 'Menlo, Monaco, 'Andale Mono', 'Lucida Console', 'Courier New', monospace;';
+
 /*
     -----------------------------
     GLOBALS
@@ -34,6 +35,8 @@ a {
         font-size: 1.4em;
     }
 }
+
+
 /*  
   -----------------------------
   SIDENAV STYLE
@@ -45,7 +48,7 @@ a {
     background-color: $primary_color;
     md-content {
         background-color: $primary_color;
-        max-height: 470px;
+        max-height: 520px;
         overflow-x: auto;
     }
     .section {
@@ -61,7 +64,6 @@ a {
         md-icon {
             transform: rotate(180deg);
             -webkit-transform: rotate(180deg);
-            
         }
     }
     .section:focus {
@@ -91,6 +93,8 @@ a {
         padding: 8px 16px;
     }
 }
+
+
 /*  
   -----------------------------
   LAYOUT (DOC'S)
@@ -98,7 +102,7 @@ a {
  */
 
 section {
-    background-color:#F7F7F7;
+    background-color: #F7F7F7;
     .source-icons {
         position: fixed;
         top: 10px;
@@ -132,7 +136,7 @@ section {
     }
     md-content[name=content] {
         background-color: #F7F7F7;
-        margin-top: 16px;
+        margin-top: 8px;
         padding: 0px 16px 16px 16px;
         p {
             line-height: 1.6em;
@@ -222,7 +226,6 @@ section {
         }
     }
     /* High Light JS */
-    
     hljs:before {
         content: attr(language);
         text-transform: uppercase;
@@ -289,10 +292,23 @@ section {
     }
 }
 
+snapshot {
+    text-align: center;
+    display: block;
+    > img {
+        width: 90%;
+        box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.14), 0 4px 5px 0 rgba(0, 0, 0, 0.098), 0 1px 10px 0 rgba(0, 0, 0, 0.084);
+    }
+    > span {
+        display: block;
+    }
+}
+
 section.demo-container {
     md-toolbar {
         background-color: #494848;
-        button, md-button:hover {
+        button,
+        md-button:hover {
             background-color: transparent !important;
             float: right;
             md-icon {
@@ -301,7 +317,7 @@ section.demo-container {
         }
     }
     md-tabs {
-        md-tabs-wrapper{
+        md-tabs-wrapper {
             background-color: #494848;
         }
         md-content {
@@ -315,6 +331,9 @@ section.demo-container {
                 padding: 0 16px;
                 border-radius: 2px 2px 0 0;
             }
+            > img {
+                width: 100%;
+            }
         }
         md-tab-content {
             background-color: #1F1F1F;
@@ -327,4 +346,3 @@ section.demo-container {
         color: red;
     }
 }
-
