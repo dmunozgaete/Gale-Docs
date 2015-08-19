@@ -8,7 +8,7 @@ angular.module("config", [])
             environment: "development",
             language: "es",
             name: "Gale Doc's",
-            home: "/demo/gettingStarted/introduction"
+            home: "/demo/api/models/example"
         },
 
         //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
@@ -105,7 +105,38 @@ angular.module("config", [])
                         name: "controllers",
                         items: [
                             { name: "RestController" },
-                            { name: "GaleController" }
+                            { name: "QueryableController" }
+                        ]
+                    },
+
+                    {
+                        label: "Modelos",
+                        name: "models",
+                        items: [
+                            { name: "definition", label:"Definición" },
+                            { name: "example", label:"Ejemplo de Creación" }
+                        ]
+                    },
+
+                    {
+                        label: "Servicios",
+                        name: "services",
+                        items: [
+                            { name: "Definición" },
+                            { name: "Utilización" }
+                        ]
+                    },
+
+                    {
+                        label: "Respuestas HTTP",
+                        name: "services",
+                        items: [
+                            { name: "HttpActionResult" },
+                            { name: "HttpCreationActionResult" },
+                            { name: "HttpUpdateActionResult" },
+                            { name: "HttpReadActionResult" },
+                            { name: "HttpDeleteActionResult" },
+                            { name: "HttpQueryableActionResult" }
                         ]
                     },
 
