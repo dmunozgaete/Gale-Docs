@@ -122,8 +122,7 @@ angular.module("config", [])
                         label: "Servicios",
                         name: "services",
                         items: [
-                            { name: "Definición" },
-                            { name: "Utilización" }
+                            { name: "definition", label:"Definición" }
                         ]
                     },
 
@@ -131,7 +130,8 @@ angular.module("config", [])
                         label: "Respuestas HTTP",
                         name: "services",
                         items: [
-                            { name: "HttpActionResult" },
+                            { name: "HttpBaseActionResult" },
+                            { name: "HttpFileActionResult" },
                             { name: "HttpCreationActionResult" },
                             { name: "HttpUpdateActionResult" },
                             { name: "HttpReadActionResult" },
@@ -144,19 +144,9 @@ angular.module("config", [])
                         label: "Seguridad",
                         name: "security",
                         items: [
-                            { name: "Autorización JWT" },
-                            { name: "OAuth 2.0" }
+                            { name: "jwt" , label:"Autorización JWT" }
                         ]
-                    },
-
-                    {
-                        label: "Base de Datos",
-                        name: "database",
-                        items: [
-                            { name: "Modelos" },
-                            { name: "Esquemas" }
-                        ]
-                    },
+                    } /*,
 
                     {
                         label: "Ambientes",
@@ -166,7 +156,7 @@ angular.module("config", [])
                             { name: "Deployment" },
                             { name: "Production" }
                         ]
-                    }
+                    } */
                 ]
             }
         ]

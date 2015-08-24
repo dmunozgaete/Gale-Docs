@@ -86,8 +86,10 @@ section {
       font-size: 1.4em;
       font-weight: normal;
       padding-left: 16px; }
+  section ol.doc-list,
   section ul.doc-list {
     padding-bottom: 16px; }
+    section ol.doc-list li,
     section ul.doc-list li {
       font-size: 1em;
       line-height: 1.6em;
