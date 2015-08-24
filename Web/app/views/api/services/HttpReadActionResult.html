@@ -1,44 +1,36 @@
 <p>
-	<!-- DESCRIPTION -->
-	Define propiedades y metodos, para el uso de principios RESTful.
-	<br />
-	<br />
-	<i>
-	REST nos permite crear servicios y aplicaciones que pueden ser usadas por 
-	cualquier dispositivo o cliente que entienda HTTP, por lo que es increíblemente 
-	más simple y convencional que otras alternativas que se han usado en los 
-	últimos diez años como SOAP y XML-RPC.
-	<i>
-	<!-- /DESCRIPTION -->
+    <!-- DESCRIPTION -->
+    Clase base que hereda de 
+    <a ui-sref="app.api-services-HttpBaseActionResult">HttpBaseActionResult</a> y 
+    utilizada para estructurar una <strong>Solicitud de Consulta</strong> 
+    sobre el principio RESTFul (GET).
 
-	<!-- USAGE -->
-	<section class="demo-container md-whiteframe-z1">
+    <br /> 
+    <br /> 
+    A continuación se presenta un ejemplo con la firma definida segun 
+    definición para un <code>endpoint</code> de la API.
+    <!-- /DESCRIPTION -->
+
+    <!-- USAGE -->
+    <section class="demo-container md-whiteframe-z1">
         <md-toolbar class="demo-toolbar">
             <div class="md-toolbar-tools">
-
                 <h2>
-                	<span>
-                		Uso Basico
-                	</span>
+                    <span>
+                        Uso Basico
+                    </span>
                 </h2>
-
             </div>
         </md-toolbar>
-
         <!-- VIEWS -->
-		<div>
-		    <md-tabs  md-border-bottom class="md-primary">
-		        <md-tab label="AccountController.cs">
-		            <md-content class="md-padding">
-		            	<!-- SOURCE CODE -->
-		                <hljs language="cs" escape="false">
+        <div>
+            <md-tabs md-border-bottom class="md-primary">
+                <md-tab label="AccountController.cs">
+                    <md-content class="md-padding">
+                        <!-- SOURCE CODE -->
+                        <hljs language="cs" escape="false">
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
 using Gale.REST.Http;
 
 namespace API.Areas.Account
@@ -80,51 +72,16 @@ namespace API.Areas.Account
       return new Services.Get(this.User.PrimarySid());
     }
 
-    /// &lt;summary&gt;
-    /// Pre-Register an account in the system
-    /// &lt;/summary&gt;
-    /// &lt;param name="account"&gt;Account information&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public IHttpActionResult Post(
-      [FromBody]Models.Create account
-    ){
-      throw new NotImplementedException();
-    }
-
-    /// &lt;summary&gt;
-    /// Update the target Account
-    /// &lt;/summary&gt;
-    /// &lt;param name="id"&gt;Account Token&lt;/param&gt;
-    /// &lt;param name="account"&gt;Account information&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public IHttpActionResult Put(
-      [FromUri]Guid id, 
-      [FromBody]Models.Update account
-    ){
-      throw new NotImplementedException();
-    }
-
-    /// &lt;summary&gt;
-    /// Delete Target Account
-    /// &lt;/summary&gt;
-    /// &lt;param name="id"&gt;Account Token&lt;/param&gt;
-    /// &lt;returns&gt;&lt;/returns&gt;
-    public IHttpActionResult Delete(Guid id)
-    {
-      throw new NotImplementedException();
-    }
-
-  }	               
+  }                
 }
-						</hljs>
-	                    <!-- /SOURCE CODE -->
-	                </md-content>
-	            </md-tab>
-
-	            <md-tab label="Get.cs">
-	                <md-content class="md-padding">
-	                    <!-- SOURCE CODE -->
-	                    <hljs language="cs" escape="false">
+                        </hljs>
+                        <!-- /SOURCE CODE -->
+                    </md-content>
+                </md-tab>
+                <md-tab label="Get.cs">
+                    <md-content class="md-padding">
+                        <!-- SOURCE CODE -->
+                        <hljs language="cs" escape="false">
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -193,16 +150,15 @@ namespace API.Areas.Account.Services
     }
   }
 }
-	                    </hljs>
-	                    <!-- /SOURCE CODE -->
-	                </md-content>
-	            </md-tab>
-
-
-	            <md-tab label="User.dbml (Visual Studio Designer)">
-	                <md-content class="md-padding">
-	                    <!-- SOURCE CODE -->
-	                    <hljs language="cs" escape="false">
+                        </hljs>
+                        <!-- /SOURCE CODE -->
+                    </md-content>
+                </md-tab>
+               
+                <md-tab label="Account.dbml">
+                    <md-content class="md-padding">
+                        <!-- SOURCE CODE -->
+                        <hljs language="cs" escape="false">
 [TableAttribute(Name="dbo.TB_MAE_Usuario")]
 public class Account
 {
@@ -214,7 +170,7 @@ public class Account
   private string _fullname;
   private System.DateTime _lastConnection;
   private int _active;
-	
+    
   [ColumnAttribute(Name="ENTI_Token", Storage="_token", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
   public System.Guid token
   {
@@ -222,12 +178,12 @@ public class Account
     {
       return this._token;
     }
-	set
+    set
     {
       this._token = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="ENTI_FechaCreacion", Storage="_createdAt", DbType="DateTime NOT NULL")]
   public System.DateTime createdAt
   {
@@ -240,7 +196,7 @@ public class Account
       this._createdAt = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="ENTI_Identificador", Storage="_identifier", DbType="VarChar(200) NOT NULL", CanBeNull=false)]
   public string identifier
   {
@@ -253,7 +209,7 @@ public class Account
       this._identifier = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="ARCH_Token", Storage="_photo", DbType="UniqueIdentifier")]
   public System.Nullable&lt;System.Guid&gt; photo
   {
@@ -266,7 +222,7 @@ public class Account
       this._photo = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="USUA_Email", Storage="_email", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
   public string email
   {
@@ -275,11 +231,11 @@ public class Account
       return this._email;
     }
     set
-    {	
+    {   
       this._email = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="USUA_NombreCompleto", Storage="_fullname", DbType="VarChar(250) NOT NULL", CanBeNull=false)]
   public string fullname
   {
@@ -292,7 +248,7 @@ public class Account
       this._fullname = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="USUA_UltimaConexion", Storage="_lastConnection", DbType="DateTime NOT NULL")]
   public System.DateTime lastConnection
   {
@@ -305,7 +261,7 @@ public class Account
       this._lastConnection = value;
     }
   }
-	
+    
   [ColumnAttribute(Name="USUA_Activo", Storage="_active")]
   public int active
   {
@@ -319,32 +275,13 @@ public class Account
     }
   }
 }
-	                    </hljs>
-	                    <!-- /SOURCE CODE -->
-	                </md-content>
-	            </md-tab>
-	        </md-tabs>
-	    </div>
-		<!-- /VIEWS -->
-
-	</section>
-	<!-- /USAGE -->
-
-	<!-- TIP -->
-	<h2 class="md-headline">
-		Consejos
-	</h2>
-	<ul class="doc-list">
-		<li>
-			<strong>El uso del atributo de seguridad y restricción </strong>
-			<code>Gale.Security.Oauth.Jwt.Authorize</code> puede ser usado, a nivel de 
-			clase o a nivel de metodo expuesto en la API.
-		</li>
-		<li>
-			<strong>Para la exposición de sub rutas</strong>, no asociadas al principio
-			RESTFul , es recomedado usar el atributo <code>Gale.REST.Http.Routing.Route</code>, 
-			para sobreescribir o re-definir la ruta expuesta.
-		</li>
-	</ul>
-	<!-- /TIP -->
+                        </hljs>
+                        <!-- /SOURCE CODE -->
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </div>
+        <!-- /VIEWS -->
+    </section>
+    <!-- /USAGE -->
 </p>
