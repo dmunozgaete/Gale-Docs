@@ -8,7 +8,7 @@ angular.module("config", [])
             environment: "development",
             language: "es",
             name: "Gale Doc's",
-            home: "/demo/api/security/jwt"
+            home: "/demo/gettingStarted/introduction"
         },
 
         //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
