@@ -102,6 +102,22 @@ a {
  */
 
 section {
+    .contributors {
+        padding: 0.5em;
+        > div {
+            width: 80px;
+            height: 80px;
+            float: left;
+            margin: 0.2em;
+            text-align: center;
+            > a {
+                > img {
+                    width: 80%;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
     background-color: #F7F7F7;
     .source-icons {
         position: fixed;

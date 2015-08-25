@@ -18,18 +18,30 @@ angular.module("config", [])
 
             //Gettting Started
             {
-                label: "Primeros Pasos",
-                name: "gettingStarted",
+                label: "",
+                name: "",
                 open: true,
                 items: [
                     {
-                        label: "Introducción",
-                        name: "introduction"
-                    },
+                        label: "Primeros Pasos",
+                        name: "gettingStarted",
+                        items: [
+                            {
+                                label: "Introducción",
+                                name: "introduction"
+                            },
 
-                    {
-                        label: "Instalación",
-                        name: "installation"
+                            {
+                                label: "Instalación",
+                                name: "installation"
+                            },
+
+                            {
+                                label: "Colaboradores",
+                                name: "about"
+                            }
+
+                        ]
                     }
                 ]
             },
@@ -37,7 +49,7 @@ angular.module("config", [])
             //UX References
             {
                 label: "Interfaz Gráfica",
-                name: "UX",
+                name: "ux",
                 items: [
                     {
                         label: "Servicios",
@@ -133,8 +145,8 @@ angular.module("config", [])
                             { name: "HttpBaseActionResult" },
                             { name: "HttpFileActionResult" },
                             { name: "HttpCreationActionResult" },
-                            { name: "HttpUpdateActionResult" },
                             { name: "HttpReadActionResult" },
+                            { name: "HttpUpdateActionResult" },
                             { name: "HttpDeleteActionResult" },
                             { name: "HttpQueryableActionResult" }
                         ]
