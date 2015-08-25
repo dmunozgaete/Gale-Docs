@@ -70,6 +70,17 @@ a {
 section {
   background-color: #F7F7F7;
   /* High Light JS */ }
+  section .contributors {
+    padding: 0.5em; }
+    section .contributors > div {
+      width: 80px;
+      height: 80px;
+      float: left;
+      margin: 0.2em;
+      text-align: center; }
+      section .contributors > div > a > img {
+        width: 80%;
+        border-radius: 50%; }
   section .source-icons {
     position: fixed;
     top: 10px;

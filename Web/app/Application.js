@@ -68,8 +68,10 @@
             angular.forEach(items, function(item) {
                 
                 var data = angular.copy(ref);
+                if(item.label  !== ""){
                 data.paths.push(item.name);
                 data.labels.push(item.label||item.name);
+                }
 
                 if(!item.items){
                     var path = data.paths.join("-");
