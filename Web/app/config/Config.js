@@ -162,7 +162,7 @@ angular.module("config", [])
 
             //Help US
             {
-                label: "Apóyanos",
+                label: "Contribuye",
                 name: "helpus",
                 open: true,
                 items: [
