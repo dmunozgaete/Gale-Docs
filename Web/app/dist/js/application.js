@@ -349,8 +349,10 @@ angular.manifiest('app', [
             angular.forEach(items, function(item) {
                 
                 var data = angular.copy(ref);
+                if(item.label  !== ""){
                 data.paths.push(item.name);
                 data.labels.push(item.label||item.name);
+                }
 
                 if(!item.items){
                     var path = data.paths.join("-");
@@ -419,7 +421,7 @@ angular.manifiest('app', [
             //UX References
             {
                 label: "Interfaz Gráfica",
-                name: "UX",
+                name: "ux",
                 items: [
                     {
                         label: "Servicios",
@@ -515,8 +517,8 @@ angular.manifiest('app', [
                             { name: "HttpBaseActionResult" },
                             { name: "HttpFileActionResult" },
                             { name: "HttpCreationActionResult" },
-                            { name: "HttpUpdateActionResult" },
                             { name: "HttpReadActionResult" },
+                            { name: "HttpUpdateActionResult" },
                             { name: "HttpDeleteActionResult" },
                             { name: "HttpQueryableActionResult" }
                         ]
@@ -540,6 +542,19 @@ angular.manifiest('app', [
                         ]
                     } */
                 ]
-            }
+            },
+
+            //Help US
+            {
+                label: "Apóyanos",
+                name: "helpus",
+                open: true,
+                items: [
+                    {
+                        label: "Colaboradores",
+                        name: "about"
+                    }
+                ]
+            },
         ]
     });

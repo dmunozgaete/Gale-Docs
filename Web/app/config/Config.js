@@ -18,30 +18,18 @@ angular.module("config", [])
 
             //Gettting Started
             {
-                label: "",
-                name: "",
+                label: "Primeros Pasos",
+                name: "gettingStarted",
                 open: true,
                 items: [
                     {
-                        label: "Primeros Pasos",
-                        name: "gettingStarted",
-                        items: [
-                            {
-                                label: "Introducción",
-                                name: "introduction"
-                            },
+                        label: "Introducción",
+                        name: "introduction"
+                    },
 
-                            {
-                                label: "Instalación",
-                                name: "installation"
-                            },
-
-                            {
-                                label: "Colaboradores",
-                                name: "about"
-                            }
-
-                        ]
+                    {
+                        label: "Instalación",
+                        name: "installation"
                     }
                 ]
             },
@@ -170,6 +158,19 @@ angular.module("config", [])
                         ]
                     } */
                 ]
-            }
+            },
+
+            //Help US
+            {
+                label: "Apóyanos",
+                name: "helpus",
+                open: true,
+                items: [
+                    {
+                        label: "Colaboradores",
+                        name: "about"
+                    }
+                ]
+            },
         ]
     });
