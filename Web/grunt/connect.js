@@ -11,7 +11,7 @@ module.exports = function(grunt, options) {
     return {
 		development: {
 	        options: {
-	        	open: false,
+	        	open: options.openbrowser,
 	            livereload:options.livereload,
 	            keepalive: !options.livereload,
 	            base: options.server.path,

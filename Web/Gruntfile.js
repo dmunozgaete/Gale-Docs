@@ -9,7 +9,8 @@ module.exports = function(grunt) {
                 protocol: 'http',
                 path: 'app'
             },
-            livereload: grunt.option('livereload') || false
+            livereload: grunt.option('livereload') || false,
+            openbrowser: grunt.option('open-browser') || false
         }
     };
     require('load-grunt-config')(grunt, config);
