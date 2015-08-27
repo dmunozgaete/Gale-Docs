@@ -59,6 +59,23 @@
             <h2>{{config.selected_menu.$title}}</h2>
 
         </md-whiteframe>
+        
+        <!-- GITHUB ICON -->
+        <div class="source-icons" layout="row" layout-align="center center">
+
+            <md-button href="https://github.com/GrupoValentys/Gale-Starter-Project"
+                     title="Ver Código en Github"
+                     aria-label="al" 
+                     class="md-icon-button github" >
+
+                <md-tooltip>
+                  Ver Código en Github
+                </md-tooltip>
+
+                <img ng-src="https://assets-cdn.github.com/images/modules/logos_page/Octocat.png" />
+            </md-button>
+        </div>
+        <!-- /GITHUB ICON -->
 
         <md-content ui-view name="content" ng-show="!config.loading" layout-padding>
         </md-content>

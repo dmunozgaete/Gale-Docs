@@ -117,46 +117,23 @@ bower update
 	podemos comenzar a configurar un ambiente de desarrollo para el nuestro proyecto.
 	<br />
 	<br />
-	Comenzaremos clonando este repositorio en el repositorio del nuevo proyecto:
+	Comenzaremos clonando el repositorio del kit inicial:
 
 	<hljs language="bash">
 # Hacemos una copia simple del repositorio (bare clone)
-git clone --bare https://github.com/GrupoValentys/gale-starter-project.git
+git clone https://github.com/GrupoValentys/gale-starter-project.git
 
-# Enviamos el contenido clonado al nuevo repositorio (mirror-push)
-cd gale-starter-project.git
-git push --mirror https://dmunozgaete@github/{nuevo-repositorio}.git
+# Localizamos nuestro terminal en la carpeta WEB del proyecto
+cd Gale-Starter-Project/Web
 
-# Limpiamos un poco eliminando la copia simple del 
-# directorio (Remove our temporary local repository)
-cd ..
-rm -rf https://github.com/GrupoValentys/gale-starter-project.git
+# Regeneramos el ambiente de desarrollo 
+# (Puede demorarse un poco y quizas sea necesario usar 'sudo')
+npm install
+
+# Regeneramos los paquetes de bower (Puede demorarse un poco)
+bower install
 	</hljs>
 	<br />
-	
-	Ahora que tenemos nuestro proyecto clonado en el repositorio de git (bitbucket) , 
-	comenzaremos configurando una rama local para nuestro desarrollo:
-
-	<hljs language="bash">
-# Creamos una carpeta local que contendrá nuestro repositorio
-mkdir /direccion/de/nuestro/nuevo/proyecto
-
-# Localizamos nuestro terminal en la carpeta del proyecto
-cd /direccion/de/nuestro/nuevo/proyecto
-
-# Iniciamos Git en la dirección que contendrá nuestro nuevo repositorio
-git init
-
-# Añadimos la referencia remota (dirección .git)
-git remote add origin https://dmunozgaete@github/{nuevo-repositorio}.git
-
-# Descargamos todo el contenido remoto de la rama a nuestra maquina
-git pull
-
-# Finalmente, establecemos la rama con la cual trabajaremos
-git checkout master
-	</hljs>
-
 </p>
 <br />
 
@@ -174,18 +151,6 @@ git checkout master
 	Para ejecutarlo realizaremos lo siguiente:
 
 	<hljs language="bash">
-# Localizamos nuestro terminal en la carpeta del proyecto
-cd /direccion/de/nuestro/nuevo/proyecto
-
-# Nos dirigimos a la carpeta web donde se encuentra nuestro sitio
-cd Web/
-
-# Regeneramos el ambiente de desarrollo (Puede demorarse un poco)
-sudo npm install
-
-# Regeneramos los paquetes de bower (Puede demorarse un poco)
-bower install
-
 # Finalmente levantamos el servidor web
 grunt lift --open-browser
 	</hljs>
