@@ -217,6 +217,13 @@ app.controller("GaleTableServiceDemoController", function($scope, $galeTable, $t
         console.log(item);
       });
 
+    //On Before Binding Data
+    component.$on("beforeRender", function(data) {
+      
+      //Add some filter's
+
+    });
+
     //On Complete Data
     component.$on("loadComplete", function(data) {
       //Add Icon
