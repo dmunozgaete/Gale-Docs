@@ -150,7 +150,7 @@ app.controller("GaleTableDemoController", function($scope, $galeTable) {
         <!-- /Live Demos -->
     </section>
     <!-- /USAGE -->
-
+    <br />
     <!-- USAGE -->
     <section class="demo-container md-whiteframe-z1" ng-class="{'show-source': $showSource1}">
         <md-toolbar class="demo-toolbar">
@@ -212,20 +212,15 @@ app.controller("GaleTableServiceDemoController", function($scope, $galeTable, $t
     var endpoint = '/Mocks/User/?email={0}'.format([email]);
 
     component.setup(endpoint);
-      //Row Click 
-      component.$on("rowClick", function(ev, item) {
-        console.log(item);
-      });
-
-    //On Before Binding Data
-    component.$on("beforeRender", function(data) {
-      
-      //Add some filter's
-
+    
+    //Row Click 
+    component.$on("row-click", function(ev, item) {
+      console.log(item);
     });
 
+
     //On Complete Data
-    component.$on("loadComplete", function(data) {
+    component.$on("load-complete", function(data) {
       //Add Icon
       angular.forEach(data.items, function(item) {
         item.icon = "bundles/app/css/images/logo.png";
@@ -488,4 +483,398 @@ app.controller("GaleTableServiceDemoController", function($scope, $galeTable, $t
         <!-- -->
     </ul>
     <!-- /FILTER -->
+
+    <!-- EVENTS -->
+    <h2 class="md-headline">
+        Eventos
+    </h2>
+    <ul class="methods">
+        <!-- -->
+        <li>
+            <!-- METHOD -->
+            <h3 class="method-function-syntax">
+                row-click
+            </h3>
+            <div class="service-desc">
+                <p>
+                    Evento que se ejecuta cuando se ha hecho Click en alguna
+                    fila del componente.            
+                </p>
+            </div>
+            <div class="api-param-table">
+                <table class="no-style">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    event
+                                </code>
+                            </td>
+                            <td>
+                                Angular Event
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Información del evento enlazado
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    item
+                                </code>
+                            </td>
+                            <td>
+                                JSON
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Objeto que contiene la información del registro
+                                    seleccionado (item)
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    uniqueID
+                                </code>
+                            </td>
+                            <td>
+                                JSON
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Identificador de la tabla que gatillo el evento. 
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- /METHOD -->
+
+            <!-- USAGE -->
+            <hljs language="js">
+app.controller("GaleTableServiceDemoController", function(
+  $scope, 
+  $galeTable, 
+  $timeout) {
+  
+  $galeTable.then(function(component) {
+    component.setup('/Mocks/User');
+
+    //Row Click 
+    component.$on("row-click", function(ev, item, uniqueID) {
+      console.log(item);
+    });
+
+  });
+  
+});
+            </hljs>
+            <!-- /USAGE -->
+        </li>
+        <!-- -->
+        <li>
+            <!-- METHOD -->
+            <h3 class="method-function-syntax">
+                cell-click
+            </h3>
+            <div class="service-desc">
+                <p>
+                    Evento que se ejecuta cuando se ha hecho Click en alguna
+                    celda del componente.            
+                </p>
+            </div>
+            <div class="api-param-table">
+                <table class="no-style">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    event
+                                </code>
+                            </td>
+                            <td>
+                                Angular Event
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Información del evento enlazado.
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    item
+                                </code>
+                            </td>
+                            <td>
+                                JSON
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Objeto que contiene la información del registro
+                                    seleccionado (item).
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    xy
+                                </code>
+                            </td>
+                            <td>
+                                JSON
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Coordenadas de información sobre el item 
+                                    seleccionado.
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    uniqueID
+                                </code>
+                            </td>
+                            <td>
+                                JSON
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Identificador de la tabla que gatillo el evento. 
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- /METHOD -->
+
+            <!-- USAGE -->
+            <hljs language="js">
+app.controller("GaleTableServiceDemoController", function(
+  $scope, 
+  $galeTable, 
+  $timeout) {
+  
+  $galeTable.then(function(component) {
+    component.setup('/Mocks/User');
+
+    //Row Click 
+    component.$on("cell-click", function(ev, item, xy, uniqueID) {
+      console.log(item);
+    });
+
+  });
+  
+});
+            </hljs>
+            <!-- /USAGE -->
+        </li>
+        <!-- -->
+        <li>
+            <!-- METHOD -->
+            <h3 class="method-function-syntax">
+                before-render
+            </h3>
+            <div class="service-desc">
+                <p>
+                    Evento que se ejecuta previo al enlace de datos, en este 
+                    paso es posible modificar o filtrar la información que proviene de 
+                    la fuente de datos, antes de ser renderizada en la tabla.
+                </p>
+            </div>
+            <div class="api-param-table">
+                <table class="no-style">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    source
+                                </code>
+                            </td>
+                            <td>
+                                Object
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Fuente de datos enlazada.
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    uniqueID
+                                </code>
+                            </td>
+                            <td>
+                                String
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Identificador de la tabla en proceso de enlace 
+                                    (Útil cuando se tienen mas de una tabla en la vista)
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- /METHOD -->
+
+            <!-- USAGE -->
+            <hljs language="js">
+app.controller("GaleTableServiceDemoController", function(
+  $scope, 
+  $galeTable, 
+  $timeout) {
+  
+  $galeTable.then(function(component) {
+    component.setup('/Mocks/User');
+
+    //On Before Binding Data
+    component.$on("before-render", function(source, uniqueID) {
+      
+      //Add some filter's
+      console.log(source);
+
+    });
+    
+  });
+  
+});
+            </hljs>
+            <!-- /USAGE -->
+        </li>
+        <!-- -->
+        <li>
+            <!-- METHOD -->
+            <h3 class="method-function-syntax">
+                load-complete
+            </h3>
+            <div class="service-desc">
+                <p>
+                    Evento que se ejecuta posterior al enlace de datos y la información
+                    de la fuente de datos ya NO es posible de modificar, En este paso
+                    se permite , anexar información o modificar los items enlazados
+                </p>
+            </div>
+            <div class="api-param-table">
+                <table class="no-style">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    source
+                                </code>
+                            </td>
+                            <td>
+                                Object
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Fuente de datos enlazada.
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                        <tr>
+                            <td>
+                                <code>
+                                    uniqueID
+                                </code>
+                            </td>
+                            <td>
+                                String
+                            </td>
+                            <td class="description">
+                                <p>
+                                    Identificador de la tabla en proceso de enlace 
+                                    (Útil cuando se tienen mas de una tabla en la vista)
+                                </p>
+                            </td>
+                        </tr>
+                        <!-- -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- /METHOD -->
+
+            <!-- USAGE -->
+            <hljs language="js">
+app.controller("GaleTableServiceDemoController", function(
+  $scope, 
+  $galeTable, 
+  $timeout) {
+  
+  $galeTable.then(function(component) {
+    component.setup('/Mocks/User');
+
+    //On Complete Data
+    component.$on("load-complete", function(source, uniqueID) {
+      //Add Icon
+      angular.forEach(source.items, function(item) {
+        item.icon = "bundles/app/css/images/logo.png";
+      });
+    });
+    
+  });
+  
+});
+            </hljs>
+            <!-- /USAGE -->
+        </li>
+        <!-- -->
+    </ul>
+    <!-- /EVENTS -->
 </p>

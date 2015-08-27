@@ -27,7 +27,7 @@ angular.module('gale.components')
 
                 //----------------------------------------
                 //If hook, via $on change the pointer to hand
-                if(name === "rowClick"){
+                if(name === "row-click"){
                     $element.addClass("row-click");
                 }
                 //----------------------------------------
@@ -89,8 +89,8 @@ angular.module('gale.components')
                 $Api.invoke('GET', endpoint, null, configuration.headers)
                 .success(function(data){
 
-                    self.render(data.items);
-                    self.$fire("loadComplete", [data, unique_id]);
+                    self.render(data, true);
+                    self.$fire("load-complete", [data, unique_id]);
                     
                 })
                 .finally(function(){
@@ -99,10 +99,14 @@ angular.module('gale.components')
             };
             
             //Render table
-            self.render = function(data){
-                self.$fire("beforeRender", [data, unique_id]);
-                $scope.source = data;
-            };
+            self.render = function(data, isRest){
+                self.$fire("before-render", [data, unique_id]);
+
+                $scope.source = isRest ? data.items : data;
+                if (isRest){
+                    data.total = data.items.length;
+                }
+            }
             //------------------------------------------------------------------------------
 
             //Cell Click
@@ -110,7 +114,7 @@ angular.module('gale.components')
             self.$$cellClick = function(ev, item , cellIndex, rowIndex){
                 
                 //Scale to Row Click
-                self.$fire("cellClick", [ev, item , {x: rowIndex, y: cellIndex}, self.getUniqueId()]);                
+                self.$fire("cell-click", [ev, item , {x: rowIndex, y: cellIndex}, self.getUniqueId()]);                
             };            
 
             //Garbage Collector Destroy
@@ -142,19 +146,19 @@ angular.module('gale.components')
             //Watch for Changes
             scope.$watch('items', function(value) {
                 if (value) {
-                    ctrl.render(value);
+                    ctrl.render(value, false);
                 }
             });
 
             //Add cursor if handler exists
-            if(rowClickHandler || ctrl.hasEventHandlersFor("rowClick")){
+            if(rowClickHandler || ctrl.hasEventHandlersFor("row-click")){
                 element.addClass("row-click");
             }
 
             scope.onRowClick = function(item){
                 
                 //Row Click
-                ctrl.$fire("rowClick", [event, item , ctrl.getUniqueId()]);
+                ctrl.$fire("row-click", [event, item , ctrl.getUniqueId()]);
                 if(rowClickHandler){
                    rowClickHandler(item);
                 }

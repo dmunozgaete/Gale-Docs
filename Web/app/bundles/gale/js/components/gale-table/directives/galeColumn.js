@@ -38,7 +38,7 @@ angular.module('gale.components')
                         header = hscript;
                     }else{
                         var htemplate = header.find("template");
-                        if(template.length >0 ){
+                        if(htemplate.length >0 ){
                             htemplate = htemplate;
                         }
                     }

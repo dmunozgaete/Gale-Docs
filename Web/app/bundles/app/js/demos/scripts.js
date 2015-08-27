@@ -134,11 +134,11 @@
                     var endpoint = '/Mocks/User/{0}'.format([email]);
                     component.setup(endpoint, null, tbl_demo1);
                     //Row Click 
-                    component.$on("rowClick", function(ev, item) {
+                    component.$on("row-click", function(ev, item) {
                         console.log(item);
                     }, tbl_demo1);
                     //On Complete Data
-                    component.$on("loadComplete", function(data) {
+                    component.$on("load-complete", function(data) {
                         //Add User Profiles
                         angular.forEach(data.items, function(profile) {
                             profile.icon = "bundles/app/css/images/logo.png";
