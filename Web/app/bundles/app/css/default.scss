@@ -151,6 +151,43 @@ section {
             padding-bottom: 4px;
         }
     }
+    ul.documents {
+        margin: 0px;
+        padding: 0px;
+        li {
+            padding-bottom: 4px;
+            list-style-type: none;
+
+            &.divider {
+                padding: 10px 0px;
+                font-size: 1.3em;
+                color: rgb(84, 84, 84);
+            }
+            
+            a {
+                color: rgb(82, 82, 82);
+                div:first-child {
+                    flex: 0 0 10%;
+                    webkit-flex: 0 0 10%;
+                    align-items: center;
+                    justify-content: center;
+                    flex-direction: row;
+                    display: flex;
+                }
+                div:last-child {
+                    padding: 2px 0px 2px 8px;
+                    h3 {
+                        margin: 0px;
+                        font-weight: normal;
+                        font-size: 1.2em;
+                    }
+                    span {
+                        font-size: 0.8em;
+                    }
+                }
+            }
+        }
+    }
     md-content[name=content] {
         background-color: #F7F7F7;
         margin-top: 8px;

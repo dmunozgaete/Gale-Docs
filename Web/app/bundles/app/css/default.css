@@ -106,6 +106,33 @@ section {
       line-height: 1.6em;
       text-align: justify;
       padding-bottom: 4px; }
+  section ul.documents {
+    margin: 0px;
+    padding: 0px; }
+    section ul.documents li {
+      padding-bottom: 4px;
+      list-style-type: none; }
+      section ul.documents li.divider {
+        padding: 10px 0px;
+        font-size: 1.3em;
+        color: #545454; }
+      section ul.documents li a {
+        color: #525252; }
+        section ul.documents li a div:first-child {
+          flex: 0 0 10%;
+          webkit-flex: 0 0 10%;
+          align-items: center;
+          justify-content: center;
+          flex-direction: row;
+          display: flex; }
+        section ul.documents li a div:last-child {
+          padding: 2px 0px 2px 8px; }
+          section ul.documents li a div:last-child h3 {
+            margin: 0px;
+            font-weight: normal;
+            font-size: 1.2em; }
+          section ul.documents li a div:last-child span {
+            font-size: 0.8em; }
   section md-content[name=content] {
     background-color: #F7F7F7;
     margin-top: 8px;
