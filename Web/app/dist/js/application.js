@@ -546,13 +546,17 @@ angular.manifiest('app', [
 
             //Help US
             {
-                label: "Contribuye",
+                label: "Contribuciones",
                 name: "helpus",
                 open: true,
                 items: [
                     {
                         label: "Colaboradores",
                         name: "about"
+                    },
+                    {
+                        label: "Recursos Externos",
+                        name: "resources"
                     }
                 ]
             },
