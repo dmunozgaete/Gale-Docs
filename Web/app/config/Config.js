@@ -3,7 +3,7 @@ angular.module("config", [])
 
         //Application data
         application: {
-            version: "2.1.1",
+            version: "2.1.9",
             author: "David Antonio Muñoz Gaete",
             environment: "development",
             language: "es",

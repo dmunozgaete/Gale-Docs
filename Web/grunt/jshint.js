@@ -7,7 +7,9 @@ module.exports = function(grunt, options) {
             curly: true,
             eqeqeq: true,
             eqnull: true,
-            browser: true
+            browser: true,
+            validthis: true,
+            devel: true
         },
 
         controllers: {
@@ -29,7 +31,7 @@ module.exports = function(grunt, options) {
         }
     };
 
-    if(grunt.option('report')){
+    if(!grunt.option('report')){
         conf.options["reporter"] = require('jshint-stylish');
     }
 

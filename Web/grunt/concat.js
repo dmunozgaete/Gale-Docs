@@ -15,15 +15,8 @@ module.exports = function(grunt, options) {
                 separator: ';',
             },
             files: {
-                'app/dist/js/gale.js': [
-                    'app/bundles/bundles.js',
-                    'app/bundles/gale/**/*.js'
-                ],
-
                 'app/dist/js/bundles.js': [
                     'app/bundles/**/*.js',
-                    '!app/bundles/bundles.js',
-                    '!app/bundles/gale/**/*.js'
                 ],
                 
                 'app/dist/js/controllers.js': [
@@ -35,11 +28,6 @@ module.exports = function(grunt, options) {
                 'app/dist/js/application.js': [
                 	'app/dist/js/bundles.js',
                 	'app/dist/js/controllers.js'
-                ],
-
-
-                'app/dist/css/gale.css': [
-                    'app/bundles/gale/**/*.css'
                 ],
 
                 'app/dist/css/application.css': [

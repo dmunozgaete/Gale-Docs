@@ -35,10 +35,8 @@ module.exports = function(grunt, options) {
             files: {
                 'app/index.html': [
                     'app/dist/css/bower.css',
-                    'app/dist/css/gale.css',
                     'app/dist/css/application.css',
                     'app/dist/js/bower.min.js',
-                    'app/dist/js/gale.min.js',
                     'app/dist/js/application.min.js'
                 ]
             }

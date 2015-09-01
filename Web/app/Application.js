@@ -1,8 +1,7 @@
 ﻿angular.module('App', [
-        'ui.router' //NG ROUTE
-        , 'ngMaterial' //MATERIAL DESIGN DIRECTIVES
         , 'gale' //VALENTYS SDK LIBRARY
         , 'app' //CUSTOM PROJECT LIBRARY
+        , 'material-icons' //CUSTOM PROJECT LIBRARY
         , 'hljs' //HIGHLIGHT
         , 'mocks'   //DEMO MOCK'S
     ])

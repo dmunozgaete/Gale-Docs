@@ -33,18 +33,6 @@ module.exports = function(grunt, options) {
                     'app/dist/js/application.js'
                 ]
             }
-        },
-        gale: {
-            options: {
-                compress: true,
-                mangle: false,
-                sourceMap: true
-            },
-            files :{
-                'app/dist/js/gale.min.js': [
-                    'app/dist/js/gale.js'
-                ]
-            }
         }
     };
     return conf;
