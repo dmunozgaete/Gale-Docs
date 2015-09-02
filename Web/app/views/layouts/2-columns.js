@@ -10,13 +10,14 @@ angular.module('app.controllers')
         $mdToast,
         $stateParams,
         $timeout,
-        $galeLoading
+        $galeLoading,
+        Analytics
     ) {
         //------------------------------------------------------------------------------------
         // Model
         $scope.config = {
             application: $Configuration.get("application"),
-            menu: $Configuration.get("menu")
+            menu: $Configuration.get("menu"),
             google: $Configuration.get("google")
         };
         $scope.config.selected_menu = $scope.config.menu[0].items[0];

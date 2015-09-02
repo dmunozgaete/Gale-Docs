@@ -12,7 +12,7 @@ angular.module("config", [])
         },
 
         google: {
-             analitycs: "UA-66082630-2"
+             analytics: "UA-66082630-2"
         },
 
         menu: [
