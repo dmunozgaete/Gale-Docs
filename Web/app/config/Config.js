@@ -11,8 +11,9 @@ angular.module("config", [])
             home: "/demo/gettingStarted/introduction"
         },
 
-        //CLEAN STEP WHEN A NEW VERSION IS UPDATE!
-        on_build_new_version: function(new_version, old_version) {},
+        google: {
+             analitycs: "UA-66082630-2"
+        },
 
         menu: [
 
