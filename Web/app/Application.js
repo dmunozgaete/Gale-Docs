@@ -1,17 +1,19 @@
 ﻿angular.module('App', [
-        , 'gale' //VALENTYS SDK LIBRARY
-        , 'app' //CUSTOM PROJECT LIBRARY
-        , 'material-icons' //CUSTOM PROJECT LIBRARY
-        , 'hljs' //HIGHLIGHT
-        , 'mocks'   //DEMO MOCK'S
+        , 'gale'                        //ANGULAR GALE LIBRARY
+        , 'app'                         //CUSTOM PROJECT LIBRARY
+        , 'material-icons'              //CUSTOM PROJECT LIBRARY
+        , 'hljs'                        //HIGHLIGHT
+        , 'mocks'                       //DEMO MOCK'S
+        , 'angular-google-analytics'    //ANGULAR GOOGLE ANALITYCS
     ])
-    .run(function($location, $Configuration, $log) {
+    .run(function($location, $Configuration, $log, Analytics) {
         var application = $Configuration.get("application");
         $log.info("application start... ;)!", {
             env: application.environment,
             version: application.version
         });
         $location.url(application.home);
+    
     })
     .config(function($mdThemingProvider) {
         $mdThemingProvider.theme('default')
@@ -19,6 +21,13 @@
             .accentPalette('orange')
             .warnPalette('red');
     })
+    // Set GOOGLE analytics account
+    .config(function(AnalyticsProvider, CONFIGURATION) {
+        AnalyticsProvider.setAccount(CONFIGURATION.google.analytics);
+        AnalyticsProvider.setPageEvent('$stateChangeSuccess');
+        //AnalyticsProvider.setDomainName('none'); FOR TESTING IN LOCALHOST
+    })
+
     //API EndPoint Configuration
     .config(function($ApiProvider, CONFIGURATION) {
         $ApiProvider.setEndpoint(CONFIGURATION.endpoint);
