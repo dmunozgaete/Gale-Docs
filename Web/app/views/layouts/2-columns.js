@@ -17,6 +17,7 @@ angular.module('app.controllers')
         $scope.config = {
             application: $Configuration.get("application"),
             menu: $Configuration.get("menu")
+            google: $Configuration.get("google")
         };
         $scope.config.selected_menu = $scope.config.menu[0].items[0];
         
