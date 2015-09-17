@@ -1,13 +1,19 @@
-# Gale
+# Framework Gale
 
-Gale es un conjunto de librerías desarrollado por 
-[Valentys Ltda](http://www.valentys.com/) para acelerar el desarrollo de aplicaciones 
-realizadas en [AngularJS](https://angularjs.org/),  por lo que brinda un punto inicial 
-para el comienzo de cualquier proyecto asociado al área de **I+D+i**.
+Gale es un Framework API basado en el implementación RestFul que permite 
+la construcción acelerada de proyectos API's siguiendo las mejores 
+prácticas de construcción para desarrollos escalables, optimizando 
+los tiempos de desarrollo y separando los conceptos de interfaz gráfica 
+y lógica de negocio. 
 
-El proyecto es Open Source ([Apache License 2.0](https://es.wikipedia.org/wiki/Apache_License)) y provee un grupo de componentes
-reutilizables que se añaden al grupo de componentes actuales realizado por 
-[Material Design](https://material.angularjs.org/) y actualmente usado como pilar de construcción para los desarrollos y lineamientos de nuestra empresa.
+Construido bajo patrones de diseño hemos realizado un producto capaz de optimizar
+los tiempos de desarrollo debido a su lenguaje simple y semántico, además de proveer
+de una interfaz de pruebas en tiempo real sin necesidad de la interfaz gráfica final.
+
+El proyecto es Open Source ([https://es.wikipedia.org/wiki/Apache_License](Apache License 2.0)
+multiplataforma y provee un punto de inicio para desarrollos con enfoque empresarial.
+
+#
 
 Sitio Web:
 [http://gale-docs.azurewebsites.net/](http://gale-docs.azurewebsites.net/)

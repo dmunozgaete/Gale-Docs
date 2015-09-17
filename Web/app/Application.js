@@ -3,7 +3,6 @@
         , 'app'                         //CUSTOM PROJECT LIBRARY
         , 'material-icons'              //CUSTOM PROJECT LIBRARY
         , 'hljs'                        //HIGHLIGHT
-        , 'mocks'                       //DEMO MOCK'S
         , 'angular-google-analytics'    //ANGULAR GOOGLE ANALITYCS
     ])
     .run(function($location, $Configuration, $log, Analytics) {
@@ -27,12 +26,7 @@
         AnalyticsProvider.setPageEvent('$stateChangeSuccess');
         //AnalyticsProvider.setDomainName('none'); FOR TESTING IN LOCALHOST
     })
-
-    //API EndPoint Configuration
-    .config(function($ApiProvider, CONFIGURATION) {
-        $ApiProvider.setEndpoint(CONFIGURATION.endpoint);
-    })
-    
+       
     .config(function($stateProvider, $urlRouterProvider, CONFIGURATION) {
         $stateProvider
             .state('app', {

@@ -3,7 +3,7 @@ angular.module("config", [])
 
         //Application data
         application: {
-            version: "2.1.9",
+            version: "2.2.5",
             author: "David Antonio Muñoz Gaete",
             environment: "development",
             language: "es",
@@ -32,67 +32,6 @@ angular.module("config", [])
                         label: "Instalación",
                         name: "installation"
                     }
-                ]
-            },
-
-            //UX References
-            {
-                label: "Interfaz Gráfica",
-                name: "ux",
-                items: [
-                    {
-                        label: "Servicios",
-                        name: "services",
-                        items: [
-
-                            { name: "$Configuration" },
-                            { name: "$Localization" },
-                            { name: "$Api" },
-                            { name: "$LocalStorage" },
-                            { name: "$Timer" },
-                            { name: "KQLBuilder" }
-
-                        ]
-                    }, 
-
-                    {
-                        label: "Componentes",
-                        name: "components",
-                        items: [
-
-                            { name: "gale-finder" },
-                            { name: "gale-loading" },
-                            { name: "gale-page" },
-                            { name: "gale-table" }
-
-                        ]
-                    }, 
-
-                    {
-                        label: "Filtros",
-                        name: "filters",
-                        items: [
-
-                            { name: "capitalize" },
-                            { name: "localize" },
-                            { name: "template" }
-
-                        ]
-                    }, 
-
-                    {
-                        label: "Directivas",
-                        name: "directives",
-                        items: [
-
-                            { name: "ngRange" },
-                            { name: "ngRut" },
-                            { name: "ngEmail" },
-                            { name: "selectTextOnClick" },
-                            { name: "toNumbeOnBlur" }
-
-                        ]
-                    }   
                 ]
             },
 
