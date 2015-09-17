@@ -1,4 +1,3 @@
 {
-	"debugging": true,
-	"endpoint": "demo-mocks.valentys/API/v1"
+	"debugging": true
 }

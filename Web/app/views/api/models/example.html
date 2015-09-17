@@ -11,7 +11,7 @@
     <br />
     Estos modelos son vinculados a través de los servicios creados para tu proyecto o 
     creando un <code>endpoint</code> (Controlador API) heredando de la clase base 
-    <code>QueryableController</code>
+    <code>BlueprintController</code>
     que generará de forma automatica el principio RESTFul.
     <br />
     <br />
@@ -25,7 +25,7 @@
         </iframe>
 
         <span>
-            Creación y Exposición de un Modelo con QueryableController.
+            Creación y Exposición de un Modelo con BlueprintController.
         </span>
     </snapshot>
     <!-- /YOUTUBE -->
@@ -66,7 +66,7 @@ namespace API.Areas.User
     /// /Account API, With auto generated CRUD Operation's 
     /// (POST, READ, UPDATE, DELETE)
     /// &lt;/summary&gt;
-    public class UserController: QueryableController&lt;Models.User&gt;{}
+    public class UserController: BlueprintController&lt;Models.User&gt;{}
 }
 						</hljs>
 	                    <!-- /SOURCE CODE -->

@@ -3,7 +3,7 @@
   "main": "",
   "private": true,
   "description": "Gale Documentation Project",
-  "repository": "https://github.com/GrupoValentys/Gale-Docs.git",
+  "repository": "https://github.com/DmunozGaete/Gale-Docs.git",
   "license": "Apache 2.0 License",
   "devDependencies": {
     "bower": "^1.3.1",
