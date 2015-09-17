@@ -45,7 +45,7 @@ angular.module("config", [])
                         name: "controllers",
                         items: [
                             { name: "RestController" },
-                            { name: "QueryableController" }
+                            { name: "BlueprintController" }
                         ]
                     },
 
