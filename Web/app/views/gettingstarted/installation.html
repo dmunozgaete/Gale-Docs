@@ -12,98 +12,39 @@
 	Antes de comenzar a configurar el ambiente de desarrollo son necesarias 
 	las siguientes dependencias (En el orden presentado):
 
-	<ul>
+	<ul class="doc-list">
 		<li>
-			API
+			<a href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">
+				Git:
+			</a>
 
-			<ul class="doc-list">
-				<li>
-					<a href="http://www.microsoft.com/es-cl/download/details.aspx?id=30653" target="_blank">
-						Microsoft .NET 4.5:
-					</a>
+			Control de versiones para nuestro proyecto... 
+			solo con esa descripción basta...
+		</li>
+		<li>
+			<a href="http://www.microsoft.com/es-cl/download/details.aspx?id=30653" target="_blank">
+				Microsoft .NET 4.5 o vNext (Linux o OSX):
+			</a>
 
-					Framework de Trabajo .NET y principal dependencia para el ambiente de 
-					desarrollo (Visual Studio).
-				</li>
-				<li>
-					<a href="http://www.microsoft.com/es-cl/download/details.aspx?id=29062" target="_blank">
-						SQL Server 2008:
-					</a>
+			Framework de Trabajo .NET y dependencia principal , de nuestros proyectos
+		</li>
+		<li>
+			<a href="http://www.microsoft.com/es-cl/download/details.aspx?id=29062" target="_blank">
+				SQL Server 2008:
+			</a>
 
-					Uno de los motores de base de datos, que puede utilizar la API RESTful.
-				</li>
-			</ul>
-
+			Uno de los motores de base de datos, que puede utilizar la API RESTful.
 		</li>
 
 		<li>
-			Web
+			<a href="http://www.microsoft.com/es-cl/download/details.aspx?id=29062" target="_blank">
+				IDE para desarrollo:
+			</a>
 
-			<ul class="doc-list">
-				<li>
-					<a href="http://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank">
-						Git:
-					</a>
-
-					Control de versiones para nuestro proyecto... 
-					solo con esa descripción basta...
-				</li>
-				<li>
-					<a href="https://nodejs.org/" target="_blank">
-						Node.js:
-					</a>
-
-					Administrador de paquetes , y contiene las funcionalidades mas importante 
-					para la optimización de los tiempos de desarrollo.
-				</li>
-				<li>
-					<a href="http://gruntjs.com/" target="_blank">
-						Grunt:
-					</a>
-
-					Nuestro principal caballito de batalla en la <strong>automatización de los procesos</strong> 
-					monótonos como la reducción , unificación y ofuscación de archivos, así como también la de 
-					proveernos en una sola linea la configuración y creación del servidor web 
-					que usaremos para el desarrollo.
-				</li>
-				<li>
-					<a href="http://bower.io/" target="_blank">
-						Bower:
-					</a>
-
-					El administrador de tareas de nuestra aplicación web  <strong>AngularJS</strong> , 
-					y que nos permitirá administrar las librerías (<strong>bundles</strong>) que 
-					necesitemos usar en la creación de nuestra aplicación , 
-					<i>
-						(google-map, angular-material, angular-ui-route, etc., en 
-						resumen ya no necesitaremos buscar los componentes o 
-						librerías externas nunca mas)
-					</i>
-				</li>
-			</ul>
-
+			Puede ser Xamarin Studio o Visual Studio 2013 o Superior, para poder codificar 
+			de forma simple nuestra API.
 		</li>
 	</ul>
-
-	<hljs language="bash">
-#Instalamos Grunt (global)
-npm install -g grunt-cli
-
-#Hacemos lo mismo con Bower
-npm install -g bower
-
-#Actualizamos los paquetes NodeJS
-npm update
-
-#Actualzamos los paquetes Bower
-bower update
-	</hljs>
-
-	<i>
-		<strong>Nota:</strong> Estos comandos deben ser usados bajo la función sudo 
-		(for OSX, *nix, BSD etc) o desde una linea de comandos como Administrator 
-		(Windows) para instalar Grunt & Bower globalmente.
-	</i>
 	
 </p>
 <br />
@@ -113,25 +54,19 @@ bower update
 </h2>
 
 <p>
-	Una vez instaladas las dependencias bases para nuestra plantilla, 
-	podemos comenzar a configurar un ambiente de desarrollo para el nuestro proyecto.
+	Una vez instaladas las dependencias bases para nuestra API, 
+	podemos configurar un ambiente de desarrollo para nuestro proyecto.
 	<br />
 	<br />
-	Comenzaremos clonando el repositorio del kit inicial:
+	Comenzaremos descargando nuestra plantilla base para el desarrollo:
 
 	<hljs language="bash">
 # Hacemos una copia simple del repositorio (bare clone)
-git clone https://github.com/GrupoValentys/gale-starter-project.git
+git clone https://github.com/dmunozgaete/Gale-API-Seed-Project.git 
+MyFirstAPI
 
-# Localizamos nuestro terminal en la carpeta WEB del proyecto
-cd Gale-Starter-Project/Web
-
-# Regeneramos el ambiente de desarrollo 
-# (Puede demorarse un poco y quizas sea necesario usar 'sudo')
-npm install
-
-# Regeneramos los paquetes de bower (Puede demorarse un poco)
-bower install
+# Abrimos la solución con nuestro IDE favorito ;)!
+start API.sln
 	</hljs>
 	<br />
 </p>
@@ -142,16 +77,16 @@ bower install
 </h2>
 
 <p>
-	Para depurar y realizar pruebas de usuarios, Es común y muy util 
-	tener un servidor web HTTP. Para este proposito se encuentra disponible 
-	un servidor web local basado en Node.js que permite entre otras cosas 
-	servir como herramienta de depuración para los desarrollos a realizar.
+	Una vez cargado el proyecto en nuestro IDE, iniciaremos el servidor de prueba
+	(F5) o el servidor Web Local , y veremos algo parecido a la siguiente imagen:
 	<br />
 	<br />
-	Para ejecutarlo realizaremos lo siguiente:
-
-	<hljs language="bash">
-# Finalmente levantamos el servidor web
-grunt lift --open-browser
-	</hljs>
+	<!-- IMAGES -->
+    <snapshot>
+        <img src="bundles/app/static/api_localhost.png" />
+        <span>
+            Home inicial de nuestra API en OSX con Xamarin Studio
+        </span>
+    </snapshot>
+    <!-- /IMAGES -->
 </p>
