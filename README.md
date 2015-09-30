@@ -16,4 +16,4 @@ multiplataforma y provee un punto de inicio para desarrollos con enfoque empresa
 #
 
 Sitio Web:
-[http://gale-docs.azurewebsites.net/](http://gale-docs.azurewebsites.net/)
+[http://gale.azurewebsites.net/](http://gale.azurewebsites.net/)
