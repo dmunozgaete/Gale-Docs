@@ -356,7 +356,7 @@ angular.module('material-icons', ['ngMaterial'])
                         name: "controllers",
                         items: [
                             { name: "RestController" },
-                            { name: "QueryableController" }
+                            { name: "BlueprintController" }
                         ]
                     },
 
